@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingScreenThree: View { //Join Discord invite page
-    @Binding var open: Bool
+    //@Binding var open: Bool
   //var prevStep: ()->()
-  //var nextStep: ()->()
+  var nextStep: ()->()
   @Environment(\.openURL) var openURL
   var body: some View {
       VStack(spacing: 16) {
@@ -21,19 +21,12 @@ struct OnboardingScreenThree: View { //Join Discord invite page
               .frame(maxWidth: 300)
           
           MasterButton(icon: "safari.fill", label: "Open Reddit API settings", colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: {
-              //nextStep()
-              withAnimation {
-                open = false
-              }
+              nextStep()
               openURL(URL(string: "https://reddit.com/prefs/apps")!)
           })
           .padding(.top, 32)
           
-          MasterButton(label: "No Thanks", mode: .soft, color: .primary, colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: {
-              withAnimation {
-                open = false
-              }
-          })
+          MasterButton(label: "No Thanks", mode: .soft, color: .primary, colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: nextStep)
 //              .padding(.top, 32)
       }
     .padding(.horizontal, 16)

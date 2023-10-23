@@ -10,6 +10,7 @@
 		430576A02AE6F40300B18E70 /* OnboardingScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */; };
 		430576A22AE70BB600B18E70 /* OnboardingScreenThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */; };
 		430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */; };
+		430576A62AE712E000B18E70 /* OnboardingSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A52AE712E000B18E70 /* OnboardingSuccess.swift */; };
 		430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */; };
 		430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2D2AE6ED23007017AC /* Tabber.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
@@ -50,6 +51,7 @@
 		4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenTwo.swift; sourceTree = "<group>"; };
 		430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenThree.swift; sourceTree = "<group>"; };
 		430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCircle.swift; sourceTree = "<group>"; };
+		430576A52AE712E000B18E70 /* OnboardingSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSuccess.swift; sourceTree = "<group>"; };
 		430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		430ACB2D2AE6ED23007017AC /* Tabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabber.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 				4341B1042AE652C400C5CC11 /* OnboardingScreenOne.swift */,
 				4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */,
 				430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */,
+				430576A52AE712E000B18E70 /* OnboardingSuccess.swift */,
 				4341B1102AE6579200C5CC11 /* Onboarding.swift */,
 			);
 			path = Onboarding;
@@ -337,6 +340,7 @@
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
 				4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */,
 				4341B1082AE655C100C5CC11 /* RR.swift in Sources */,
+				430576A62AE712E000B18E70 /* OnboardingSuccess.swift in Sources */,
 				4341B1112AE6579200C5CC11 /* Onboarding.swift in Sources */,
 				4341B10D2AE656B500C5CC11 /* MasterButton.swift in Sources */,
 			);
