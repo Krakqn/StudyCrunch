@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		430576A02AE6F40300B18E70 /* OnboardingScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */; };
+		430576A22AE70BB600B18E70 /* OnboardingScreenThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */; };
+		430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */; };
 		430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */; };
 		430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2D2AE6ED23007017AC /* Tabber.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenTwo.swift; sourceTree = "<group>"; };
+		430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenThree.swift; sourceTree = "<group>"; };
+		430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCircle.swift; sourceTree = "<group>"; };
 		430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		430ACB2D2AE6ED23007017AC /* Tabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabber.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,8 +160,10 @@
 		4341B1032AE6526700C5CC11 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */,
 				4341B1042AE652C400C5CC11 /* OnboardingScreenOne.swift */,
 				4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */,
+				430576A12AE70BB600B18E70 /* OnboardingScreenThree.swift */,
 				4341B1102AE6579200C5CC11 /* Onboarding.swift */,
 			);
 			path = Onboarding;
@@ -322,6 +328,8 @@
 				4341B10F2AE656EF00C5CC11 /* blurTransitions.swift in Sources */,
 				430576A02AE6F40300B18E70 /* OnboardingScreenTwo.swift in Sources */,
 				430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */,
+				430576A22AE70BB600B18E70 /* OnboardingScreenThree.swift in Sources */,
+				430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */,
 				4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */,
 				4341B1052AE652C400C5CC11 /* OnboardingScreenOne.swift in Sources */,
 				4341B10B2AE6560F00C5CC11 /* fontSize.swift in Sources */,
