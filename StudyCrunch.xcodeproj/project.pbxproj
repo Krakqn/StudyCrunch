@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */; };
+		430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2D2AE6ED23007017AC /* Tabber.swift */; };
+		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
 		4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */; };
 		4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0DB2AE6523D00C5CC11 /* ContentView.swift */; };
 		4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */; };
@@ -41,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
+		430ACB2D2AE6ED23007017AC /* Tabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabber.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCrunchApp.swift; sourceTree = "<group>"; };
 		4341B0DB2AE6523D00C5CC11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430ACB312AE6EDDC007017AC /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +121,7 @@
 				4341B0DB2AE6523D00C5CC11 /* ContentView.swift */,
 				4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */,
 				4341B0DF2AE6523D00C5CC11 /* Preview Content */,
+				430ACB2D2AE6ED23007017AC /* Tabber.swift */,
 			);
 			path = StudyCrunch;
 			sourceTree = "<group>";
@@ -168,6 +175,7 @@
 				4341B10A2AE6560F00C5CC11 /* fontSize.swift */,
 				4341B10E2AE656EF00C5CC11 /* blurTransitions.swift */,
 				4341B1122AE657D000C5CC11 /* fromHex.swift */,
+				430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -188,6 +196,9 @@
 			dependencies = (
 			);
 			name = StudyCrunch;
+			packageProductDependencies = (
+				430ACB302AE6EDDC007017AC /* Defaults */,
+			);
 			productName = StudyCrunch;
 			productReference = 4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +271,9 @@
 				Base,
 			);
 			mainGroup = 4341B0CD2AE6523D00C5CC11;
+			packageReferences = (
+				430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
 			productRefGroup = 4341B0D72AE6523D00C5CC11 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -303,9 +317,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4341B10F2AE656EF00C5CC11 /* blurTransitions.swift in Sources */,
+				430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */,
 				4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */,
 				4341B1052AE652C400C5CC11 /* OnboardingScreenOne.swift in Sources */,
 				4341B10B2AE6560F00C5CC11 /* fontSize.swift in Sources */,
+				430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */,
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
 				4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */,
 				4341B1082AE655C100C5CC11 /* RR.swift in Sources */,
@@ -634,6 +650,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		430ACB302AE6EDDC007017AC /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4341B0CE2AE6523D00C5CC11 /* Project object */;
 }
