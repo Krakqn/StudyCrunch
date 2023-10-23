@@ -1,5 +1,5 @@
 //
-//  OnboardingScreenOne.swift
+//  OnboardingScreenTwo.swift
 //  StudyCrunch
 //
 //  Created by Sri Yanamandra on 10/23/23.
@@ -36,7 +36,7 @@ private struct Feature: View {
   }
 }
 
-struct OnboardingScreenOne: View {
+struct OnboardingScreenTwo: View {
     var nextStep: ()->()
     var body: some View {
     ScrollView {
@@ -48,7 +48,7 @@ struct OnboardingScreenOne: View {
         //          .transition(.scale(scale: 1))
         
         VStack {
-          Text("Welcome!")
+          Text("We're trying something new")
             .fontSize(24, .semibold)
           Text("To use Reddit, Winston uses a special key you can generate yourself in Reddit's site.")
             .opacity(0.75)

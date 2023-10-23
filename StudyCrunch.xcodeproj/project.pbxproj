@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430576A02AE6F40300B18E70 /* OnboardingScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */; };
 		430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */; };
 		430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2D2AE6ED23007017AC /* Tabber.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenTwo.swift; sourceTree = "<group>"; };
 		430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
 		430ACB2D2AE6ED23007017AC /* Tabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabber.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4341B1042AE652C400C5CC11 /* OnboardingScreenOne.swift */,
+				4305769F2AE6F40300B18E70 /* OnboardingScreenTwo.swift */,
 				4341B1102AE6579200C5CC11 /* Onboarding.swift */,
 			);
 			path = Onboarding;
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4341B10F2AE656EF00C5CC11 /* blurTransitions.swift in Sources */,
+				430576A02AE6F40300B18E70 /* OnboardingScreenTwo.swift in Sources */,
 				430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */,
 				4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */,
 				4341B1052AE652C400C5CC11 /* OnboardingScreenOne.swift in Sources */,
