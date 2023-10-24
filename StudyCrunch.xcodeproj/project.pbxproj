@@ -28,6 +28,7 @@
 		4341B10F2AE656EF00C5CC11 /* blurTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B10E2AE656EF00C5CC11 /* blurTransitions.swift */; };
 		4341B1112AE6579200C5CC11 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B1102AE6579200C5CC11 /* Onboarding.swift */; };
 		4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B1122AE657D000C5CC11 /* fromHex.swift */; };
+		4389A8472AE7B0EA00AC45FC /* CourseHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389A8462AE7B0EA00AC45FC /* CourseHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		4341B10E2AE656EF00C5CC11 /* blurTransitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blurTransitions.swift; sourceTree = "<group>"; };
 		4341B1102AE6579200C5CC11 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		4341B1122AE657D000C5CC11 /* fromHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fromHex.swift; sourceTree = "<group>"; };
+		4389A8462AE7B0EA00AC45FC /* CourseHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		4341B0D82AE6523D00C5CC11 /* StudyCrunch */ = {
 			isa = PBXGroup;
 			children = (
+				4389A8452AE7B0CE00AC45FC /* CourseSelect */,
 				4341B1092AE6560400C5CC11 /* utils */,
 				4341B1062AE655B500C5CC11 /* Components */,
 				4341B1032AE6526700C5CC11 /* Onboarding */,
@@ -190,6 +193,14 @@
 				430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		4389A8452AE7B0CE00AC45FC /* CourseSelect */ = {
+			isa = PBXGroup;
+			children = (
+				4389A8462AE7B0EA00AC45FC /* CourseHome.swift */,
+			);
+			path = CourseSelect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */,
 				430576A22AE70BB600B18E70 /* OnboardingScreenThree.swift in Sources */,
 				430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */,
+				4389A8472AE7B0EA00AC45FC /* CourseHome.swift in Sources */,
 				4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */,
 				4341B1052AE652C400C5CC11 /* OnboardingScreenOne.swift in Sources */,
 				4341B10B2AE6560F00C5CC11 /* fontSize.swift in Sources */,

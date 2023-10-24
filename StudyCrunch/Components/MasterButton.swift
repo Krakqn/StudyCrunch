@@ -30,6 +30,7 @@ enum ProportionalTypes {
 struct MasterButton: View {
   var softDisabled = false
   var icon: String? = nil
+  var emoji: String? = nil
   var img: String? = nil
   var label: String? = nil
   var mode: MasterButtonMode = .normal
@@ -68,6 +69,11 @@ struct MasterButton: View {
       if let icon = icon {
         Image(systemName: icon)
           .transition(.scaleAndBlur)
+//          .id(icon)
+      }
+      if let emoji = emoji {
+        Text(emoji)
+          //.transition(.scaleAndBlur)
 //          .id(icon)
       }
       Group {
