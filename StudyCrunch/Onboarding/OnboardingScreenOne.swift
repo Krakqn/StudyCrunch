@@ -73,7 +73,7 @@ struct OnboardingScreenOne: View {
 
 
 
-////this is just for previewing
+//////this is just for previewing
 //struct OnboardingScreenOne_Previews: PreviewProvider {
 //    static var previews: some View {
 //        OnboardingScreenOne {
