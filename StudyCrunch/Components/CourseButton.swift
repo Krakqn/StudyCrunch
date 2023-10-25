@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-var emoji: String? = nil
-var label: String? = nil
-var subLabel: String? = nil
-var description: String? = nil
-
 //struct UserLinkContainer: View {
 //  var noHPad = false
 //  @StateObject var user: User
@@ -23,17 +18,27 @@ var description: String? = nil
 
 struct CourseButton: View {
   var noHPad = false
+  var emoji: String? = nil
+  var label: String? = nil
+  var subLabel: String? = nil
+  var description: String? = nil
+  var theme: AvatarTheme?
   @Environment(\.colorScheme) private var cs
   var body: some View {
+    //let cornerRadius = (theme?.cornerRadius ?? (64 / 2))
     HStack(spacing: 12) {
       if let emoji = emoji {
-        Text(emoji)
-          .font(.system(size: 64)) // Set the font size to match the avatar size
+        Group {
+          Text(emoji)
+            .font(.system(size: 64)) // Set the font size to match the avatar size
           // You can adjust the font further or use other modifiers as needed
           //.foregroundColor(.blue) // Example: Set a specific text color
           //.padding(10) // Example: Add padding
           //.background(Color.gray) // Example: Add a background color
           //.cornerRadius(8) // Example: Add corner radius
+        }
+        .frame(width: 64, height: 64)
+        //.mask(RR(cornerRadius, .black))
       }
         VStack(alignment: .leading) {
           if let label = label {
@@ -52,20 +57,11 @@ struct CourseButton: View {
               .padding(.horizontal, noHPad ? 0 : 16)
               .padding(.vertical, 14)
               .frame(maxWidth: .infinity, alignment: .leading)
-//              .background(
-//                Rectangle()
-////                struct ThemeColor: Codable, Hashable {
-////                  var hex: String
-////                  var alpha: CGFloat = 1.0
-////                  
-////                  func color() -> Color {
-////                    return Color.hex(hex).opacity(alpha)
-////                  }
-////                }
-//                  .fill(cs.color())
-//                  .overlay(cs.color())
-//              )
+              .themedListRowBG()
               .mask(RR(20, .black))
+              .onTapGesture {
+                print("worked!!!!")
+              }
     }
   }
 }
