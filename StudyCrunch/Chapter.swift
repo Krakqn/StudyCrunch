@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Chapter: Identifiable {
+  var id = UUID()
+  var number: Int
+  var name: String
+}

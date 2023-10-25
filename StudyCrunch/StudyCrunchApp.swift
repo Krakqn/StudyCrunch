@@ -9,15 +9,12 @@ import SwiftUI
 
 @main
 struct StudyCrunchApp: App {
-    @State var credModalOpen = true
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .sheet(isPresented: $credModalOpen) {
-                    Onboarding(open: $credModalOpen)
-                }
-        }
+  @State var credModalOpen = true
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }
 
 //struct ContentView: View {
@@ -26,5 +23,30 @@ struct StudyCrunchApp: App {
 //        Text("Hello, World!")
 //    }
 //}
+
+extension UIScreen {
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
+private struct CurrentThemeKey: EnvironmentKey {
+  static let defaultValue = defaultTheme
+}
+
+private struct ContentWidthKey: EnvironmentKey {
+  static let defaultValue = UIScreen.screenWidth
+}
+
+extension EnvironmentValues {
+  var contentWidth: Double {
+    get { self[ContentWidthKey.self] }
+    set { self[ContentWidthKey.self] = newValue }
+  }
+  var useTheme: WinstonTheme {
+    get { self[CurrentThemeKey.self] }
+    set { self[CurrentThemeKey.self] = newValue }
+  }
+}
 
 
