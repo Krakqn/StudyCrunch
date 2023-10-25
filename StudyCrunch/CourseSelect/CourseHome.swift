@@ -52,40 +52,105 @@ import SwiftUI
 //    secondaryLabel: "Guide me"
 //)
 
+//struct UserLinkContainer: View {
+//  var noHPad = false
+//  @StateObject var user: User
+//  var body: some View {
+//    UserLink(noHPad: noHPad, user: user)
+//  }
+//}
+//
+//struct UserLink: View {
+//  var noHPad = false
+//  var user: User
+//  @EnvironmentObject private var routerProxy: RouterProxy
+//    var body: some View {
+//      if let data = user.data {
+//        HStack(spacing: 12) {
+//          Avatar(url: data.icon_img, userID: data.name, avatarSize: 64)
+//          
+//          VStack(alignment: .leading) {
+//            Text("u/\(data.name)")
+//              .fontSize(18, .semibold)
+//            Text("\(formatBigNumber(data.total_karma ?? ((data.link_karma ?? 0) + (data.comment_karma ?? 0)))) karma")
+//              .fontSize(14).opacity(0.5)
+//            if let description = data.subreddit?.public_description {
+//              Text((description).md()).lineLimit(2)
+//                .fontSize(15).opacity(0.75)
+//            }
+//          }
+//        }
+//        .padding(.horizontal, noHPad ? 0 : 16)
+//        .padding(.vertical, 14)
+//        .frame(maxWidth: .infinity, alignment: .leading)
+//        .themedListRowBG()
+//        .mask(RR(20, .black))
+//        .onTapGesture {
+//          routerProxy.router.path.append(user)
+//        }
+//      }
+//    }
+//}
+
+
+//struct CourseHome: View {
+//  var nextStep: ()->()
+//  var body: some View {
+////  ScrollView {
+////    VStack(spacing: 24) {
+////      //        Image("winstonNoBG")
+////      //          .resizable()
+////      //          .scaledToFit()
+////      //          .frame(height: 128)
+////      //          .transition(.scale(scale: 1))
+////      
+////      VStack {
+////        Text("Welcome!")
+////          .fontSize(24, .semibold)
+////        Text("To use Reddit, Winston uses a special key you can generate yourself in Reddit's site.")
+////          .opacity(0.75)
+////      }
+////      .multilineTextAlignment(.center)
+////      
+////      VStack(spacing: 6) {
+////        Feature(icon: "arrow.up", title: "Huge limit", description: "Reddit API limit is 100 requests per second, it's impossible to reach.")
+////        Feature(icon: "dollarsign", title: "No costs at all", description: "Even if you pass the limit, there will be no charges, you only get an error.")
+////        Feature(icon: "point.topleft.down.curvedto.point.bottomright.up.fill", title: "Easy to setup", description: "It's really easy to get set Winston up. We'll guide all the way!")
+////        Feature(icon: "eye.slash.fill", title: "Safe and private", description: "The key is **only** stored in your iCloud keychain, we can't read it.")
+////      }
+//      
+//      MasterButton(emoji: "👋", label: "Ok then, guide me", colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: nextStep)
+//        .padding(.top, 32)
+//    }
+//    .padding(.top, 64)
+//    .padding(.horizontal, 16)
+//  }
+//}
+//}
 
 struct CourseHome: View {
-  var nextStep: ()->()
   var body: some View {
-  ScrollView {
-    VStack(spacing: 24) {
-      //        Image("winstonNoBG")
-      //          .resizable()
-      //          .scaledToFit()
-      //          .frame(height: 128)
-      //          .transition(.scale(scale: 1))
-      
-      VStack {
-        Text("Welcome!")
-          .fontSize(24, .semibold)
-        Text("To use Reddit, Winston uses a special key you can generate yourself in Reddit's site.")
-          .opacity(0.75)
+    List {
+      Group {
+        Section {
+          CourseButton(emoji: "💯", label: "AP 100 History", subLabel: "Lorem Ipsum Dolor", description: "lorem ipsum")
+        }
+        Section {
+          CourseButton(emoji: "🌎", label: "AP World History", subLabel: "Lorem Dolor Ipsum", description: "set amet")
+        }
+        Section {
+          CourseButton(emoji: "😭", label: "AP Crying", subLabel: "Lorem Ipsum Dolor", description: "dolor ipsum")
+        }
       }
-      .multilineTextAlignment(.center)
-      
-//      VStack(spacing: 6) {
-//        Feature(icon: "arrow.up", title: "Huge limit", description: "Reddit API limit is 100 requests per second, it's impossible to reach.")
-//        Feature(icon: "dollarsign", title: "No costs at all", description: "Even if you pass the limit, there will be no charges, you only get an error.")
-//        Feature(icon: "point.topleft.down.curvedto.point.bottomright.up.fill", title: "Easy to setup", description: "It's really easy to get set Winston up. We'll guide all the way!")
-//        Feature(icon: "eye.slash.fill", title: "Safe and private", description: "The key is **only** stored in your iCloud keychain, we can't read it.")
-//      }
-      
-      MasterButton(emoji: "👋", label: "Ok then, guide me", colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: nextStep)
-        .padding(.top, 32)
+      .listRowSeparator(.hidden)
+      .listRowBackground(Color.clear)
+      .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
     }
-    .padding(.top, 64)
-    .padding(.horizontal, 16)
+    //.themedListBG(theme.lists.bg)
+    .listStyle(.plain)
+    .background(Color(UIColor.systemGroupedBackground))
+    .scrollContentBackground(.hidden)
   }
-}
 }
 
 //// Preview
