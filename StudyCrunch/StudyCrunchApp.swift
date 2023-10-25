@@ -13,6 +13,7 @@ struct StudyCrunchApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //CourseHome()
                 .sheet(isPresented: $credModalOpen) {
                     Onboarding(open: $credModalOpen)
                 }

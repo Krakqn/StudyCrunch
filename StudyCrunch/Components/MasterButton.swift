@@ -55,6 +55,10 @@ struct MasterButton: View {
   var hoverWorkaround = false
   let action: () -> Void
     
+  
+//  MasterButton(label: "Ok then, guide me", colorHoverEffect: .animated, textSize: 18, height: 48, fullWidth: true, cornerRadius: 16, action: nextStep)
+//    .padding(.top, 32)
+  
   var body: some View {
     let btnCornerRadius = proportional == .circle ? height / 2 : cornerRadius
     let finalColor = color.opacity(mode == .normal ? 1 : mode == .subtle ? 0 : 0.2 )
