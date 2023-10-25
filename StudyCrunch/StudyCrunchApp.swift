@@ -12,7 +12,7 @@ struct StudyCrunchApp: App {
   @State var credModalOpen = true
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      ContentView() //comment for merge
     }
   }
 }
