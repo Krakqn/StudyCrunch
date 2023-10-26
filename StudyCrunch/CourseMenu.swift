@@ -55,7 +55,9 @@ struct CourseMenu: View {
       }
       .padding()
       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-      .background(RR(16, Color.black.opacity(colorScheme == .dark ? 0.2 : 0.05))) //made color change based off color mode (dark/light mode)
+      .background(colorScheme == .dark ? Color(UIColor(hex: "1C1C1E")) : Color.black.opacity(0.05))
+      //made text color change based off color mode (dark/light mode)
+      //(28, 28, 30)
       .foregroundColor(colorScheme == .dark ? .white : .black) //made text color change based off color mode (dark/light mode)
       .cornerRadius(10)
     }
@@ -75,4 +77,5 @@ struct CourseMenu: View {
       Chapter(number: 3, name: "Appendix: Waste of time")
     ]),
   ])
+  //.preferredColorScheme(.dark)
 }
