@@ -39,7 +39,7 @@ struct CourseMenu: View {
   
   struct CourseMenuOption: View {
     var course: Course
-    
+    @Environment (\.colorScheme) var colorScheme: ColorScheme
     var body: some View {
       HStack(spacing: 15) {
         Text(course.emoji)
@@ -55,8 +55,8 @@ struct CourseMenu: View {
       }
       .padding()
       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-      .background(.black)
-      .foregroundColor(.white)
+      .background(RR(16, Color.black.opacity(colorScheme == .dark ? 0.2 : 0.05))) //made color change based off color mode (dark/light mode)
+      .foregroundColor(colorScheme == .dark ? .white : .black) //made text color change based off color mode (dark/light mode)
       .cornerRadius(10)
     }
   }
