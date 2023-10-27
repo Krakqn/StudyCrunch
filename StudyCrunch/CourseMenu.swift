@@ -11,22 +11,22 @@ import SwiftUI
 struct CourseMenu: View {
   @State private var searchText = ""
   var courses: [Course]
-
+  
   var body: some View {
     NavigationStack {
       ScrollView {
         ForEach(searchResults) { course in
           NavigationLink {
-            ChapterMenu(chapters: course.chapters)
+            ChapterMenu(course: course)
           } label: {
-            CourseMenuOption(course: course)
+            MenuOption(emoji: course.emoji, name: course.name, description: course.shortDescription)
               .padding(.horizontal)
           }
         }
-        .navigationTitle("Courses")
       }
+      .searchable(text: $searchText)
+      .navigationTitle("Courses")
     }
-    .searchable(text: $searchText)
   }
   
   var searchResults: [Course] {
@@ -36,46 +36,4 @@ struct CourseMenu: View {
       return courses.filter { $0.name.starts(with: searchText) }
     }
   }
-  
-  struct CourseMenuOption: View {
-    var course: Course
-    @Environment (\.colorScheme) var colorScheme: ColorScheme
-    var body: some View {
-      HStack(spacing: 15) {
-        Text(course.emoji)
-          .fontSize(30)
-          .frame(width: 40)
-        VStack(alignment: .leading, spacing: 3) {
-          Text(course.name)
-            .fontSize(20, .bold)
-          Text(course.shortDescription)
-            .fontSize(15)
-            .opacity(0.8)
-        }
-      }
-      .padding()
-      .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-      .background(colorScheme == .dark ? Color(UIColor(hex: "1C1C1E")) : Color.black.opacity(0.05))
-      //made text color change based off color mode (dark/light mode)
-      //(28, 28, 30)
-      .foregroundColor(colorScheme == .dark ? .white : .black) //made text color change based off color mode (dark/light mode)
-      .cornerRadius(10)
-    }
-  }
-}
-
-#Preview {
-  CourseMenu(courses: [
-    Course(emoji: "💻", name: "Computer Science", shortDescription: "The best subject!", longDescription: "The science of computers...", chapters: [
-      Chapter(number: 1, name: "Variables"),
-      Chapter(number: 2, name: "Loops"),
-      Chapter(number: 3, name: "Conditionals")
-    ]),
-    Course(emoji: "📕", name: "English", shortDescription: "The worst subject.", longDescription: "Waste of time.", chapters: [
-      Chapter(number: 1, name: "Waste of time 1"),
-      Chapter(number: 2, name: "Waste of time 2"),
-      Chapter(number: 3, name: "Appendix: Waste of time")
-    ]),
-  ])
-  //.preferredColorScheme(.dark)
 }

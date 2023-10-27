@@ -9,26 +9,22 @@ import Foundation
 import SwiftUI
 
 struct ChapterMenu: View {
-  var chapters: [Chapter]
+  var course: Course
   
   var body: some View {
-    List(chapters) { chapter in
-      NavigationLink {
-        ChapterView(chapter: chapter)
-      } label: {
-        ChapterMenuOption(chapter: chapter)
+    NavigationStack {
+      ScrollView {
+        ForEach(course.chapters) { chapter in
+          NavigationLink {
+            ChapterView(chapter: chapter)
+          } label: {
+            MenuOption(emoji: "\(chapter.number)", name: chapter.name)
+              .padding(.horizontal)
+          }
+        }
       }
-    }
-  }
-  
-  struct ChapterMenuOption: View {
-    var chapter: Chapter
-    
-    var body: some View {
-      HStack {
-        Text("\(chapter.number)")
-        Text(chapter.name)
-      }
+      .navigationBarTitleDisplayMode(.inline)
+      .navigationTitle(course.name)
     }
   }
 }
