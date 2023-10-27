@@ -12,7 +12,6 @@
 		430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */; };
 		430576A62AE712E000B18E70 /* OnboardingSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430576A52AE712E000B18E70 /* OnboardingSuccess.swift */; };
 		430ACB2C2AE6E889007017AC /* dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */; };
-		430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430ACB2D2AE6ED23007017AC /* Tabber.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
 		4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */; };
 		4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0DB2AE6523D00C5CC11 /* ContentView.swift */; };
@@ -58,7 +57,6 @@
 		430576A32AE70BEA00B18E70 /* OnboardingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCircle.swift; sourceTree = "<group>"; };
 		430576A52AE712E000B18E70 /* OnboardingSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSuccess.swift; sourceTree = "<group>"; };
 		430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dismissKeyboard.swift; sourceTree = "<group>"; };
-		430ACB2D2AE6ED23007017AC /* Tabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabber.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCrunchApp.swift; sourceTree = "<group>"; };
 		4341B0DB2AE6523D00C5CC11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				4341B0DB2AE6523D00C5CC11 /* ContentView.swift */,
 				4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */,
 				4341B0DF2AE6523D00C5CC11 /* Preview Content */,
-				430ACB2D2AE6ED23007017AC /* Tabber.swift */,
 			);
 			path = StudyCrunch;
 			sourceTree = "<group>";
@@ -195,7 +192,6 @@
 			children = (
 				4341B1072AE655C100C5CC11 /* RR.swift */,
 				4341B10C2AE656B500C5CC11 /* MasterButton.swift */,
-				43EF8A172AE89421001DE4BB /* CourseButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -207,7 +203,6 @@
 				4341B10E2AE656EF00C5CC11 /* blurTransitions.swift */,
 				4341B1122AE657D000C5CC11 /* fromHex.swift */,
 				430ACB2B2AE6E889007017AC /* dismissKeyboard.swift */,
-				43EF8A2F2AE8A0FB001DE4BB /* randWord.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -215,7 +210,6 @@
 		4389A8452AE7B0CE00AC45FC /* CourseSelect */ = {
 			isa = PBXGroup;
 			children = (
-				4389A8462AE7B0EA00AC45FC /* CourseHome.swift */,
 			);
 			path = CourseSelect;
 			sourceTree = "<group>";
@@ -224,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				43EF8A1C2AE8A002001DE4BB /* tempTheme */,
-				43EF8A1A2AE89FB9001DE4BB /* themedListRowBG.swift */,
 			);
 			path = modifiers;
 			sourceTree = "<group>";
@@ -232,15 +225,6 @@
 		43EF8A1C2AE8A002001DE4BB /* tempTheme */ = {
 			isa = PBXGroup;
 			children = (
-				43EF8A1D2AE8A011001DE4BB /* WinTheme.swift */,
-				43EF8A1F2AE8A04E001DE4BB /* postTheme.swift */,
-				43EF8A212AE8A06A001DE4BB /* commentsTheme.swift */,
-				43EF8A232AE8A07E001DE4BB /* PostLinkTheme.swift */,
-				43EF8A252AE8A08B001DE4BB /* listTheme.swift */,
-				43EF8A272AE8A098001DE4BB /* avatarTheme.swift */,
-				43EF8A292AE8A0A3001DE4BB /* linesTheme.swift */,
-				43EF8A2B2AE8A0B4001DE4BB /* badgeTheme.swift */,
-				43EF8A2D2AE8A0C3001DE4BB /* GeneralTheme.swift */,
 			);
 			path = tempTheme;
 			sourceTree = "<group>";
@@ -248,7 +232,6 @@
 		43EF8A312AE8A12E001DE4BB /* globals */ = {
 			isa = PBXGroup;
 			children = (
-				43EF8A322AE8A13F001DE4BB /* defaultTheme.swift */,
 			);
 			path = globals;
 			sourceTree = "<group>";
@@ -397,19 +380,13 @@
 				430576A42AE70BEA00B18E70 /* OnboardingCircle.swift in Sources */,
 				58A373602AE88F85003F20E6 /* Course.swift in Sources */,
 				4341B1132AE657D000C5CC11 /* fromHex.swift in Sources */,
-				43EF8A302AE8A0FB001DE4BB /* randWord.swift in Sources */,
 				4341B1052AE652C400C5CC11 /* OnboardingScreenOne.swift in Sources */,
-				43EF8A222AE8A06A001DE4BB /* commentsTheme.swift in Sources */,
 				4341B10B2AE6560F00C5CC11 /* fontSize.swift in Sources */,
-				43EF8A182AE89421001DE4BB /* CourseButton.swift in Sources */,
-				430ACB2E2AE6ED23007017AC /* Tabber.swift in Sources */,
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
 				58A373642AE89207003F20E6 /* ChapterMenu.swift in Sources */,
 				4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */,
 				58A373662AE893A0003F20E6 /* ChapterView.swift in Sources */,
 				4341B1082AE655C100C5CC11 /* RR.swift in Sources */,
-				43EF8A202AE8A04E001DE4BB /* postTheme.swift in Sources */,
-				43EF8A2C2AE8A0B4001DE4BB /* badgeTheme.swift in Sources */,
 				430576A62AE712E000B18E70 /* OnboardingSuccess.swift in Sources */,
 				58A3735E2AE887BA003F20E6 /* CourseMenu.swift in Sources */,
 				4341B1112AE6579200C5CC11 /* Onboarding.swift in Sources */,
