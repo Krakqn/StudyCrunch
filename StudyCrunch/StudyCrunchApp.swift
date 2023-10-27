@@ -13,6 +13,9 @@ struct StudyCrunchApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .sheet(isPresented: $credModalOpen) {
+          Onboarding(open: $credModalOpen)
+      }
     }
   }
 }
