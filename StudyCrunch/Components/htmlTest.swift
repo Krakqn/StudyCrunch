@@ -10,6 +10,30 @@
 import Foundation
 import SwiftUI
 
+/*
+ Add these lines to make HTML "dark mode":
+ background-color: #000000;
+ filter: invert(100%);
+ 
+ add them in body:
+ 
+ body { //light mode
+   font-family: Arial, sans-serif;
+   line-height: 1.6;
+   margin: 20px;
+ }
+ 
+ becomes:
+ 
+ body { //now dark mode!
+   font-family: Arial, sans-serif;
+   line-height: 1.6;
+   margin: 20px;
+   background-color: #000000;
+   filter: invert(100%);
+ }
+ */
+
 struct htmlTest: View {
   
   let HTMLString = """
@@ -24,6 +48,8 @@ struct htmlTest: View {
         font-family: Arial, sans-serif;
         line-height: 1.6;
         margin: 20px;
+        background-color: #000000;
+        filter: invert(100%);
       }
       h2 {
         color: #333;
@@ -135,5 +161,6 @@ struct htmlTest: View {
 struct htmlTest_Previews: PreviewProvider {
   static var previews: some View {
     htmlTest()
+      .preferredColorScheme(.dark)
   }
 }
