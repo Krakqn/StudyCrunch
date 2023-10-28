@@ -35,8 +35,17 @@ import SwiftUI
  */
 
 struct htmlTest: View {
+  @Environment (\.colorScheme) var colorScheme: ColorScheme
   
-  let HTMLString = """
+  var darkmodeModifications: String {
+      return (colorScheme == .dark) ? """
+          background-color: #000000;
+          filter: invert(100%);
+          """ : ""
+  }
+  
+  var HTMLString: String {
+    return """
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -48,8 +57,7 @@ struct htmlTest: View {
         font-family: Arial, sans-serif;
         line-height: 1.6;
         margin: 20px;
-        background-color: #000000;
-        filter: invert(100%);
+        \(darkmodeModifications)
       }
       h2 {
         color: #333;
@@ -63,9 +71,9 @@ struct htmlTest: View {
     </style>
   </head>
   <body>
-
+  
     <h2>Chapter 1: Mesopotamia</h2>
-
+  
     <h3>Important Definitions and Dates:</h3>
     <ul>
       <li>Mesopotamia: Alluvial plain between the Tigris and Euphrates Rivers.</li>
@@ -77,7 +85,7 @@ struct htmlTest: View {
       <li>Third Dynasty of Ur: 2112–2004 b.c.e.</li>
       <li>Hammurabi: Established Old Babylonian state, known for Hammurabi's Law Code.</li>
     </ul>
-
+  
     <h3>Important Concepts/Context/Information:</h3>
     <ul>
       <li>Challenging agricultural environment in Mesopotamia due to low rainfall and unpredictable river floods.</li>
@@ -96,9 +104,9 @@ struct htmlTest: View {
       <li>Base-60 system and advances in mathematics and astronomy.</li>
       <li>Introduction of the wheel, chariots, and siege machinery.</li>
     </ul>
-
+  
     <h2>Egypt</h2>
-
+  
     <h3>Important Definitions and Dates:</h3>
     <ul>
       <li>Nile River: Defines Egypt's geography, "Gift of the Nile."</li>
@@ -106,7 +114,7 @@ struct htmlTest: View {
       <li>Old, Middle, and New Kingdoms: Major periods in Egyptian history.</li>
       <li>Giza Pyramids: Constructed between 2550 and 2490 b.c.e.</li>
     </ul>
-
+  
     <h3>Important Concepts/Context/Information:</h3>
     <ul>
       <li>Egypt's fertile "Black Land" alongside the Nile, surrounded by barren desert "Red Land."</li>
@@ -123,15 +131,15 @@ struct htmlTest: View {
       <li>Construction of grand temples and emphasis on the afterlife.</li>
       <li>Extensive knowledge and technology in various fields.</li>
     </ul>
-
+  
     <h2>Indus Valley Civilization</h2>
-
+  
     <h3>Important Definitions and Dates:</h3>
     <ul>
       <li>Indus Valley: Flourished from 2600 to 1900 b.c.e.</li>
       <li>Harappa and Mohenjo-daro: Major urban centers of the Indus Valley civilization.</li>
     </ul>
-
+  
     <h3>Important Concepts/Context/Information:</h3>
     <ul>
       <li>Indus Valley's reliance on the regular flooding of the Indus for agriculture.</li>
@@ -143,12 +151,11 @@ struct htmlTest: View {
       <li>Ecological changes included drying up of the Hakra River and salinization.</li>
       <li>Collapse affected urban elites, but peasants adapted and survived.</li>
     </ul>
-
+  
   </body>
   </html>
-
-
   """
+  }
   
   var body: some View {
     VStack {
