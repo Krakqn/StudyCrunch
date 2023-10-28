@@ -54,7 +54,7 @@ struct htmlTest: View {
     <title>History Notes</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont;
         line-height: 1.6;
         margin: 20px;
         \(darkmodeModifications)
