@@ -34,6 +34,8 @@ import SwiftUI
  }
  */
 
+//Apple font: "font-family: -apple-system, BlinkMacSystemFont;"
+
 struct htmlTest: View {
   @Environment (\.colorScheme) var colorScheme: ColorScheme
   
