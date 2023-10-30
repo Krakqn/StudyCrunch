@@ -12,14 +12,14 @@ struct ContentView: View {
     TabView {
       CourseMenu(courses: [
         Course(emoji: "💻", name: "Computer Science", shortDescription: "The best subject!", longDescription: "The science of computers...", chapters: [
-          Chapter(number: 1, name: "Variables"),
-          Chapter(number: 2, name: "Loops"),
-          Chapter(number: 3, name: "Conditionals")
+          Chapter(number: 1, name: "Variables", access: true), //passing in access to test
+          Chapter(number: 2, name: "Loops", access: false),
+          Chapter(number: 3, name: "Conditionals", access: false)
         ]),
         Course(emoji: "📕", name: "English", shortDescription: "The worst subject.", longDescription: "Waste of time.", chapters: [
-          Chapter(number: 1, name: "Waste of time 1"),
-          Chapter(number: 2, name: "Waste of time 2"),
-          Chapter(number: 3, name: "Appendix: Waste of time")
+          Chapter(number: 1, name: "Waste of time 1", access: false),
+          Chapter(number: 2, name: "Waste of time 2", access: true),
+          Chapter(number: 3, name: "Appendix: Waste of time", access: false)
         ]),
         Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
         Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),

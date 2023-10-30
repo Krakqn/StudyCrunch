@@ -19,7 +19,7 @@ struct CourseMenu: View {
           NavigationLink {
             ChapterMenu(course: course)
           } label: {
-            MenuOption(emoji: course.emoji, name: course.name, description: course.shortDescription)
+            MenuOption(emoji: course.emoji, name: course.name, description: course.shortDescription, access: true) //since you can access all courses at all time just pass in true
               .padding(.horizontal)
           }
         }

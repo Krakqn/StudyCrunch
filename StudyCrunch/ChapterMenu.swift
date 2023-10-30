@@ -18,8 +18,8 @@ struct ChapterMenu: View {
           NavigationLink {
             ChapterView(chapter: chapter)
           } label: {
-            MenuOption(emoji: "\(chapter.number)", name: chapter.name)
-              .padding(.horizontal)
+            MenuOption(emoji: "\(chapter.number)", name: chapter.name, access: chapter.access)
+              .padding(.horizontal) //above greys out the menu button if user has no access
           }
         }
       }

@@ -11,4 +11,5 @@ struct Chapter: Identifiable {
   var id = UUID()
   var number: Int
   var name: String
+  var access: Bool //self-explanatory
 }

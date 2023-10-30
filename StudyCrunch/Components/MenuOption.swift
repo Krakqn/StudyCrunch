@@ -13,6 +13,7 @@ struct MenuOption: View {
   var icon: String?
   var name: String
   var description: String?
+  var access: Bool
   
   var body: some View {
     HStack(spacing: 15) {
@@ -37,6 +38,7 @@ struct MenuOption: View {
     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
     .background(Color("BackgroundColor"))
     .foregroundColor(Color("ForegroundColor"))
+    .opacity(access ? 1.0 : 0.6) //greys out the button if user doesn't have proper access
     .cornerRadius(10)
   }
 }
