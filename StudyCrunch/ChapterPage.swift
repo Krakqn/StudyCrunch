@@ -165,6 +165,7 @@ struct ChapterView: View {
             .fontSize(14)
             .padding(.leading, 12)
             .padding(.trailing, 12)
+            .multilineTextAlignment(.center)
           Text("Tap to share")
             .fontSize(16, .medium)
             .padding(.top, 5)
