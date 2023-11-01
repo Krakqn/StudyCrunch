@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var clipboardCleared = false
   var body: some View {
     TabView {
       CourseMenu(courses: [
@@ -39,7 +38,6 @@ struct ContentView: View {
     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
         // This block will be executed when the app is about to move to the background
         UIPasteboard.general.string = ""
-        clipboardCleared = true
     } //Clears the clipboard so you can't just copy locked notes in the background
   } //Source: https://blog.eidinger.info/prevent-copy-paste-into-other-ios-apps
   
