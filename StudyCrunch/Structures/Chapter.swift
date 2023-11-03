@@ -13,7 +13,7 @@ struct Chapter: Identifiable {
   let name: String
   let description: String?
   let markdown: String
-  var restricted: Bool = false
+  var restricted: Bool
   
   init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool = false) {
     self.symbol = symbol
