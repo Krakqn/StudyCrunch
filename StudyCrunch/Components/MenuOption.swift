@@ -9,17 +9,18 @@ import Foundation
 import SwiftUI
 
 struct MenuOption: View {
-  var emoji: String?
+  var symbol: String?
   var icon: String?
   var name: String
   var description: String?
+  var disabled = false
   
   var body: some View {
     HStack(spacing: 15) {
       if let icon = icon {
         Image(systemName: icon)
-      } else if let emoji = emoji {
-        Text(emoji)
+      } else if let symbol = symbol {
+        Text(symbol)
           .font(.system(size: 30))
           .frame(width: 40)
       }
@@ -35,8 +36,10 @@ struct MenuOption: View {
     }
     .padding()
     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+    .frame(height: 80)
     .background(Color("BackgroundColor"))
     .foregroundColor(Color("ForegroundColor"))
     .cornerRadius(10)
+    .opacity(disabled ? 0.6 : 1.0)
   }
 }

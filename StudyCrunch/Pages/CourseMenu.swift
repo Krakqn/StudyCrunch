@@ -17,9 +17,9 @@ struct CourseMenu: View {
       ScrollView {
         ForEach(searchResults) { course in
           NavigationLink {
-            ChapterMenu(course: course)
+            SectionMenu(course: course)
           } label: {
-            MenuOption(emoji: course.emoji, name: course.name, description: course.shortDescription)
+            MenuOption(symbol: course.emoji, name: course.name, description: course.shortDescription)
               .padding(.horizontal)
           }
         }

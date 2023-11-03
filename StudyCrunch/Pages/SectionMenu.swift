@@ -8,23 +8,22 @@
 import Foundation
 import SwiftUI
 
-struct ChapterMenu: View {
+struct SectionMenu: View {
   var course: Course
   
   var body: some View {
     NavigationStack {
       ScrollView {
-        ForEach(course.chapters) { chapter in
+        ForEach(course.sections) { section in
           NavigationLink {
-            ChapterView(chapter: chapter)
+            ChapterMenu(section: section)
           } label: {
-            MenuOption(emoji: "\(chapter.number)", name: chapter.name)
-              .padding(.horizontal)
+            MenuOption(symbol: section.symbol, name: section.name, description: section.description)
           }
         }
       }
       .navigationBarTitleDisplayMode(.inline)
-      .navigationTitle(course.name)
+      .navigationTitle("Sections")
     }
   }
 }

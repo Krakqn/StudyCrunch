@@ -11,34 +11,55 @@ struct ContentView: View {
   var body: some View {
     TabView {
       CourseMenu(courses: [
-        Course(emoji: "💻", name: "Computer Science", shortDescription: "The best subject!", longDescription: "The science of computers...", chapters: [
-          Chapter(number: 1, name: "Variables"),
-          Chapter(number: 2, name: "Loops"),
-          Chapter(number: 3, name: "Conditionals")
-        ]),
-        Course(emoji: "📕", name: "English", shortDescription: "The worst subject.", longDescription: "Waste of time.", chapters: [
-          Chapter(number: 1, name: "Waste of time 1"),
-          Chapter(number: 2, name: "Waste of time 2"),
-          Chapter(number: 3, name: "Appendix: Waste of time")
-        ]),
-        Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
-        Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
-        Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
-        Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
-        Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: [])
+        try! Course.Builder()
+          .setEmoji(emoji: "💻")
+          .setName(name: "Computer Science")
+          .setDescription(description: "The best subject!")
+          .setChapterBuilders(chapterBuilders: [
+            Chapter.Builder()
+              .setName(name: "Variables")
+              .setDescription(description: "Super useful")
+              .setMarkdown(markdown: """
+# Variables
+Here's an example of a variable being used:
+```cpp
+#include <iostream>
+
+int main(void) {
+  int x = 10;
+  std::cout << "Value of variable x: " << x << std::endl;
+}
+```
+"""),
+            Chapter.Builder()
+              .setName(name: "Loops")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Conditionals")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Arrays")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Pointers")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Complexity")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Depth-first search")
+              .setMarkdown(markdown: ""),
+          ])
+          .build()
       ])
       .tabItem {
         Label("Courses", systemImage: "book.closed")
       }
       SettingsPage()
-      .tabItem {
-        Label("Settings", systemImage: "gearshape")
-      }
+        .tabItem {
+          Label("Settings", systemImage: "gearshape")
+        }
     }
-  }
-  
-  struct NavbarButton {
-    
   }
 }
 

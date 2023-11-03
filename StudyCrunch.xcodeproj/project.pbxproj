@@ -19,10 +19,14 @@
 		5882C2792AEB5E570085D577 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C2782AEB5E570085D577 /* constants.swift */; };
 		5882C27B2AEB5F7E0085D577 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C27A2AEB5F7E0085D577 /* global.swift */; };
 		5882C27F2AEB6D420085D577 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C27E2AEB6D420085D577 /* SettingsPage.swift */; };
+		5882C2842AEB92760085D577 /* ChapterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C2832AEB92760085D577 /* ChapterMenu.swift */; };
+		5882C28A2AF1C2790085D577 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C2892AF1C2790085D577 /* Section.swift */; };
+		5882C28C2AF1CB6C0085D577 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882C28B2AF1CB6C0085D577 /* utils.swift */; };
+		5882C2952AF24CE70085D577 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5882C2942AF24CE70085D577 /* MarkdownUI */; };
 		58A3735E2AE887BA003F20E6 /* CourseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A3735D2AE887BA003F20E6 /* CourseMenu.swift */; };
 		58A373602AE88F85003F20E6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A3735F2AE88F85003F20E6 /* Course.swift */; };
 		58A373622AE891E5003F20E6 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373612AE891E5003F20E6 /* Chapter.swift */; };
-		58A373642AE89207003F20E6 /* ChapterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* ChapterMenu.swift */; };
+		58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* SectionMenu.swift */; };
 		58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373652AE893A0003F20E6 /* ChapterPage.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,10 +62,13 @@
 		5882C2782AEB5E570085D577 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		5882C27A2AEB5F7E0085D577 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		5882C27E2AEB6D420085D577 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		5882C2832AEB92760085D577 /* ChapterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterMenu.swift; sourceTree = "<group>"; };
+		5882C2892AF1C2790085D577 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		5882C28B2AF1CB6C0085D577 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		58A3735D2AE887BA003F20E6 /* CourseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseMenu.swift; sourceTree = "<group>"; };
 		58A3735F2AE88F85003F20E6 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		58A373612AE891E5003F20E6 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
-		58A373632AE89207003F20E6 /* ChapterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterMenu.swift; sourceTree = "<group>"; };
+		58A373632AE89207003F20E6 /* SectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMenu.swift; sourceTree = "<group>"; };
 		58A373652AE893A0003F20E6 /* ChapterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430ACB312AE6EDDC007017AC /* Defaults in Frameworks */,
+				5882C2952AF24CE70085D577 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,11 +125,8 @@
 				4341B1062AE655B500C5CC11 /* Components */,
 				4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */,
 				5882C2762AEB5B8B0085D577 /* Global */,
-				58A3735D2AE887BA003F20E6 /* CourseMenu.swift */,
 				5882C2772AEB5BAC0085D577 /* Structures */,
-				58A373632AE89207003F20E6 /* ChapterMenu.swift */,
-				58A373652AE893A0003F20E6 /* ChapterPage.swift */,
-				5882C27E2AEB6D420085D577 /* SettingsPage.swift */,
+				5882C2822AEB90EE0085D577 /* Pages */,
 				4341B0DB2AE6523D00C5CC11 /* ContentView.swift */,
 				4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */,
 				4341B0DF2AE6523D00C5CC11 /* Preview Content */,
@@ -167,6 +172,7 @@
 			children = (
 				5882C2782AEB5E570085D577 /* constants.swift */,
 				5882C27A2AEB5F7E0085D577 /* global.swift */,
+				5882C28B2AF1CB6C0085D577 /* utils.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -175,9 +181,22 @@
 			isa = PBXGroup;
 			children = (
 				58A3735F2AE88F85003F20E6 /* Course.swift */,
+				5882C2892AF1C2790085D577 /* Section.swift */,
 				58A373612AE891E5003F20E6 /* Chapter.swift */,
 			);
 			path = Structures;
+			sourceTree = "<group>";
+		};
+		5882C2822AEB90EE0085D577 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				58A373652AE893A0003F20E6 /* ChapterPage.swift */,
+				58A3735D2AE887BA003F20E6 /* CourseMenu.swift */,
+				58A373632AE89207003F20E6 /* SectionMenu.swift */,
+				5882C2832AEB92760085D577 /* ChapterMenu.swift */,
+				5882C27E2AEB6D420085D577 /* SettingsPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +217,7 @@
 			name = StudyCrunch;
 			packageProductDependencies = (
 				430ACB302AE6EDDC007017AC /* Defaults */,
+				5882C2942AF24CE70085D577 /* MarkdownUI */,
 			);
 			productName = StudyCrunch;
 			productReference = 4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */;
@@ -273,6 +293,7 @@
 			mainGroup = 4341B0CD2AE6523D00C5CC11;
 			packageReferences = (
 				430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */,
+				5882C2932AF24CE70085D577 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = 4341B0D72AE6523D00C5CC11 /* Products */;
 			projectDirPath = "";
@@ -316,12 +337,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5882C2842AEB92760085D577 /* ChapterMenu.swift in Sources */,
+				5882C28C2AF1CB6C0085D577 /* utils.swift in Sources */,
 				58A373622AE891E5003F20E6 /* Chapter.swift in Sources */,
 				58A373602AE88F85003F20E6 /* Course.swift in Sources */,
 				5882C2792AEB5E570085D577 /* constants.swift in Sources */,
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
 				5882C27B2AEB5F7E0085D577 /* global.swift in Sources */,
-				58A373642AE89207003F20E6 /* ChapterMenu.swift in Sources */,
+				58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */,
+				5882C28A2AF1C2790085D577 /* Section.swift in Sources */,
 				4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */,
 				58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */,
 				587F41152AE9E52000739263 /* MenuOption.swift in Sources */,
@@ -660,6 +684,14 @@
 				kind = branch;
 			};
 		};
+		5882C2932AF24CE70085D577 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -667,6 +699,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		5882C2942AF24CE70085D577 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5882C2932AF24CE70085D577 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
