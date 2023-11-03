@@ -93,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */,
+				5835FD112AF3A35500202CA6 /* New Group */,
+				5835FD102AF3A34D00202CA6 /* Structures */,
 				4341B0DF2AE6523D00C5CC11 /* Preview Content */,
 			);
 			path = StudyCrunch;
@@ -121,6 +123,20 @@
 				4341B0F62AE6523D00C5CC11 /* StudyCrunchUITestsLaunchTests.swift */,
 			);
 			path = StudyCrunchUITests;
+			sourceTree = "<group>";
+		};
+		5835FD102AF3A34D00202CA6 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		5835FD112AF3A35500202CA6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
