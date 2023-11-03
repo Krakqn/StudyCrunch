@@ -8,6 +8,15 @@
 import Foundation
 
 struct Chapter: Identifiable {
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+  var id = UUID()
+  var number: Int
+  var name: String
+  var access: Bool //self-explanatory
+=======
+>>>>>>> 8d63a139293ab1b05d592af276239aa569f02cb8
   let id = UUID()
   let symbol: String
   let name: String
@@ -65,4 +74,8 @@ struct Chapter: Identifiable {
       return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown)
     }
   }
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 8d63a139293ab1b05d592af276239aa569f02cb8
 }
