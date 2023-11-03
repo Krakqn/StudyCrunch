@@ -28,7 +28,7 @@ struct Chapter: Identifiable {
     var name: String? = nil
     var description: String? = nil
     var markdown: String? = nil
-    var restricted: Bool? = nil
+    var restricted: Bool = false
     
     init() {}
     
@@ -68,7 +68,7 @@ struct Chapter: Identifiable {
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted ?? false)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted)
     }
   }
 }
