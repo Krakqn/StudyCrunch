@@ -13,9 +13,9 @@ struct Chapter: Identifiable {
   let name: String
   let description: String?
   let markdown: String
-  var restricted: Bool? = false
+  var restricted: Bool = false
   
-  init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool? = false) {
+  init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool = false) {
     self.symbol = symbol
     self.name = name
     self.description = description
@@ -68,7 +68,7 @@ struct Chapter: Identifiable {
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted ?? false)
     }
   }
 }
