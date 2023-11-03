@@ -19,6 +19,7 @@ struct SectionMenu: View {
             ChapterMenu(section: section)
           } label: {
             MenuOption(symbol: section.symbol, name: section.name, description: section.description)
+              .padding(.horizontal)
           }
         }
       }
