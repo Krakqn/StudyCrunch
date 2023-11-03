@@ -19,6 +19,7 @@ struct ContentView: View {
             Chapter.Builder()
               .setName(name: "Variables")
               .setDescription(description: "Super useful")
+              .setRestricted(restricted: true)
               .setMarkdown(markdown: """
 # Variables
 Here's an example of a variable being used:
@@ -36,6 +37,7 @@ int main(void) {
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Conditionals")
+              .setRestricted(restricted: true)
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Arrays")
@@ -45,6 +47,7 @@ int main(void) {
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Complexity")
+              .setRestricted(restricted: true)
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Depth-first search")

@@ -13,9 +13,9 @@ struct Chapter: Identifiable {
   let name: String
   let description: String?
   let markdown: String
-  var restricted: Bool
+  var restricted: Bool? = false
   
-  init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool = true) {
+  init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool? = false) {
     self.symbol = symbol
     self.name = name
     self.description = description
@@ -28,6 +28,7 @@ struct Chapter: Identifiable {
     var name: String? = nil
     var description: String? = nil
     var markdown: String? = nil
+    var restricted: Bool? = nil
     
     init() {}
     
@@ -50,6 +51,11 @@ struct Chapter: Identifiable {
       self.markdown = markdown
       return self
     }
+  
+    @discardableResult func setRestricted(restricted: Bool) -> Builder {
+      self.restricted = restricted
+      return self
+    }
     
     func build() throws -> Chapter {
       guard
@@ -62,7 +68,7 @@ struct Chapter: Identifiable {
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted)
     }
   }
 }

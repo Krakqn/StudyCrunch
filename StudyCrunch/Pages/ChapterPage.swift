@@ -45,7 +45,7 @@ struct ChapterPage: View {
       .opacity(self.t)
     }
     .onAppear {
-      if self.chapter.restricted {
+      if self.chapter.restricted == true {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
           self.t = 1.0
         }
