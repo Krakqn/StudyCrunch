@@ -17,9 +17,13 @@ struct CourseMenu: View {
       ScrollView {
         ForEach(searchResults) { course in
           NavigationLink {
-            ChapterMenu(course: course)
+            SectionMenu(course: course)
           } label: {
+<<<<<<< Updated upstream:StudyCrunch/CourseMenu.swift
             MenuOption(emoji: course.emoji, name: course.name, description: course.shortDescription, access: true) //since you can access all courses at all time just pass in true
+=======
+            MenuOption(symbol: course.emoji, name: course.name, description: course.shortDescription)
+>>>>>>> Stashed changes:StudyCrunch/Pages/CourseMenu.swift
               .padding(.horizontal)
           }
         }

@@ -10,6 +10,15 @@ import SwiftUI
 
 struct SettingsPage: View {
   var body: some View {
-    Text("Settings!")
+    NavigationStack {
+      List {
+        ShareLink(item: appUrl)
+      }
+      .navigationTitle("Settings")
+    }
   }
+}
+
+#Preview {
+  SettingsPage()
 }

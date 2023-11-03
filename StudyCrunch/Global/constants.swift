@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+let appUrl = URL(string: "https://google.com")!

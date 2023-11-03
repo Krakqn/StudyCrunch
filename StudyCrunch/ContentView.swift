@@ -11,6 +11,7 @@ struct ContentView: View {
   var body: some View {
     TabView {
       CourseMenu(courses: [
+<<<<<<< Updated upstream
         Course(emoji: "💻", name: "Computer Science", shortDescription: "The best subject!", longDescription: "The science of computers...", chapters: [
           Chapter(number: 1, name: "Variables", access: true), //passing in access to test
           Chapter(number: 2, name: "Loops", access: false),
@@ -26,15 +27,58 @@ struct ContentView: View {
         Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
         Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: []),
         Course(emoji: "⁉️", name: "Filler", shortDescription: "Nothing in particular...", longDescription: "Nothing in particular...", chapters: [])
+=======
+        try! Course.Builder()
+          .setEmoji(emoji: "💻")
+          .setName(name: "Computer Science")
+          .setDescription(description: "The best subject!")
+          .setChapterBuilders(chapterBuilders: [
+            Chapter.Builder()
+              .setName(name: "Variables")
+              .setDescription(description: "Super useful")
+              .setMarkdown(markdown: """
+# Variables
+Here's an example of a variable being used:
+```cpp
+#include <iostream>
+
+int main(void) {
+  int x = 10;
+  std::cout << "Value of variable x: " << x << std::endl;
+}
+```
+"""),
+            Chapter.Builder()
+              .setName(name: "Loops")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Conditionals")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Arrays")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Pointers")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Complexity")
+              .setMarkdown(markdown: ""),
+            Chapter.Builder()
+              .setName(name: "Depth-first search")
+              .setMarkdown(markdown: ""),
+          ])
+          .build()
+>>>>>>> Stashed changes
       ])
       .tabItem {
         Label("Courses", systemImage: "book.closed")
       }
       SettingsPage()
-      .tabItem {
-        Label("Settings", systemImage: "gearshape")
-      }
+        .tabItem {
+          Label("Settings", systemImage: "gearshape")
+        }
     }
+<<<<<<< Updated upstream
     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
         // This block will be executed when the app is about to move to the background
         UIPasteboard.general.string = ""
@@ -43,6 +87,8 @@ struct ContentView: View {
   
   struct NavbarButton {
     
+=======
+>>>>>>> Stashed changes
   }
 }
 
