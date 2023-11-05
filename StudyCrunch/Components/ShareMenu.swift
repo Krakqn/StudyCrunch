@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ShareMenu: View {
-  //    @Binding var open: Bool
-  //    @Binding var success: Bool
+//      @Binding var open: Bool
+//      @Binding var success: Bool
   
     var body: some View {
         ScrollView {

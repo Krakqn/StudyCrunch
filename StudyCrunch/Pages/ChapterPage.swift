@@ -50,6 +50,9 @@ struct ChapterPage: View {
             self.t = 0.0
           }
         })
+//        .sheet(isPresented: $shareModalOpen) {
+//              ShareMenu(open: $shareModalOpen, success: $shareSuccess)
+//          }
         Spacer()
       }
       .opacity(self.t)
