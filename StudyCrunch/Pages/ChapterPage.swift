@@ -11,13 +11,15 @@ import MarkdownUI
 
 struct ChapterPage: View {
   @State private var t: CGFloat = 0.0
+  @State var shareModalOpen = false
+  @State var shareSuccess = false
   var chapter: Chapter
   
   var body: some View {
     ScrollView {
       HStack {
         Markdown(chapter.markdown)
-        .markdownTheme(.docC)
+          .markdownTheme(.docC)
         Spacer()
       }
     }
@@ -31,11 +33,19 @@ struct ChapterPage: View {
           .font(.system(size: 20))
           .padding(.horizontal, 20)
           .multilineTextAlignment(.center)
-        ShareLink(item: appUrl) {
+        Button(action: {
+          // Call your function here
+          yourFunction()
+          
+          withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
+            self.t = 0.0
+          }
+        }) {
           Label("Share", systemImage: "square.and.arrow.up")
             .font(.system(size: 20).bold())
             .foregroundColor(Color("ForegroundColor"))
-        }.simultaneousGesture(TapGesture().onEnded() {
+        }
+        .simultaneousGesture(TapGesture().onEnded() {
           withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
             self.t = 0.0
           }
@@ -49,15 +59,24 @@ struct ChapterPage: View {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
           self.t = 1.0
         }
+        shareModalOpen.toggle()
       }
     }
     .navigationTitle(chapter.name)
   }
+  
+  // Define your function here
+  func yourFunction() {
+    // Add your code here
+    print("Share button tapped")
+    // Call any other functions or perform actions you need
+  }
 }
 
-#Preview {
-  ChapterPage(chapter: Chapter(symbol: "!", name: "Chapter Testing", description: "Dummy chapter for testing!", markdown: """
-# Chapter Testing
-- Hello World!
-"""))
-}
+
+//#Preview {
+//  ChapterPage(chapter: Chapter(symbol: "!", name: "Chapter Testing", description: "Dummy chapter for testing!", markdown: """
+//# Chapter Testing
+//- Hello World!
+//""", restricted: true))
+//}
