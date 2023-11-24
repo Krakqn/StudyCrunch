@@ -29,6 +29,13 @@
 		58A373622AE891E5003F20E6 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373612AE891E5003F20E6 /* Chapter.swift */; };
 		58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* SectionMenu.swift */; };
 		58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373652AE893A0003F20E6 /* ChapterPage.swift */; };
+		EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D22B0FF75800247971 /* Flashcard.swift */; };
+		EC1AB2D62B0FFBE700247971 /* JSONCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D52B0FFBE700247971 /* JSONCoding.swift */; };
+		EC1AB2D82B0FFEBF00247971 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D72B0FFEBF00247971 /* FlashcardView.swift */; };
+		EC1AB2DD2B0FFFBA00247971 /* draggableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2DC2B0FFFBA00247971 /* draggableCard.swift */; };
+		EC1AB2E12B10041000247971 /* interpolatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2E02B10041000247971 /* interpolatorBuilder.swift */; };
+		EC1AB2E32B1009EA00247971 /* CardFlipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2E22B1009EA00247971 /* CardFlipper.swift */; };
+		EC1AB2E42B100CEE00247971 /* computer-science.json in Resources */ = {isa = PBXBuildFile; fileRef = EC1AB2D02B0FF5AA00247971 /* computer-science.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +79,13 @@
 		58A373612AE891E5003F20E6 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		58A373632AE89207003F20E6 /* SectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMenu.swift; sourceTree = "<group>"; };
 		58A373652AE893A0003F20E6 /* ChapterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPage.swift; sourceTree = "<group>"; };
+		EC1AB2D02B0FF5AA00247971 /* computer-science.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "computer-science.json"; sourceTree = "<group>"; };
+		EC1AB2D22B0FF75800247971 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		EC1AB2D52B0FFBE700247971 /* JSONCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCoding.swift; sourceTree = "<group>"; };
+		EC1AB2D72B0FFEBF00247971 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
+		EC1AB2DC2B0FFFBA00247971 /* draggableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = draggableCard.swift; sourceTree = "<group>"; };
+		EC1AB2E02B10041000247971 /* interpolatorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interpolatorBuilder.swift; sourceTree = "<group>"; };
+		EC1AB2E22B1009EA00247971 /* CardFlipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlipper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +138,10 @@
 		4341B0D82AE6523D00C5CC11 /* StudyCrunch */ = {
 			isa = PBXGroup;
 			children = (
+				EC1AB2DF2B1003F900247971 /* utils */,
+				EC1AB2DB2B0FFF9E00247971 /* modifiers */,
+				EC1AB2D42B0FFBDE00247971 /* extensions */,
+				EC1AB2CF2B0FF59C00247971 /* assets */,
 				4341B1062AE655B500C5CC11 /* Components */,
 				4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */,
 				5882C2762AEB5B8B0085D577 /* Global */,
@@ -166,6 +184,8 @@
 			children = (
 				587F41142AE9E52000739263 /* MenuOption.swift */,
 				4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */,
+				EC1AB2D72B0FFEBF00247971 /* FlashcardView.swift */,
+				EC1AB2E22B1009EA00247971 /* CardFlipper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -186,6 +206,7 @@
 				58A3735F2AE88F85003F20E6 /* Course.swift */,
 				5882C2892AF1C2790085D577 /* Section.swift */,
 				58A373612AE891E5003F20E6 /* Chapter.swift */,
+				EC1AB2D22B0FF75800247971 /* Flashcard.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -200,6 +221,48 @@
 				5882C27E2AEB6D420085D577 /* SettingsPage.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		EC1AB2CF2B0FF59C00247971 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2D12B0FF6D200247971 /* flashcards */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		EC1AB2D12B0FF6D200247971 /* flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2D02B0FF5AA00247971 /* computer-science.json */,
+			);
+			path = flashcards;
+			sourceTree = "<group>";
+		};
+		EC1AB2D42B0FFBDE00247971 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2D52B0FFBE700247971 /* JSONCoding.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		EC1AB2DB2B0FFF9E00247971 /* modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2DC2B0FFFBA00247971 /* draggableCard.swift */,
+			);
+			name = modifiers;
+			path = ../modifiers;
+			sourceTree = "<group>";
+		};
+		EC1AB2DF2B1003F900247971 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2E02B10041000247971 /* interpolatorBuilder.swift */,
+			);
+			name = utils;
+			path = ../utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1AB2E42B100CEE00247971 /* computer-science.json in Resources */,
 				4341B0E12AE6523D00C5CC11 /* Preview Assets.xcassets in Resources */,
 				4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */,
 			);
@@ -342,9 +406,15 @@
 			files = (
 				5882C2842AEB92760085D577 /* ChapterMenu.swift in Sources */,
 				5882C28C2AF1CB6C0085D577 /* utils.swift in Sources */,
+				EC1AB2E12B10041000247971 /* interpolatorBuilder.swift in Sources */,
+				EC1AB2E32B1009EA00247971 /* CardFlipper.swift in Sources */,
+				EC1AB2DD2B0FFFBA00247971 /* draggableCard.swift in Sources */,
+				EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */,
+				EC1AB2D62B0FFBE700247971 /* JSONCoding.swift in Sources */,
 				58A373622AE891E5003F20E6 /* Chapter.swift in Sources */,
 				58A373602AE88F85003F20E6 /* Course.swift in Sources */,
 				5882C2792AEB5E570085D577 /* constants.swift in Sources */,
+				EC1AB2D82B0FFEBF00247971 /* FlashcardView.swift in Sources */,
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
 				4300E6AD2AF72ECE00922E62 /* ShareMenu.swift in Sources */,
 				5882C27B2AEB5F7E0085D577 /* global.swift in Sources */,
@@ -518,7 +588,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyCrunch/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z2NNLU4F7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,7 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyCrunch/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z2NNLU4F7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

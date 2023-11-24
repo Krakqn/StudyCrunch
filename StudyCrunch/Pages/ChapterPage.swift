@@ -14,57 +14,80 @@ struct ChapterPage: View {
   @State var shareModalOpen = false
   @State var shareSuccess = false
   var chapter: Chapter
+  @State private var flashcards: [Flashcard] = []
+  
+  func removeTopFlashcard() {
+    var newFlashcards = flashcards
+    if newFlashcards.count > 0 {
+      newFlashcards.append(newFlashcards.removeFirst())
+    }
+    withAnimation(.bouncy) {
+      flashcards = newFlashcards
+    }
+  }
   
   var body: some View {
     ScrollView {
-      HStack {
-        Markdown(chapter.markdown)
-          .markdownTheme(.docC)
-        Spacer()
-      }
-    }
-    .padding()
-    .blur(radius: self.t * 12.0)
-    .overlay {
-      VStack(spacing: 10) {
-        Spacer()
-        Text("Share to unlock the chapter")
-          .opacity(75)
-          .font(.system(size: 20))
-          .padding(.horizontal, 20)
-          .multilineTextAlignment(.center)
-        Button(action: {
-          // Call your function here
-          yourFunction()
-          
-          withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
-            self.t = 0.0
-          }
-        }) {
-          Label("Share", systemImage: "square.and.arrow.up")
-            .font(.system(size: 20).bold())
-            .foregroundColor(Color("ForegroundColor"))
+      VStack(spacing: 24) {
+        HStack {
+          Markdown(chapter.markdown)
+            .markdownTheme(.docC)
+          Spacer()
         }
-        .simultaneousGesture(TapGesture().onEnded() {
-          withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
-            self.t = 0.0
+        if flashcards.count > 0 {
+          ZStack {
+            ForEach(Array(flashcards.suffix(5).enumerated()), id: \.element) { i, flashcard in
+              FlashcardView(flashcard: flashcard, index: i, takeItselfOut: removeTopFlashcard)
+            }
           }
-        })
-//        .sheet(isPresented: $shareModalOpen) {
-//              ShareMenu(open: $shareModalOpen, success: $shareSuccess)
-//          }
-        Spacer()
+        }
       }
-      .opacity(self.t)
     }
     .onAppear {
-      if self.chapter.restricted {
-        withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
-          self.t = 1.0
-        }
-        shareModalOpen.toggle()
-      }
+      flashcards = chapter.flashcards
     }
+    .padding()
+//    .blur(radius: self.t * 12.0)
+//    .overlay {
+//      VStack(spacing: 10) {
+//        Spacer()
+//        Text("Share to unlock the chapter")
+//          .opacity(75)
+//          .font(.system(size: 20))
+//          .padding(.horizontal, 20)
+//          .multilineTextAlignment(.center)
+//        Button(action: {
+//          // Call your function here
+//          yourFunction()
+//          
+//          withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
+//            self.t = 0.0
+//          }
+//        }) {
+//          Label("Share", systemImage: "square.and.arrow.up")
+//            .font(.system(size: 20).bold())
+//            .foregroundColor(Color("ForegroundColor"))
+//        }
+//        .simultaneousGesture(TapGesture().onEnded() {
+//          withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
+//            self.t = 0.0
+//          }
+//        })
+////        .sheet(isPresented: $shareModalOpen) {
+////              ShareMenu(open: $shareModalOpen, success: $shareSuccess)
+////          }
+//        Spacer()
+//      }
+//      .opacity(self.t)
+//    }
+//    .onAppear {
+//      if self.chapter.restricted {
+//        withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
+//          self.t = 1.0
+//        }
+//        shareModalOpen.toggle()
+//      }
+//    }
     .navigationTitle(chapter.name)
   }
   
