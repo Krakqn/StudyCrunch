@@ -14,7 +14,7 @@ struct DraggableCard: ViewModifier {
   @State private var endSide: PreviewSideCard = .none
   @State private var offset: CGSize = .zero
   @State private var offsetCompensation: CGSize? = nil
-  @State private var pressing = false
+  @State private var dragging = false
   
   enum PreviewSideCard {
     case left
@@ -41,6 +41,7 @@ struct DraggableCard: ViewModifier {
             transaction.animation = .interpolatingSpring(stiffness: 1000, damping: 100)
             
             withTransaction(transaction) {
+              dragging = true
               endSide = abs(val.translation.width) < threshold ? .none : val.translation.width > 0 ? .right : .left
               offset = val.translation - offsetCompensation
             }
@@ -50,7 +51,7 @@ struct DraggableCard: ViewModifier {
           let offscreenX = UIScreen.main.bounds.size.width
           withAnimation(.interpolatingSpring(stiffness: 150, damping: 17, initialVelocity: 0)) {
             offset = endSide == .left ? CGSize(width: -offscreenX, height: val.translation.height * 1.25) : endSide == .right ? CGSize(width: offscreenX, height: val.translation.height * 1.25) : .zero
-            pressing = false
+            dragging = false
             offsetCompensation = nil
           }
           if endSide != .none {
@@ -65,6 +66,9 @@ struct DraggableCard: ViewModifier {
     .offset(y: Double(index) * 22)
     .zIndex(-Double(index))
     .allowsHitTesting(index == 0)
+    .compositingGroup()
+    .brightness(dragging ? 0.04 : 0)
+    .shadow(color: .black.opacity(0.15), radius: !dragging ? 0 : 24, y: !dragging ? 0 : 12)
   }
 }
 

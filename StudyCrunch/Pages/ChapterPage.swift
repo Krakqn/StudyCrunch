@@ -36,7 +36,7 @@ struct ChapterPage: View {
         }
         if flashcards.count > 0 {
           ZStack {
-            ForEach(Array(flashcards.suffix(5).enumerated()), id: \.element) { i, flashcard in
+            ForEach(Array(flashcards.suffix(4).enumerated()), id: \.element) { i, flashcard in
               FlashcardView(flashcard: flashcard, index: i, takeItselfOut: removeTopFlashcard)
             }
           }
