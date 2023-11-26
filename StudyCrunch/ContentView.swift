@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct ContentView: View {
+  @Default(.showOnboarding) private var showOnboarding
   var body: some View {
     TabView {
       CourseMenu(courses: [
@@ -64,6 +66,9 @@ int main(void) {
           Label("Settings", systemImage: "gearshape")
         }
     }
+    .sheet(isPresented: $showOnboarding, content: {
+      OnboardingView().interactiveDismissDisabled()
+    })
   }
 }
 

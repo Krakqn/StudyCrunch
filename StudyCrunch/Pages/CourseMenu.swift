@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import Defaults
 
 struct CourseMenu: View {
   @State private var searchText = ""
   var courses: [Course]
+  @Default(.showOnboarding) private var showOnboarding
   
   var body: some View {
     NavigationStack {
@@ -23,6 +25,9 @@ struct CourseMenu: View {
               .padding(.horizontal)
           }
         }
+        Button("Show onboarding") {
+          showOnboarding = true
+        }.padding(.top, 16)
       }
       .searchable(text: $searchText)
       .navigationTitle("Courses")
