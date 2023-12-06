@@ -29,6 +29,8 @@
 		58A373622AE891E5003F20E6 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373612AE891E5003F20E6 /* Chapter.swift */; };
 		58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* SectionMenu.swift */; };
 		58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373652AE893A0003F20E6 /* ChapterPage.swift */; };
+		E768441E2B1FF3180096114D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441D2B1FF3180096114D /* MessageView.swift */; };
+		E76844202B1FF35E0096114D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441F2B1FF35E0096114D /* MailView.swift */; };
 		EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D22B0FF75800247971 /* Flashcard.swift */; };
 		EC1AB2D62B0FFBE700247971 /* JSONCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D52B0FFBE700247971 /* JSONCoding.swift */; };
 		EC1AB2D82B0FFEBF00247971 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D72B0FFEBF00247971 /* FlashcardView.swift */; };
@@ -88,6 +90,8 @@
 		58A373612AE891E5003F20E6 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		58A373632AE89207003F20E6 /* SectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMenu.swift; sourceTree = "<group>"; };
 		58A373652AE893A0003F20E6 /* ChapterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPage.swift; sourceTree = "<group>"; };
+		E768441D2B1FF3180096114D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		E768441F2B1FF35E0096114D /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		EC1AB2D02B0FF5AA00247971 /* computer-science.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "computer-science.json"; sourceTree = "<group>"; };
 		EC1AB2D22B0FF75800247971 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		EC1AB2D52B0FFBE700247971 /* JSONCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCoding.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 			children = (
 				587F41142AE9E52000739263 /* MenuOption.swift */,
 				4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */,
+				E768441D2B1FF3180096114D /* MessageView.swift */,
+				E768441F2B1FF35E0096114D /* MailView.swift */,
 				EC1AB2D72B0FFEBF00247971 /* FlashcardView.swift */,
 				EC1AB2E22B1009EA00247971 /* CardFlipper.swift */,
 				EC31DB292B13169A00A777ED /* FatButton.swift */,
@@ -454,11 +460,13 @@
 				EC31DB222B130F6200A777ED /* fontSize.swift in Sources */,
 				EC1AB2E32B1009EA00247971 /* CardFlipper.swift in Sources */,
 				EC31DB2E2B131A3E00A777ED /* OnboardingDiscord.swift in Sources */,
+				E76844202B1FF35E0096114D /* MailView.swift in Sources */,
 				EC1AB2DD2B0FFFBA00247971 /* draggableCard.swift in Sources */,
 				EC31DB302B131DB000A777ED /* OnboardingStepTemplate.swift in Sources */,
 				EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */,
 				EC1AB2D62B0FFBE700247971 /* JSONCoding.swift in Sources */,
 				EC31DB202B130E2E00A777ED /* OnboardingWelcome.swift in Sources */,
+				E768441E2B1FF3180096114D /* MessageView.swift in Sources */,
 				58A373622AE891E5003F20E6 /* Chapter.swift in Sources */,
 				58A373602AE88F85003F20E6 /* Course.swift in Sources */,
 				5882C2792AEB5E570085D577 /* constants.swift in Sources */,
@@ -640,7 +648,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyCrunch/Preview Content\"";
-				DEVELOPMENT_TEAM = Z2NNLU4F7U;
+				DEVELOPMENT_TEAM = 3389RHNLVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -669,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyCrunch/Preview Content\"";
-				DEVELOPMENT_TEAM = Z2NNLU4F7U;
+				DEVELOPMENT_TEAM = 3389RHNLVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

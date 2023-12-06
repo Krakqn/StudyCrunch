@@ -13,16 +13,18 @@ struct Chapter: Identifiable {
   let name: String
   let description: String?
   let markdown: String
-  var restricted: Bool
+    var restricted: Bool {
+        Global.chapterLocked(name)
+    }
   var flashcards: [Flashcard] = []
   
-  init(symbol: String, name: String, description: String? = nil, markdown: String, restricted: Bool = false, flashcards: [Flashcard] = []) {
+  init(symbol: String, name: String, description: String? = nil, markdown: String, flashcards: [Flashcard] = []) {
     self.symbol = symbol
     self.name = name
     self.description = description
     self.markdown = markdown
-    self.restricted = restricted
     self.flashcards = flashcards
+      Global.lockChapters()//probably not the best place to put this
   }
   
   class Builder {
@@ -55,11 +57,6 @@ struct Chapter: Identifiable {
       return self
     }
   
-    @discardableResult func setRestricted(restricted: Bool) -> Builder {
-      self.restricted = restricted
-      return self
-    }
-  
     @discardableResult func setFlashcards(jsonFileName: String) -> Builder {
       if let url = Bundle.main.url(forResource: jsonFileName, withExtension: "json"), let data = try? String(contentsOf: url, encoding: .utf8), let newFlashcards = data.toObj([Flashcard].self) {
         self.flashcards = newFlashcards
@@ -78,7 +75,7 @@ struct Chapter: Identifiable {
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, restricted: self.restricted, flashcards: flashcards)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, flashcards: flashcards)
     }
   }
 }
