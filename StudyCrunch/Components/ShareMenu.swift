@@ -7,11 +7,18 @@
 
 import Foundation
 import SwiftUI
+import MessageUI
 
 struct ShareMenu: View {
-//      @Binding var open: Bool
-//      @Binding var success: Bool
+    @Binding var open: Bool
+    var unlockName: String
   
+    @State var resultMail: MFMailComposeResult = .failed
+    @State var resultMessage: MessageComposeResult = .failed
+    
+    @State var isShowingMailView = false
+    @State var isShowingMessageView = false
+
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
@@ -24,22 +31,48 @@ struct ShareMenu: View {
                         .padding(2)
                 }
                 .multilineTextAlignment(.center)
-
-                VStack(spacing: 6) {
+                
+                VStack(spacing: 20) {
                     HStack(spacing: 6) {
-                        ShareButton(action: yourFunction)
-                        ShareButton(action: yourFunction)
-                        ShareButton(action: yourFunction)
+                        if MFMailComposeViewController.canSendMail() {
+                            Button("Show mail view") {
+                                self.isShowingMailView.toggle()
+                            }
+                            .padding()
+                        }
                     }
                     HStack(spacing: 6) {
-                        ShareButton(action: yourFunction)
-                        ShareButton(action: yourFunction)
-                        ShareButton(action: yourFunction)
+                        if MFMessageComposeViewController.canSendText() {
+                            Button("Show message view") {
+                                self.isShowingMessageView.toggle()
+                            }
+                            .padding()
+                        }
                     }
                 }
             }
             .padding(.top, 64)
             .padding(.horizontal, 16)
+            .sheet(isPresented: $isShowingMailView) {
+                MailView(isShowing: self.$isShowingMailView, result: self.$resultMail)
+            }
+            .sheet(isPresented: $isShowingMessageView) {
+                MessageView(isShowing: self.$isShowingMessageView, result: self.$resultMessage)
+            }
+            .onChange(of: resultMail) { oldValue, newValue in
+                let success = resultMail == .sent || resultMessage == .sent
+                if success {
+                    Global.unlockChapter(unlockName)
+                }
+                open = !success
+            }
+            .onChange(of: resultMessage) { oldValue, newValue in
+                let success = resultMail == .sent || resultMessage == .sent
+                if success {
+                    Global.unlockChapter(unlockName)
+                }
+                open = !success
+            }
         }
     }
   
@@ -66,7 +99,7 @@ struct ShareButton: View {
     }
 }
 
-#Preview {
-  ShareMenu()
-}
+//#Preview {
+//  ShareMenu()
+//}
 

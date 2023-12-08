@@ -21,7 +21,6 @@ struct ContentView: View {
             Chapter.Builder()
               .setName(name: "Variables")
               .setDescription(description: "Super useful")
-              .setRestricted(restricted: true)
               .setFlashcards(jsonFileName: "computer-science")
               .setMarkdown(markdown: """
 # Variables
@@ -40,7 +39,6 @@ int main(void) {
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Conditionals")
-              .setRestricted(restricted: true)
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Arrays")
@@ -50,7 +48,6 @@ int main(void) {
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Complexity")
-              .setRestricted(restricted: true)
               .setMarkdown(markdown: ""),
             Chapter.Builder()
               .setName(name: "Depth-first search")
