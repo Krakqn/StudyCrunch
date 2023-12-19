@@ -52,8 +52,12 @@ struct Chapter: Identifiable {
       return self
     }
     
-    @discardableResult func setMarkdown(markdown: String) -> Builder {
-      self.markdown = markdown
+    @discardableResult func setMarkdown(markdownFilename: String) -> Builder {
+      if let url = Bundle.main.url(forResource: markdownFilename, withExtension: "md"),
+         let markdown = try? String(contentsOf: url, encoding: .utf8) 
+      {
+        self.markdown = markdown
+      }
       return self
     }
   
