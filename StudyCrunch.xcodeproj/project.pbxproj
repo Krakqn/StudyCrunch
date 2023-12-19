@@ -29,6 +29,7 @@
 		58A373622AE891E5003F20E6 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373612AE891E5003F20E6 /* Chapter.swift */; };
 		58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* SectionMenu.swift */; };
 		58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373652AE893A0003F20E6 /* ChapterPage.swift */; };
+		BF639A3D2B32065500E6AABB /* sample.md in Resources */ = {isa = PBXBuildFile; fileRef = BF639A3C2B31DDEE00E6AABB /* sample.md */; };
 		E768441E2B1FF3180096114D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441D2B1FF3180096114D /* MessageView.swift */; };
 		E76844202B1FF35E0096114D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441F2B1FF35E0096114D /* MailView.swift */; };
 		EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D22B0FF75800247971 /* Flashcard.swift */; };
@@ -90,6 +91,7 @@
 		58A373612AE891E5003F20E6 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		58A373632AE89207003F20E6 /* SectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMenu.swift; sourceTree = "<group>"; };
 		58A373652AE893A0003F20E6 /* ChapterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPage.swift; sourceTree = "<group>"; };
+		BF639A3C2B31DDEE00E6AABB /* sample.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = sample.md; sourceTree = "<group>"; };
 		E768441D2B1FF3180096114D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		E768441F2B1FF35E0096114D /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		EC1AB2D02B0FF5AA00247971 /* computer-science.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "computer-science.json"; sourceTree = "<group>"; };
@@ -250,10 +252,19 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		BF639A3B2B31DDC700E6AABB /* markdown */ = {
+			isa = PBXGroup;
+			children = (
+				BF639A3C2B31DDEE00E6AABB /* sample.md */,
+			);
+			path = markdown;
+			sourceTree = "<group>";
+		};
 		EC1AB2CF2B0FF59C00247971 /* assets */ = {
 			isa = PBXGroup;
 			children = (
 				EC1AB2D12B0FF6D200247971 /* flashcards */,
+				BF639A3B2B31DDC700E6AABB /* markdown */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -429,6 +440,7 @@
 				EC1AB2E42B100CEE00247971 /* computer-science.json in Resources */,
 				4341B0E12AE6523D00C5CC11 /* Preview Assets.xcassets in Resources */,
 				4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */,
+				BF639A3D2B32065500E6AABB /* sample.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
