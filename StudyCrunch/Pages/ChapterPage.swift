@@ -39,6 +39,7 @@ struct ChapterPage: View {
                             FlashcardView(flashcard: flashcard, index: i, takeItselfOut: removeTopFlashcard)
                         }
                     }
+                    .padding(.bottom, 50)
                 }
             }
         }
