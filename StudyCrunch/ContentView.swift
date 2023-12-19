@@ -22,36 +22,25 @@ struct ContentView: View {
               .setName(name: "Variables")
               .setDescription(description: "Super useful")
               .setFlashcards(jsonFileName: "computer-science")
-              .setMarkdown(markdown: """
-# Variables
-Here's an example of a variable being used:
-```cpp
-#include <iostream>
-
-int main(void) {
-  int x = 10;
-  std::cout << "Value of variable x: " << x << std::endl;
-}
-```
-"""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Loops")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Conditionals")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Arrays")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Pointers")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Complexity")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
             Chapter.Builder()
               .setName(name: "Depth-first search")
-              .setMarkdown(markdown: ""),
+              .setMarkdown(markdownFilename: "sample"),
           ])
           .build()
       ])
