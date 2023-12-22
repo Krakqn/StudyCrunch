@@ -10,12 +10,14 @@ import Defaults
 
 struct FAQPanel: View {
   @Binding var open: Bool
+  @Environment (\.colorScheme) var colorScheme: ColorScheme
   
   func nextStep() {
     open = false
   }
   
   var body: some View {
+    GeometryReader { geo in
       VStack{
         List{ // placeholder text, copied from winston at the moment (will change later)
           QuestionAnswer(question: "What does the Box Icon do?", answer: "Save posts in the Posts Box to be read later. These will live in Winston and wont be synced to Reddit.", systemImage: "shippingbox")
@@ -25,9 +27,11 @@ struct FAQPanel: View {
           QuestionAnswer(question: "What if Reddit takes Winston down?", answer: "Then we'll release another version which uses our own single API key (it won't require any of you to enter your own anymore) and allow you to recharge your account and use it however you like. That's what Reddit wants at the end, but our bet is that Reddit won't find a way to take Winston down because the previously mentioned similarity with a bot in the technical manners.", systemImage: "safari")
           QuestionAnswer(question: "Who are you?", answer: "We're lo.cafe, a group of friends (Igor (me), Ernesto, Laís, Oeste (teenager cat) and Bidu(old cat)) that produces amazing software together. We made lo-rain, an app that makes it rain over your desktop on MacOS, we're making a game and many other crazy stuff. [Check our website!](https://lo.cafe)", systemImage: "safari")
         }
+        Spacer()
         FatButton("Okay!", nextStep)
       }
-    
+      .frame(minHeight: geo.size.height - 16)
+    }
   }
 }
 
