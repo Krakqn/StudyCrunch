@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4300E6AD2AF72ECE00922E62 /* ShareMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
+		4336A0992B34FD66001B27BE /* FAQPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336A0982B34FD66001B27BE /* FAQPanel.swift */; };
 		4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */; };
 		4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0DB2AE6523D00C5CC11 /* ContentView.swift */; };
 		4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMenu.swift; sourceTree = "<group>"; };
+		4336A0982B34FD66001B27BE /* FAQPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQPanel.swift; sourceTree = "<group>"; };
 		4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCrunchApp.swift; sourceTree = "<group>"; };
 		4341B0DB2AE6523D00C5CC11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				58A373632AE89207003F20E6 /* SectionMenu.swift */,
 				5882C2832AEB92760085D577 /* ChapterMenu.swift */,
 				5882C27E2AEB6D420085D577 /* SettingsPage.swift */,
+				4336A0982B34FD66001B27BE /* FAQPanel.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				EC31DB282B1315FB00A777ED /* dismissKeyboard.swift in Sources */,
 				EC31DB222B130F6200A777ED /* fontSize.swift in Sources */,
 				EC1AB2E32B1009EA00247971 /* CardFlipper.swift in Sources */,
+				4336A0992B34FD66001B27BE /* FAQPanel.swift in Sources */,
 				EC31DB2E2B131A3E00A777ED /* OnboardingDiscord.swift in Sources */,
 				E76844202B1FF35E0096114D /* MailView.swift in Sources */,
 				EC1AB2DD2B0FFFBA00247971 /* draggableCard.swift in Sources */,
