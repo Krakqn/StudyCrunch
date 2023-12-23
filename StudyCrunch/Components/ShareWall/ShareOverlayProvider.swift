@@ -100,7 +100,9 @@ struct ShareOverlayProvider<Content: View>: View {
         }
       }
     } else {
-      transmitter.scheduleReset(0.5)
+      withAnimation {
+        transmitter.reset()
+      }
     }
   }
   
