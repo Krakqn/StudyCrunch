@@ -8,13 +8,17 @@
 import Foundation
 import SwiftUI
 import MarkdownUI
+import MessageUI
 
 struct ChapterPage: View {
     @State private var t: CGFloat = 0.0
     @State var shareModalOpen = false
     var chapter: Chapter
     @State private var flashcards: [Flashcard] = []
-    
+
+    @State var resultMail: MFMailComposeResult = .failed
+  @EnvironmentObject var viewModel: ViewModel
+
     func removeTopFlashcard() {
         var newFlashcards = flashcards
         if newFlashcards.count > 0 {
@@ -49,31 +53,35 @@ struct ChapterPage: View {
         .padding()
             .blur(radius: self.t * 12.0)
             .overlay {
-              VStack(spacing: 10) {
-                Spacer()
-                Text("Share to unlock the chapter")
-                  .opacity(75)
-                  .font(.system(size: 20))
-                  .padding(.horizontal, 20)
-                  .multilineTextAlignment(.center)
-                Button(action: {
-                  // Call your function here
-                  yourFunction()
-        
-//                  withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
-//                    self.t = 0.0
-//                  }
-                }) {
-                  Label("Share", systemImage: "square.and.arrow.up")
-                    .font(.system(size: 20).bold())
-                    .foregroundColor(Color("ForegroundColor"))
-                }
-                .sheet(isPresented: $shareModalOpen) {
+              ZStack {
+                VStack(spacing: 10) {
+                  Spacer()
+                  Text("Share to unlock the chapter")
+                    .opacity(75)
+                    .font(.system(size: 20))
+                    .padding(.horizontal, 20)
+                    .multilineTextAlignment(.center)
+                  Button(action: {
+                    // Call your function here
+                    yourFunction()
+
+                    //                  withAnimation(.easeIn(duration: 0.3).delay(0.3)) {
+                    //                    self.t = 0.0
+                    //                  }
+                  }) {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                      .font(.system(size: 20).bold())
+                      .foregroundColor(Color("ForegroundColor"))
+                  }
+                  .sheet(isPresented: $shareModalOpen) {
                     ShareMenu(open: $shareModalOpen, unlockName: chapter.name)
                   }
-                Spacer()
+                  .padding(.bottom, 60)
+//                  Spacer()
+                }
+                .opacity(self.t)
+                ShareWall()
               }
-              .opacity(self.t)
             }
             .onAppear {
               if self.chapter.restricted {
@@ -90,6 +98,10 @@ struct ChapterPage: View {
                 }
             })
             .navigationTitle(chapter.name)
+
+      .sheet(isPresented: $viewModel.isShowingMailView) {
+        MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+      }
     }
     
     // Define your function here
