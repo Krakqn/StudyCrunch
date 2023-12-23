@@ -134,24 +134,8 @@ struct ShareOverlayProvider<Content: View>: View {
             .allowsHitTesting(false)
         }
       }
-//      .overlay {
-//        SideBySideWindow(passLens: accTransKit.passLens, willLensHeadLeft: accTransKit.willLensHeadLeft) {
-//          Rectangle().fill(
-//            EllipticalGradient(
-//              colors: [.gray.opacity(0.5), .gray.opacity(0.2)],
-//              center: .init(x: !transmitter.showing ? 1 : accTransKit.focusCloser ? 0.55 : 0.75, y: 0),
-//              startRadiusFraction: 0,
-//              endRadiusFraction: 0.85)
-//          )
-//          .padding(.all)
-//          .opacity(!somethingGoinOnYet ? 0 : 1)
-//        }
-//        .allowsHitTesting(false)
-//      }
       .mask(
-        SideBySideWindow(passLens: accTransKit.passLens, willLensHeadLeft: accTransKit.willLensHeadLeft) {
-          RR(showOverlay ? accTransKit.focusCloser ? 40 : 48 : .screenCornerRadius, .black).padding(.all, 0)
-        }
+        Rectangle()
       )
       .background(.white)
       .animation(.spring, value: transmitter.showing)
@@ -171,27 +155,5 @@ struct ShareOverlayProvider<Content: View>: View {
     .ignoresSafeArea(.all)
     .allowsHitTesting(!(showOverlay || accTransKit.passLens))
     .environmentObject(viewModel)
-  }
-}
-
-struct SideBySideWindow<C: View>: View {
-  var passLens: Bool
-  var willLensHeadLeft: Bool
-  @ViewBuilder var content: () -> C
-  var body: some View {
-    HStack(spacing: 0) {
-      Group {
-        content()
-        content()
-      }
-      .frame(.screenSize)
-    }
-    .frame(width: .screenW * 2, alignment: .leading)
-    .scaleEffect(1)
-    .offset(x: passLens ? (.screenW * (willLensHeadLeft ? -1 : 1)) : 0)
-    .frame(width: .screenW, alignment: willLensHeadLeft ? .leading : .trailing)
-    .allowsHitTesting(false)
-    .clipped()
-    .drawingGroup()
   }
 }
