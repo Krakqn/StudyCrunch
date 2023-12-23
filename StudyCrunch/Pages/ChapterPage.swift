@@ -17,7 +17,9 @@ struct ChapterPage: View {
     @State private var flashcards: [Flashcard] = []
 
     @State var resultMail: MFMailComposeResult = .failed
-  @EnvironmentObject var viewModel: ViewModel
+    @State var resultMessage: MessageComposeResult = .failed
+
+    @EnvironmentObject var viewModel: ViewModel
 
     func removeTopFlashcard() {
         var newFlashcards = flashcards
@@ -98,10 +100,12 @@ struct ChapterPage: View {
                 }
             })
             .navigationTitle(chapter.name)
-
-      .sheet(isPresented: $viewModel.isShowingMailView) {
-        MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
-      }
+            .sheet(isPresented: $viewModel.isShowingMailView) {
+              MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+            }
+            .sheet(isPresented: $viewModel.isShowingMessageView) {
+              MessageView(isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+            }
     }
     
     // Define your function here

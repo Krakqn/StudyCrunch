@@ -92,7 +92,7 @@ struct ShareOverlayProvider<Content: View>: View {
 //        }
 //      }
       transmitter.reset()
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      DispatchQueue.main.async {
         if cred == "Share with email" {
           viewModel.isShowingMailView.toggle()
         } else if cred == "Share with iMessage" {
