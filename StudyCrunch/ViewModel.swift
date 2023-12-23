@@ -10,4 +10,5 @@ import Foundation
 class ViewModel: ObservableObject {
   @Published var isShowingMailView: Bool = false
   @Published var isShowingMessageView: Bool = false
+  @Published var shareModalOpen: Bool = false
 }
