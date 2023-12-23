@@ -10,6 +10,7 @@ import SwiftUI
 struct ShareWallTrigger<Content: View>: View {
 
   @EnvironmentObject private var transmitter: ShareOverlayTransmitter
+  @EnvironmentObject private var viewModel: ViewModel
 
   @State private var medium = UIImpactFeedbackGenerator(style: .medium)
   @State private var dragging = false
@@ -23,6 +24,7 @@ struct ShareWallTrigger<Content: View>: View {
         medium.prepare()
         medium.impactOccurred()
         if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
+        viewModel.shareModalOpen = true
       }, onPressEnded: {
         print("onPressEnded transmitter.showing: ", transmitter.showing)
         if transmitter.showing {

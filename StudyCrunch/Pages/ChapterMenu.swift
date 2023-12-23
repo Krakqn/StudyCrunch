@@ -16,7 +16,7 @@ struct ChapterMenu: View {
       ScrollView {
         ForEach(section.chapters) { chapter in
           NavigationLink {
-            ChapterPage(chapter: chapter)
+            ChapterPage(chapter: chapter, section: section)
           } label: {
             MenuOption(symbol: chapter.symbol, name: chapter.name, description: chapter.description)
               .padding(.horizontal)
