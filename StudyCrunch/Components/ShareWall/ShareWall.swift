@@ -29,4 +29,3 @@ struct ShareWall: View {
     .ignoresSafeArea(.all)
   }
 }
-

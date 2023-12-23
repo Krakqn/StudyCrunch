@@ -31,10 +31,8 @@ struct ShareOverlayTarget: View, Equatable {
   static func == (lhs: ShareOverlayTarget, rhs: ShareOverlayTarget) -> Bool {
     lhs.index == rhs.index && lhs.hovered == rhs.hovered && lhs.distance == rhs.distance && lhs.attraction == rhs.attraction
   }
-  
-//  @State private var appear = false
+
   @State private var jump = 0
-//  @State private var globalCirclePos: CGPoint = .zero
   @State private var impactRigid = UIImpactFeedbackGenerator(style: .rigid)
 
   let title: String
@@ -43,7 +41,6 @@ struct ShareOverlayTarget: View, Equatable {
   let containerSize: CGSize
   let index: Int
   let targetsCount: Int
-//  var cred: RedditCredential
   
   @ObservedObject var transmitter: ShareOverlayTransmitter
   
@@ -54,7 +51,6 @@ struct ShareOverlayTarget: View, Equatable {
   private let distanceMaxSelectedVibrating: Double = 100
   private let verticalOffset = -50.0
   private let textSpace = (ShareOverlayTarget.fontSize * 1.2) + ShareOverlayTarget.vStackSpacing
-//  private var isAddBtn: Bool { !cred.isAuthorized }
   private var isSelected: Bool { false }//!isAddBtn && Defaults[.GeneralDefSettings].redditCredentialSelectedID == cred.id }
   private var radiusX: Double { (containerSize.width / 2) }
   private var radiusY: Double { (containerSize.height / 2) }
@@ -85,7 +81,6 @@ struct ShareOverlayTarget: View, Equatable {
     let appearingOffset = CGSize(width: appear ? x + radiusX : 0, height: appear ? y + verticalOffset : 0)
 
     Group {
-//      if isAddBtn {
       ZStack {
         Color.white
         Circle()
@@ -95,40 +90,9 @@ struct ShareOverlayTarget: View, Equatable {
           .fontSize(24)
           .foregroundStyle(.primary)
       }
-//      } else {
-//        Group {
-//          if let picture = cred.profilePicture, let url = URL(string: picture) {
-//            URLImage(url: url).equatable()
-//          } else {
-//            Image(.emptyCredential).resizable()
-//          }
-//        }
-//        .scaledToFill()
-//        .background(.white)
-//      }
     }
     .frame(Self.size - (Self.strokeWidth * 2))
     .mask(Circle().fill(.black))
-//    .overlay(
-//      Image(systemName: "plus")
-//        .fontSize(Self.size * 0.75, .semibold)
-//        .foregroundStyle(Color.accentColor)
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(Circle().fill(.white))
-//        .mask(Circle().fill(.black).scaleEffect(hovered ? 1 : 0.001))
-//    )
-//    .overlay(isAddBtn ? nil : Circle().stroke(.white, lineWidth: Self.strokeWidth))
-    .overlay(
-      !isSelected
-      ? nil
-      : Image(systemName: "checkmark.circle.fill")
-        .foregroundStyle(Color.accentColor)
-        .fontSize(16, .semibold)
-        .frame(22)
-        .background(Circle().fill(.white))
-        .offset(x: 11 / 2, y: -11 / 2)
-      , alignment: .topTrailing
-    )
     .background(
       isSelected || (!hovered)
       ? nil
@@ -158,7 +122,6 @@ struct ShareOverlayTarget: View, Equatable {
     .blur(radius: appear ? 0 : 30)
     .brightness(!isSelected && hovered ? 0.5 : 0)
     .offset(attractionOffset + appearingOffset)
-//    .animation(hovered ? .spring(response: 0.4, dampingFraction: 0.5) : .spring, value: hovered)
     .animation(hovered ? .snappy(duration: 0.15, extraBounce: 0.35) : .spring, value: hovered)
     .animation(.bouncy, value: attraction)
     .opacity(appear ? 1 : 0)

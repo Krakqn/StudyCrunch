@@ -82,6 +82,7 @@ struct ChapterPage: View {
 //                  Spacer()
                 }
                 .opacity(self.t)
+
                 ShareWall()
               }
             }

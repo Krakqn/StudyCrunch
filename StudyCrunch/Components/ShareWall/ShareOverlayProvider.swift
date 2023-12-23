@@ -66,31 +66,6 @@ struct ShareOverlayProvider<Content: View>: View {
   
   func selectCredential() {
     if let cred = transmitter.selectedCred {
-//      if let nextCredIndex = RedditCredentialsManager.shared.credentials.firstIndex(of: cred) {
-//        let curr = RedditCredentialsManager.shared.selectedCredential
-//        var currCredIndex = -1
-//        if let curr { currCredIndex = RedditCredentialsManager.shared.credentials.firstIndex(of: curr) ?? -1 }
-//        accTransKit.willLensHeadLeft = Int(currCredIndex - nextCredIndex) <= 0
-//        transmitter.selectedCred = nil
-//        if #available(iOS 17.0, *) {
-//          withAnimation(.snappy(extraBounce: 0.1)) { accTransKit.focusCloser = true } completion: {
-//            withAnimation(.linear(duration: 0.001)) { accTransKit.blurMain = true; Defaults[.GeneralDefSettings].redditCredentialSelectedID = cred.id } completion: {
-//              withAnimation(.spring) { accTransKit.passLens = true } completion: {
-//                withAnimation(.spring) { transmitter.positionInfo = nil; accTransKit.blurMain = false; transmitter.screenshot = nil; accTransKit.focusCloser = false;  } completion: {
-//                  accTransKit.passLens = false
-//                }
-//              }
-//            }
-//          }
-//        } else {
-//          // Fallback on earlier versions
-//        }
-//      } else {
-//        doThisAfter(0) {
-//          transmitter.reset()
-//          Nav.present(.editingCredential(cred))
-//        }
-//      }
       transmitter.reset()
       DispatchQueue.main.async {
         if cred == "Share with email" {
@@ -108,26 +83,20 @@ struct ShareOverlayProvider<Content: View>: View {
   
   var body: some View {
     let showOverlay = (transmitter.positionInfo != nil && transmitter.showing) || accTransKit.focusCloser
-//    let completelyFree = true
-    let focusFramePadding: Double = !showOverlay ? 0 : accTransKit.focusCloser ? 40 : 16
     let frameSlideOffsetX = accTransKit.passLens ? (.screenW * (accTransKit.willLensHeadLeft ? -1 : 1)) : 0
-    let somethingGoinOnYet = accTransKit.focusCloser || transmitter.showing
-//    let parallaxW = .screenW * 0.25
+
     ZStack {
       
       ZStack {
         content()
           .blur(radius: accTransKit.blurMain ? 10 : 0)
-//          .offset(x: accTransKit.passLens ? 0 : accTransKit.focusCloser ? (parallaxW * (accTransKit.willLensHeadLeft ? -1 : 1)) : 0)
           .environmentObject(transmitter)
           .zIndex(1)
         
         if let screenshot = transmitter.screenshot {
           Image(uiImage: screenshot).resizable().frame(.screenSize)
             .blur(radius: accTransKit.focusCloser ? 15 : transmitter.showing ? 10 : 0)
-//            .offset(x: accTransKit.passLens ? (parallaxW * (accTransKit.willLensHeadLeft ? -1 : 1)) : 0)
             .background(.black)
-//            .offset(x: frameSlideOffsetX / 5)
             .mask(Rectangle().fill(.black).offset(x: frameSlideOffsetX))
             .saturation(accTransKit.focusCloser ? 2 : transmitter.showing ? 1.75 : 1)
             .transition(.identity)
@@ -146,11 +115,7 @@ struct ShareOverlayProvider<Content: View>: View {
         ShareOverlayView(fingerPosition: positionInfo, appear: transmitter.showing, transmitter: transmitter).equatable().zIndex(3).allowsHitTesting(false)
           .zIndex(3)
           .onAppear { transmitter.showing = true }
-          .onChange(of: transmitter.showing) { initial in
-            print("transmitter.showing: ", transmitter.showing, ", initial: ", initial)
-            if !initial { selectCredential() }
-          }
-//          .onChange(of: transmitter.showing) { if !$0 { selectCredential() } }
+          .onChange(of: transmitter.showing) { if !$0 { selectCredential() } }
           .allowsHitTesting(false)
       }
     }
