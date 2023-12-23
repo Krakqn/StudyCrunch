@@ -16,8 +16,10 @@ struct ShareMenu: View {
     @State var resultMail: MFMailComposeResult = .failed
     @State var resultMessage: MessageComposeResult = .failed
     
-    @State var isShowingMailView = false
-    @State var isShowingMessageView = false
+//    @State var isShowingMailView = false
+//    @State var isShowingMessageView = false
+
+  @EnvironmentObject var viewModel: ViewModel
 
     var body: some View {
         ScrollView {
@@ -36,7 +38,7 @@ struct ShareMenu: View {
                     HStack(spacing: 6) {
                         if MFMailComposeViewController.canSendMail() {
                             Button("Show mail view") {
-                                self.isShowingMailView.toggle()
+                              viewModel.isShowingMailView.toggle()
                             }
                             .padding()
                         }
@@ -44,7 +46,7 @@ struct ShareMenu: View {
                     HStack(spacing: 6) {
                         if MFMessageComposeViewController.canSendText() {
                             Button("Show message view") {
-                                self.isShowingMessageView.toggle()
+                              viewModel.isShowingMessageView.toggle()
                             }
                             .padding()
                         }
@@ -53,11 +55,11 @@ struct ShareMenu: View {
             }
             .padding(.top, 64)
             .padding(.horizontal, 16)
-            .sheet(isPresented: $isShowingMailView) {
-                MailView(isShowing: self.$isShowingMailView, result: self.$resultMail)
+            .sheet(isPresented: $viewModel.isShowingMessageView) {
+              MessageView(isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
             }
-            .sheet(isPresented: $isShowingMessageView) {
-                MessageView(isShowing: self.$isShowingMessageView, result: self.$resultMessage)
+            .sheet(isPresented: $viewModel.isShowingMailView) {
+              MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
             }
             .onChange(of: resultMail) { oldValue, newValue in
                 let success = resultMail == .sent || resultMessage == .sent
@@ -100,6 +102,6 @@ struct ShareButton: View {
 }
 
 //#Preview {
-//  ShareMenu()
+//  ShareMenu(open: .constant(true), unlockName: "array")
 //}
 
