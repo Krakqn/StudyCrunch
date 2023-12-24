@@ -8,6 +8,10 @@
 import Foundation
 
 struct Global {
+  private static let premiumChapters = [
+    "Arrays",
+    "Pointers"
+  ]
   static func chapterLocked(_ chapterName: String) -> Bool {
     return UserDefaults.standard.bool(forKey: "\(chapterName)Locked")
   }
@@ -18,8 +22,9 @@ struct Global {
 
   static func lockChapters() { //lock chapters on first launch
     if !UserDefaults.standard.bool(forKey: "AppHasBeenLaunchedBefore") {
-      UserDefaults.standard.setValue(true, forKey: "ArraysLocked")
-      UserDefaults.standard.setValue(true, forKey: "PointersLocked")
+      for chapterName in premiumChapters {
+        UserDefaults.standard.setValue(true, forKey: "\(chapterName)Locked")
+      }
 
       UserDefaults.standard.setValue(true, forKey: "AppHasBeenLaunchedBefore")
     }
@@ -28,6 +33,12 @@ struct Global {
   static func unlockSection(_ section: Section) {
     for chapter in section.chapters {
       unlockChapter(chapter.name)
+    }
+  }
+
+  static func unlockEverything() {
+    for chapterName in premiumChapters {
+      UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
     }
   }
 }

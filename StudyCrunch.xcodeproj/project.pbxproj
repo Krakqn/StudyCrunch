@@ -30,6 +30,9 @@
 		58A373622AE891E5003F20E6 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373612AE891E5003F20E6 /* Chapter.swift */; };
 		58A373642AE89207003F20E6 /* SectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373632AE89207003F20E6 /* SectionMenu.swift */; };
 		58A373662AE893A0003F20E6 /* ChapterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A373652AE893A0003F20E6 /* ChapterPage.swift */; };
+		BF0E79992B387DEF009B3174 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E79982B387DEF009B3174 /* StoreKitManager.swift */; };
+		BF0E799B2B387FB6009B3174 /* PropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF0E799A2B387FB6009B3174 /* PropertyList.plist */; };
+		BF0E799D2B388EED009B3174 /* PurchasableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E799C2B388EED009B3174 /* PurchasableItemView.swift */; };
 		BF241CBD2B3675E400B83B44 /* ShareOverlayParticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241CBB2B3675E400B83B44 /* ShareOverlayParticles.swift */; };
 		BF241CBE2B3675E400B83B44 /* ShareOverlayFingerLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF241CBC2B3675E400B83B44 /* ShareOverlayFingerLight.swift */; };
 		BF59A2312B3586DC002B40A7 /* AVLooperPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59A2302B3586DC002B40A7 /* AVLooperPlayer.swift */; };
@@ -115,6 +118,10 @@
 		58A373612AE891E5003F20E6 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		58A373632AE89207003F20E6 /* SectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMenu.swift; sourceTree = "<group>"; };
 		58A373652AE893A0003F20E6 /* ChapterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterPage.swift; sourceTree = "<group>"; };
+		BF0E79952B386D21009B3174 /* Product.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Product.storekit; sourceTree = "<group>"; };
+		BF0E79982B387DEF009B3174 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		BF0E799A2B387FB6009B3174 /* PropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PropertyList.plist; sourceTree = "<group>"; };
+		BF0E799C2B388EED009B3174 /* PurchasableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasableItemView.swift; sourceTree = "<group>"; };
 		BF241CBB2B3675E400B83B44 /* ShareOverlayParticles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareOverlayParticles.swift; sourceTree = "<group>"; };
 		BF241CBC2B3675E400B83B44 /* ShareOverlayFingerLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareOverlayFingerLight.swift; sourceTree = "<group>"; };
 		BF59A2302B3586DC002B40A7 /* AVLooperPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVLooperPlayer.swift; sourceTree = "<group>"; };
@@ -219,6 +226,9 @@
 				4341B0DB2AE6523D00C5CC11 /* ContentView.swift */,
 				BF69399C2B34AEE700AF3541 /* ViewModel.swift */,
 				4341B0DD2AE6523D00C5CC11 /* Assets.xcassets */,
+				BF0E79952B386D21009B3174 /* Product.storekit */,
+				BF0E79982B387DEF009B3174 /* StoreKitManager.swift */,
+				BF0E799A2B387FB6009B3174 /* PropertyList.plist */,
 				4341B0DF2AE6523D00C5CC11 /* Preview Content */,
 			);
 			path = StudyCrunch;
@@ -254,6 +264,7 @@
 			children = (
 				BFAF1DB62B3314F000310703 /* ShareWall */,
 				587F41142AE9E52000739263 /* MenuOption.swift */,
+				BF0E799C2B388EED009B3174 /* PurchasableItemView.swift */,
 				4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */,
 				E768441D2B1FF3180096114D /* MessageView.swift */,
 				E768441F2B1FF35E0096114D /* MailView.swift */,
@@ -522,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFAF1DD92B33FB0900310703 /* particle.mov in Resources */,
+				BF0E799B2B387FB6009B3174 /* PropertyList.plist in Resources */,
 				EC1AB2E42B100CEE00247971 /* computer-science.json in Resources */,
 				4341B0E12AE6523D00C5CC11 /* Preview Assets.xcassets in Resources */,
 				4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */,
@@ -550,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0E799D2B388EED009B3174 /* PurchasableItemView.swift in Sources */,
 				5882C2842AEB92760085D577 /* ChapterMenu.swift in Sources */,
 				BFAF1DCB2B3318DA00310703 /* ShareWallTrigger.swift in Sources */,
 				BF8226AA2B35ABEF00834832 /* draggableCard.swift in Sources */,
@@ -580,6 +593,7 @@
 				EC31DB262B13152800A777ED /* defaults.swift in Sources */,
 				BF8226B12B35AD6900834832 /* getOffsetAroundCircleForIndex.swift in Sources */,
 				BF69399D2B34AEE700AF3541 /* ViewModel.swift in Sources */,
+				BF0E79992B387DEF009B3174 /* StoreKitManager.swift in Sources */,
 				BF8226B52B35AEEF00834832 /* calculateDistance.swift in Sources */,
 				EC1AB2D82B0FFEBF00247971 /* FlashcardView.swift in Sources */,
 				4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */,
