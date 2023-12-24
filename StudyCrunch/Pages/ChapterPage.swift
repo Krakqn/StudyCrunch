@@ -79,11 +79,11 @@ struct ChapterPage: View {
       }
 
       if isShowingSuccessMessage {
-        Text("Secton Unlocked")
+        Text("Section Unlocked")
           .padding()
           .background(.green)
           .foregroundStyle(.white)
-          .clipShape(RoundedRectangle(cornerRadius: 10))
+          .clipShape(RoundedRectangle(cornerRadius: 16))
       }
     }
     .navigationTitle(chapter.name)
