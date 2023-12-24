@@ -111,17 +111,17 @@ struct ChapterPage: View {
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
+        viewModel.shareModalOpen = !success
+        showSuccessMessage()
       }
-      viewModel.shareModalOpen = !success
-      showSuccessMessage()
     }
     .onChange(of: resultMessage) { oldValue, newValue in
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
+        viewModel.shareModalOpen = !success
+        showSuccessMessage()
       }
-      viewModel.shareModalOpen = !success
-      showSuccessMessage()
     }
   }
 
