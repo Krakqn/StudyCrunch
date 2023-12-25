@@ -81,7 +81,7 @@ struct ChapterPage: View {
 
           VStack(spacing: 10) {
             Spacer()
-            Text("Share to unlock the chapter")
+            Text("Hold share to unlock the section")
               .opacity(75)
               .font(.system(size: 20))
               .padding(.horizontal, 20)
