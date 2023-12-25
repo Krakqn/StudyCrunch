@@ -143,9 +143,11 @@ struct ChapterPage: View {
         showSuccessMessage()
       }
     }
-    .onChange(of: storeKit.purchasedCourses) { _, _ in
-      if !storeKit.purchasedCourses.isEmpty {
-        viewModel.shareModalOpen = false
+    .onChange(of: storeKit.purchasedCourses) { oldValue, newValue in
+      if !self.chapter.restricted {
+        withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
+          self.t = 0.0
+        }
       }
     }
   }

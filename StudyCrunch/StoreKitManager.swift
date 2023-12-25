@@ -7,11 +7,14 @@
 
 import Foundation
 import StoreKit
+import OSLog
 
 class StoreKitManager: ObservableObject {
 
   @Published var storeProducts: [Product] = []
   @Published var purchasedCourses: [Product] = []
+
+  private let logger = Logger(subsystem: "StudyCrunch", category: "StoreKitManager")
 
   var updateListenerTask: Task<Void, Error>? = nil
 
@@ -45,8 +48,9 @@ class StoreKitManager: ObservableObject {
       for await result in Transaction.updates {
         do {
           let transaction = try self.checkVerified(result)
-          //the transaction is verified, deliver the content to the user await self.updateCustomerProductStatus)
-          //Always finish a transaction 
+          //the transaction is verified, deliver the content to the user 
+          await self.updateCustomerProductStatus()
+          //Always finish a transaction
           await transaction.finish()
         } catch {
           //storekit has a transaction that fails verification, don't delvier content to the user
@@ -118,7 +122,8 @@ class StoreKitManager: ObservableObject {
         print ("Transaction failed verification")
       }
       //finally assign the purchased products
-      self.purchasedCourses = purchasedCourses
+      self.purchasedCourses.removeAll()
+      self.purchasedCourses.append(contentsOf: purchasedCourses)
     }
   }
 
