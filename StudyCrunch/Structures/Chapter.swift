@@ -13,18 +13,21 @@ struct Chapter: Identifiable {
   let name: String
   let description: String?
   let markdown: String
-    var restricted: Bool {
-        Global.chapterLocked(name)
-    }
+  let courseName: String
+
+  var restricted: Bool {
+    let key = courseName + symbol
+    return Global.chapterLocked(key)
+  }
   var flashcards: [Flashcard] = []
   
-  init(symbol: String, name: String, description: String? = nil, markdown: String, flashcards: [Flashcard] = []) {
+  init(symbol: String, name: String, description: String? = nil, markdown: String, flashcards: [Flashcard] = [], courseName: String) {
     self.symbol = symbol
     self.name = name
     self.description = description
     self.markdown = markdown
     self.flashcards = flashcards
-      Global.lockChapters()//probably not the best place to put this
+    self.courseName = courseName
   }
   
   class Builder {
@@ -34,7 +37,8 @@ struct Chapter: Identifiable {
     var markdown: String? = nil
     var restricted: Bool = false
     var flashcards: [Flashcard] = []
-    
+    var courseName: String? = nil
+
     init() {}
     
     @discardableResult func setIndex(index: Int) -> Builder {
@@ -67,19 +71,25 @@ struct Chapter: Identifiable {
       }
       return self
     }
-    
+
+    @discardableResult func setCourseName(courseName: String) -> Builder {
+      self.courseName = courseName
+      return self
+    }
+
     func build() throws -> Chapter {
       guard
         let index = self.index,
         let name = self.name,
-        let markdown = self.markdown
+        let markdown = self.markdown,
+        let courseName = self.courseName
       else {
         throw BuildError.incompleteBuilder
       }
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, flashcards: flashcards)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, flashcards: flashcards, courseName: courseName)
     }
   }
 }
