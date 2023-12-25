@@ -80,7 +80,8 @@ struct Course: Identifiable {
       let longDescription = self.longDescription ?? self.shortDescription
       
       var sectionBuilders: [Section.Builder] = []
-      for chapterBuilder in chapterBuilders {
+      var premiumChapters = [String]()
+      for (index, chapterBuilder) in chapterBuilders.enumerated() {
         var append = true
         if let lastSectionBuilder = sectionBuilders.last {
           append = lastSectionBuilder.chapterBuilders.count >= 5
@@ -88,15 +89,24 @@ struct Course: Identifiable {
         
         if append {
           sectionBuilders.append(Section.Builder()
-            .setIndex(index: sectionBuilders.count))
+            .setIndex(index: sectionBuilders.count)
+            .setCourseName(courseName: name))
         }
         
         if let lastSectionBuilder = sectionBuilders.last {
           lastSectionBuilder
             .addChapterBuilders(chapterBuilders: [chapterBuilder])
         }
+        // lock the last 2 chapters in each section
+        if index % 5 == 3 || index % 5 == 4 {
+          // key: course name + chapter number (symbol)
+          // eg: "Computer Science2" corresponding to Computer Science Chapter 2
+          let chapterKey = name + "\(index + 1)"
+          premiumChapters.append(chapterKey)
+        }
       }
-      
+      Global.lockChapters(premiumChapters)
+
       let sections = try sectionBuilders.map { try $0.build() }
       
       return Course(emoji: emoji, name: name, shortDescription: shortDescription, longDescription: longDescription, sections: sections)

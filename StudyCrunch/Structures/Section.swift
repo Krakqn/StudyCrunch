@@ -13,8 +13,9 @@ struct Section: Identifiable {
   let name: String
   let description: String?
   let chapters: [Chapter]
-  
-  init(symbol: String? = nil, name: String, description: String? = nil, chapters: [Chapter]) throws {
+  let courseName: String
+
+  init(symbol: String? = nil, name: String, description: String? = nil, chapters: [Chapter], courseName: String) throws {
     guard chapters.count <= 5 else {
       throw InitError.where("No more than five chapters allowed per section")
     }
@@ -23,11 +24,12 @@ struct Section: Identifiable {
     self.name = name
     self.description = description
     self.chapters = chapters
+    self.courseName = courseName
   }
   
   class Builder {
     var index: Int? = nil
-    var course: Course? = nil
+    var courseName: String? = nil
     var chapterBuilders: [Chapter.Builder] = []
     
     init() {}
@@ -36,7 +38,12 @@ struct Section: Identifiable {
       self.index = index
       return self
     }
-    
+
+    @discardableResult func setCourseName(courseName: String) -> Builder {
+      self.courseName = courseName
+      return self
+    }
+
     @discardableResult func setChapters(chapterBuilders: [Chapter.Builder]) -> Builder {
       self.chapterBuilders = chapterBuilders
       return self
@@ -48,7 +55,7 @@ struct Section: Identifiable {
     }
     
     func build() throws -> Section {
-      guard let index = self.index else {
+      guard let index = self.index, let courseName = courseName else {
         throw BuildError.incompleteBuilder
       }
       
@@ -57,13 +64,14 @@ struct Section: Identifiable {
       let chapters = try self.chapterBuilders.enumerated().map {
         try $1
           .setIndex(index: index * 5 + $0)
+          .setCourseName(courseName: courseName)
           .build()
       }
       
       let start = index * 5, end = start + chapters.count - 1
       let description = "Chapters \(start + 1)-\(end + 1)"
       
-      return try Section(symbol: symbol, name: name, description: description, chapters: chapters)
+      return try Section(symbol: symbol, name: name, description: description, chapters: chapters, courseName: courseName)
     }
   }
 }

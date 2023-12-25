@@ -41,6 +41,15 @@ struct ContentView: View {
             Chapter.Builder()
               .setName(name: "Depth-first search")
               .setMarkdown(markdownFilename: "sample"),
+            Chapter.Builder()
+              .setName(name: "Complexity")
+              .setMarkdown(markdownFilename: "sample"),
+            Chapter.Builder()
+              .setName(name: "Depth-first search")
+              .setMarkdown(markdownFilename: "sample"),
+            Chapter.Builder()
+              .setName(name: "Depth-first search")
+              .setMarkdown(markdownFilename: "sample"),
           ])
           .build()
       ])

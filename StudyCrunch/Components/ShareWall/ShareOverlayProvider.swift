@@ -61,6 +61,7 @@ struct ShareOverlayProvider<Content: View>: View {
   //  @State private var credIDToSelect: UUID? = nil
   @State private var accTransKit: AccountTransitionKit = .init()
   @StateObject private var viewModel = ViewModel()
+  @StateObject var storeKit = StoreKitManager()
 
   var content: () -> Content
   
@@ -122,5 +123,6 @@ struct ShareOverlayProvider<Content: View>: View {
     .ignoresSafeArea(.all)
     .allowsHitTesting(!(showOverlay || accTransKit.passLens))
     .environmentObject(viewModel)
+    .environmentObject(storeKit)
   }
 }
