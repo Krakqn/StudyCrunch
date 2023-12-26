@@ -25,6 +25,14 @@ struct ShareOverlayParticles: View, Equatable {
         }
         .mask(Rectangle().fill(EllipticalGradient(colors: [.black, .black.opacity(0)], center: .bottom, startRadiusFraction: 0, endRadiusFraction: 0.75)))
         .blendMode(.screen)
+        .onAppear {
+          // Prevent background music from being paused
+          do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient)
+          } catch {
+
+          }
+        }
   }
 }
 
