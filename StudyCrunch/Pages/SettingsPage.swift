@@ -12,10 +12,30 @@ struct SettingsPage: View {
   @State var isFAQPanelPresented = false
   @StateObject var storeKit = StoreKitManager()
 
+  @Environment(\.openURL) var openURL
+
   var body: some View {
     NavigationView {
       VStack {
-        // add discord button here
+        Button {
+          openURL(appUrl)
+        } label: {
+          HStack() {
+            Image(.discordIcon).resizable().scaledToFit().frame(width: 40)
+            VStack(alignment: .leading, spacing: 2) {
+              Text("Join our discord!").fontSize(18, .semibold)
+              Text("This is your invite to a community of trailblazers and problem solvers!").fontSize(16).opacity(0.75)
+            }
+            .padding(.leading, 5)
+            Spacer(minLength: 0)
+          }
+          .padding(.horizontal, 16)
+          .padding(.vertical, 12)
+          .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color("discordColor").opacity(0.25)))
+          .padding(.horizontal)
+        }
+        .buttonStyle(.plain)
+
         Button {
           isFAQPanelPresented.toggle()
         } label: {
@@ -23,25 +43,11 @@ struct SettingsPage: View {
             .padding(.horizontal)
         }
 
-        ForEach(storeKit.storeProducts) { product in
-          HStack {
-            Text("\(product.displayName):").foregroundStyle(.white)
-              .padding(.leading, 55)
-            Spacer()
-            Button {
-              Task {
-                try await storeKit.purchase(product)
-              }
-            } label: {
-              PurchasableItemView(storeKit: storeKit, product: product)
-            }
-          }
-          .padding()
-          .frame(maxWidth: .infinity, alignment: .leading)
-          .frame(height: 80)
-          .background(Color("BackgroundColor"))
-          .cornerRadius(10)
-          .padding(.horizontal)
+        Button {
+          openURL(feedbackUrl)
+        } label: {
+          MenuOption(symbol: "💭", name: "Feedback", description: "Feedback or Request Subjects")
+            .padding(.horizontal)
         }
 
         Spacer()
