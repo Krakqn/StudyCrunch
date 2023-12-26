@@ -18,6 +18,20 @@ struct SettingsPage: View {
     NavigationView {
       VStack {
         Button {
+          isFAQPanelPresented.toggle()
+        } label: {
+          MenuOption(symbol: "❓", name: "FAQ", description: "Frequently Asked Questions")
+            .padding(.horizontal)
+        }
+
+        Button {
+          openURL(feedbackUrl)
+        } label: {
+          MenuOption(symbol: "💭", name: "Feedback", description: "Feedback or Request Subjects")
+            .padding(.horizontal)
+        }
+
+        Button {
           openURL(appUrl)
         } label: {
           HStack() {
@@ -35,20 +49,6 @@ struct SettingsPage: View {
           .padding(.horizontal)
         }
         .buttonStyle(.plain)
-
-        Button {
-          isFAQPanelPresented.toggle()
-        } label: {
-          MenuOption(symbol: "❓", name: "FAQ", description: "Frequently Asked Questions")
-            .padding(.horizontal)
-        }
-
-        Button {
-          openURL(feedbackUrl)
-        } label: {
-          MenuOption(symbol: "💭", name: "Feedback", description: "Feedback or Request Subjects")
-            .padding(.horizontal)
-        }
 
         Spacer()
       }
