@@ -56,7 +56,7 @@ struct ShareMenu: View {
             .padding(.top, 64)
             .padding(.horizontal, 16)
             .sheet(isPresented: $viewModel.isShowingMessageView) {
-              MessageView(isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+              MessageView(message: "", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
             }
             .sheet(isPresented: $viewModel.isShowingMailView) {
               MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)

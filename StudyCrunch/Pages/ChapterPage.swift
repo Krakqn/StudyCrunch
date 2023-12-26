@@ -120,7 +120,7 @@ struct ChapterPage: View {
       MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
     }
     .sheet(isPresented: $viewModel.isShowingMessageView) {
-      MessageView(isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+      MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
     }
     .onAppear {
       if self.chapter.restricted {

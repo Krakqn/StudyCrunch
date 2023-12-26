@@ -11,6 +11,8 @@ import MessageUI
 
 struct MessageView: UIViewControllerRepresentable {
 
+    var message: String
+
     @Binding var isShowing: Bool
     @Binding var result: MessageComposeResult
 
@@ -43,6 +45,7 @@ struct MessageView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<MessageView>) -> MFMessageComposeViewController {
         let vc = MFMessageComposeViewController()
         vc.messageComposeDelegate = context.coordinator
+        vc.body = message
         return vc
     }
 
