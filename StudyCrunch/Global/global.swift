@@ -22,9 +22,9 @@ struct Global {
   }
 
   static func lockChapters(_ premiumChapters: [String]) { //lock chapters on first launch
-    logger.debug("lockChapters: \(premiumChapters)")
-    self.premiumChapters = premiumChapters
     if !UserDefaults.standard.bool(forKey: "AppHasBeenLaunchedBefore") {
+      logger.debug("lockChapters: \(premiumChapters)")
+      self.premiumChapters = premiumChapters
       for chapterName in premiumChapters {
         UserDefaults.standard.setValue(true, forKey: "\(chapterName)Locked")
       }

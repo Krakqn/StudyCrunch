@@ -8,3 +8,4 @@
 import Foundation
 
 let appUrl = URL(string: "https://google.com")!
+let feedbackUrl = URL(string: "https://google.com")!
