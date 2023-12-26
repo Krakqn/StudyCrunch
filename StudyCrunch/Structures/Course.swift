@@ -105,7 +105,7 @@ struct Course: Identifiable {
           premiumChapters.append(chapterKey)
         }
       }
-      Global.lockChapters(premiumChapters)
+      Global.lockChapters(premiumChapters, in: name)
 
       let sections = try sectionBuilders.map { try $0.build() }
       
