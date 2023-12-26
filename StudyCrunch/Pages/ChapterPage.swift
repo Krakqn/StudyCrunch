@@ -64,7 +64,7 @@ struct ChapterPage: View {
             Image(systemName: chapter.restricted ? "lock.fill" : "lock.open.fill")
               .font(.system(size: 64))
               .padding(.top, 100)
-            Text(chapter.restricted ? "Chapter locked!" : "Chapter unlocked!")
+            Text(chapter.restricted ? "Chapter locked!" : "Section unlocked!")
               .font(.system(size: 32))
             Text(chapter.restricted ? "Choose a method below to unlock it" : "")
               .frame(height: 32)
