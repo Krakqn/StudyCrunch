@@ -14,7 +14,17 @@ struct MenuOption: View {
   var name: String
   var description: String?
   var disabled = false
-  
+  var accessoryIcon: String? = nil
+
+  init(symbol: String? = nil, icon: String? = nil, name: String, description: String? = nil, disabled: Bool = false, accessoryIcon: String? = nil) {
+    self.symbol = symbol
+    self.icon = icon
+    self.name = name
+    self.description = description
+    self.disabled = disabled
+    self.accessoryIcon = accessoryIcon
+  }
+
   var body: some View {
     HStack(spacing: 15) {
       if let icon = icon {
@@ -32,6 +42,10 @@ struct MenuOption: View {
             .font(.system(size: 15))
             .opacity(0.8)
         }
+      }
+      if let accessoryIcon {
+        Spacer()
+        Image(systemName: accessoryIcon)
       }
     }
     .padding()

@@ -13,7 +13,6 @@ struct Global {
   private static let logger = Logger(subsystem: "StudyCrunch", category: "Global")
 
   static func chapterLocked(_ chapterName: String) -> Bool {
-    logger.debug("chapterLocked: \(chapterName)")
     return UserDefaults.standard.bool(forKey: "\(chapterName)Locked")
   }
 

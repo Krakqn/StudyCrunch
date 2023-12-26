@@ -61,6 +61,16 @@ struct ChapterPage: View {
       .overlay {
         ZStack {
           VStack(spacing: 10) {
+            Image(systemName: chapter.restricted ? "lock.fill" : "lock.open.fill")
+              .font(.system(size: 64))
+              .padding(.top, 100)
+            Text(chapter.restricted ? "Chapter locked!" : "Chapter unlocked!")
+              .font(.system(size: 32))
+            Text(chapter.restricted ? "Choose a method below to unlock it" : "")
+              .frame(height: 32)
+
+            Spacer()
+
             Text("Donate once to unlock everything")
               .opacity(75)
               .font(.system(size: 20))
@@ -77,10 +87,9 @@ struct ChapterPage: View {
                 .font(.system(size: 20).bold())
                 .foregroundColor(Color("ForegroundColor"))
             }
-          }
 
-          VStack(spacing: 10) {
             Spacer()
+
             Text("Hold share to unlock the section")
               .opacity(75)
               .font(.system(size: 20))
@@ -111,7 +120,7 @@ struct ChapterPage: View {
       MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
     }
     .sheet(isPresented: $viewModel.isShowingMessageView) {
-      MessageView(isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+      MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
     }
     .onAppear {
       if self.chapter.restricted {
@@ -131,16 +140,20 @@ struct ChapterPage: View {
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
-        viewModel.shareModalOpen = !success
         showSuccessMessage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+          viewModel.shareModalOpen = !success
+        }
       }
     }
     .onChange(of: resultMessage) { oldValue, newValue in
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
-        viewModel.shareModalOpen = !success
         showSuccessMessage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+          viewModel.shareModalOpen = !success
+        }
       }
     }
     .onChange(of: storeKit.purchasedCourses) { oldValue, newValue in

@@ -18,7 +18,8 @@ struct ChapterMenu: View {
           NavigationLink {
             ChapterPage(chapter: chapter, section: section)
           } label: {
-            MenuOption(symbol: chapter.symbol, name: chapter.name, description: chapter.description)
+            let accessoryIcon = chapter.restricted ? "lock" : nil
+            MenuOption(symbol: chapter.symbol, name: chapter.name, description: chapter.description, accessoryIcon: accessoryIcon)
               .padding(.horizontal)
           }
         }
