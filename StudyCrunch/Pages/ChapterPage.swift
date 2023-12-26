@@ -62,6 +62,7 @@ struct ChapterPage: View {
           VStack(spacing: 10) {
             Image(systemName: chapter.restricted ? "lock.fill" : "lock.open.fill")
               .font(.system(size: 64))
+              .contentTransition(.symbolEffect(.replace))
               .padding(.top, 100)
             Text(chapter.restricted ? "Chapter locked!" : "Section unlocked!")
               .font(.system(size: 32))
