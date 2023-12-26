@@ -46,6 +46,7 @@ struct MenuOption: View {
       if let accessoryIcon {
         Spacer()
         Image(systemName: accessoryIcon)
+          .padding()
       }
     }
     .padding()
