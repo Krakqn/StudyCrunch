@@ -19,7 +19,6 @@ struct ChapterPage: View {
   @State private var flashcards: [Flashcard] = []
   @State private var resultMail: MFMailComposeResult = .failed
   @State private var resultMessage: MessageComposeResult = .failed
-  @State private var isShowingSuccessMessage: Bool = false
 
   @EnvironmentObject var viewModel: ViewModel
   @EnvironmentObject var storeKit: StoreKitManager
@@ -106,14 +105,6 @@ struct ChapterPage: View {
         }
         .opacity(self.t)
       }
-
-      if isShowingSuccessMessage {
-        Text("Section Unlocked")
-          .padding()
-          .background(.green)
-          .foregroundStyle(.white)
-          .clipShape(RoundedRectangle(cornerRadius: 16))
-      }
     }
     .navigationTitle(chapter.name)
     .sheet(isPresented: $viewModel.isShowingMailView) {
@@ -140,7 +131,6 @@ struct ChapterPage: View {
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
-        showSuccessMessage()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           viewModel.shareModalOpen = !success
         }
@@ -150,7 +140,6 @@ struct ChapterPage: View {
       let success = resultMail == .sent || resultMessage == .sent
       if success {
         Global.unlockSection(section)
-        showSuccessMessage()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           viewModel.shareModalOpen = !success
         }
@@ -161,19 +150,6 @@ struct ChapterPage: View {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
           self.t = 0.0
         }
-      }
-    }
-  }
-
-  private func showSuccessMessage() {
-    withAnimation {
-      isShowingSuccessMessage.toggle()
-    }
-
-    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
-      withAnimation {
-        isShowingSuccessMessage.toggle()
-        timer.invalidate()
       }
     }
   }
