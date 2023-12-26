@@ -71,6 +71,7 @@ class StoreKitManager: ObservableObject {
     }
   }
 
+  @discardableResult
   func purchase(_ product: Product) async throws -> Transaction? {
     //make a purchase request - optional parameters available
     let result = try await product.purchase()
