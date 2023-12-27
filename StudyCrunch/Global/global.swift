@@ -14,7 +14,6 @@ struct Global {
 
   static func chapterLocked(_ chapterName: String) -> Bool {
     let locked = UserDefaults.standard.bool(forKey: "\(chapterName)Locked")
-    logger.debug("chapterLocked? \(chapterName) \(locked)")
     return locked
   }
 
