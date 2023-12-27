@@ -28,7 +28,7 @@ struct DraggableCard: ViewModifier {
     content
     .rotationEffect(Angle(degrees: interpolatedX([-35,35], true)))
     .offset(offset)
-    .highPriorityGesture(
+    .gesture(
       index != 0
       ? nil
       : DragGesture(minimumDistance: 5)
