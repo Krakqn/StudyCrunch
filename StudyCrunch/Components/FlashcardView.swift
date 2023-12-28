@@ -11,10 +11,10 @@ extension View {
   func cardFace(_ size: Double) -> some View {
     self
       .padding(.horizontal, 24)
+      .padding(.vertical, 10)
       .frame(width: size)
       .frame(minHeight: size * 0.75)
       .multilineTextAlignment(.center)
-      .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Color("CardColor")))
   }
 }
 
