@@ -55,6 +55,7 @@ struct CardFlipper<Content: View>: View {
             .rotation3DEffect(Angle(degrees: frontDegree), axis: (x: 0, y: 1, z: 0))
         }
         .frame(height: cardSize * 0.75)
+        .background(Color("CardColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
       }
       if showBack {
@@ -63,6 +64,7 @@ struct CardFlipper<Content: View>: View {
             .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
         }
         .frame(height: cardSize * 0.75)
+        .background(Color("CardColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
       }
     }.highPriorityGesture(TapGesture().onEnded {
