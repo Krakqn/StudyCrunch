@@ -13,8 +13,8 @@ struct ContentView: View {
   var body: some View {
     TabView {
       CourseMenu(courses: [
-        try! CSCourse().course,
-        try! EnglishCourse().course,
+        CSCourse().course,
+        EnglishCourse().course,
       ])
       .tabItem {
         Label("Courses", systemImage: "book.closed")
