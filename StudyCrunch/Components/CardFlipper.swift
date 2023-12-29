@@ -52,20 +52,20 @@ struct CardFlipper<Content: View>: View {
       if showFront {
         ScrollView(.vertical) {
           front
-            .rotation3DEffect(Angle(degrees: frontDegree), axis: (x: 0, y: 1, z: 0))
         }
         .frame(height: cardSize * 0.75)
         .background(Color("CardColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .rotation3DEffect(Angle(degrees: frontDegree), axis: (x: 0, y: 1, z: 0))
       }
       if showBack {
         ScrollView(.vertical) {
           back
-            .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
         }
         .frame(height: cardSize * 0.75)
         .background(Color("CardColor"))
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
       }
     }.highPriorityGesture(TapGesture().onEnded {
       flipCard()
