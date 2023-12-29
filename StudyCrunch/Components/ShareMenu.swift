@@ -59,7 +59,7 @@ struct ShareMenu: View {
               MessageView(message: "", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
             }
             .sheet(isPresented: $viewModel.isShowingMailView) {
-              MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+              MailView(message: "", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
             }
             .onChange(of: resultMail) { oldValue, newValue in
                 let success = resultMail == .sent || resultMessage == .sent
