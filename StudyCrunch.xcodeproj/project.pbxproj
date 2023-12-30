@@ -60,6 +60,8 @@
 		BFAF1DCF2B331DB700310703 /* ShareOverlayTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAF1DCE2B331DB700310703 /* ShareOverlayTarget.swift */; };
 		BFAF1DD12B3325B200310703 /* ShareOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAF1DD02B3325B200310703 /* ShareOverlayView.swift */; };
 		BFAF1DD92B33FB0900310703 /* particle.mov in Resources */ = {isa = PBXBuildFile; fileRef = BFAF1DD82B33FB0900310703 /* particle.mov */; };
+		BFD989642B40962F0084A8A6 /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD989632B40962F0084A8A6 /* PDFKitRepresentedView.swift */; };
+		BFD989672B40AA440084A8A6 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BFD989662B40AA440084A8A6 /* sample.pdf */; };
 		E768441E2B1FF3180096114D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441D2B1FF3180096114D /* MessageView.swift */; };
 		E76844202B1FF35E0096114D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441F2B1FF35E0096114D /* MailView.swift */; };
 		EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D22B0FF75800247971 /* Flashcard.swift */; };
@@ -150,6 +152,8 @@
 		BFAF1DCE2B331DB700310703 /* ShareOverlayTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareOverlayTarget.swift; sourceTree = "<group>"; };
 		BFAF1DD02B3325B200310703 /* ShareOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareOverlayView.swift; sourceTree = "<group>"; };
 		BFAF1DD82B33FB0900310703 /* particle.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = particle.mov; sourceTree = "<group>"; };
+		BFD989632B40962F0084A8A6 /* PDFKitRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedView.swift; sourceTree = "<group>"; };
+		BFD989662B40AA440084A8A6 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		E768441D2B1FF3180096114D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		E768441F2B1FF35E0096114D /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		EC1AB2D02B0FF5AA00247971 /* computer-science.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "computer-science.json"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				EC31DB292B13169A00A777ED /* FatButton.swift */,
 				BF59A2302B3586DC002B40A7 /* AVLooperPlayer.swift */,
 				BF8226B82B35B06500834832 /* RR.swift */,
+				BFD989632B40962F0084A8A6 /* PDFKitRepresentedView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -369,9 +374,18 @@
 			path = videos;
 			sourceTree = "<group>";
 		};
+		BFD989652B40AA210084A8A6 /* pdf */ = {
+			isa = PBXGroup;
+			children = (
+				BFD989662B40AA440084A8A6 /* sample.pdf */,
+			);
+			path = pdf;
+			sourceTree = "<group>";
+		};
 		EC1AB2CF2B0FF59C00247971 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				BFD989652B40AA210084A8A6 /* pdf */,
 				EC1AB2D12B0FF6D200247971 /* flashcards */,
 				BFAF1DD72B33FAE900310703 /* videos */,
 				BF639A3B2B31DDC700E6AABB /* markdown */,
@@ -544,6 +558,7 @@
 				4341B0E12AE6523D00C5CC11 /* Preview Assets.xcassets in Resources */,
 				4341B0DE2AE6523D00C5CC11 /* Assets.xcassets in Resources */,
 				BF639A3D2B32065500E6AABB /* sample.md in Resources */,
+				BFD989672B40AA440084A8A6 /* sample.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +591,7 @@
 				5882C28C2AF1CB6C0085D577 /* utils.swift in Sources */,
 				EC31DB282B1315FB00A777ED /* dismissKeyboard.swift in Sources */,
 				EC31DB222B130F6200A777ED /* fontSize.swift in Sources */,
+				BFD989642B40962F0084A8A6 /* PDFKitRepresentedView.swift in Sources */,
 				BF59A2312B3586DC002B40A7 /* AVLooperPlayer.swift in Sources */,
 				BF241CBE2B3675E400B83B44 /* ShareOverlayFingerLight.swift in Sources */,
 				BF241CBD2B3675E400B83B44 /* ShareOverlayParticles.swift in Sources */,

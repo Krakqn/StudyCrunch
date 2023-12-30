@@ -14,6 +14,7 @@ struct Chapter: Identifiable {
   let description: String?
   let markdown: String
   let courseName: String
+  let pdfData: Data?
 
   var restricted: Bool {
     let key = courseName + symbol
@@ -21,13 +22,14 @@ struct Chapter: Identifiable {
   }
   var flashcards: [Flashcard] = []
   
-  init(symbol: String, name: String, description: String? = nil, markdown: String, flashcards: [Flashcard] = [], courseName: String) {
+  init(symbol: String, name: String, description: String? = nil, markdown: String, flashcards: [Flashcard] = [], courseName: String, pdfData: Data?) {
     self.symbol = symbol
     self.name = name
     self.description = description
     self.markdown = markdown
     self.flashcards = flashcards
     self.courseName = courseName
+    self.pdfData = pdfData
   }
   
   class Builder {
@@ -38,6 +40,7 @@ struct Chapter: Identifiable {
     var restricted: Bool = false
     var flashcards: [Flashcard] = []
     var courseName: String? = nil
+    var pdfData: Data? = nil
 
     init() {}
     
@@ -77,6 +80,15 @@ struct Chapter: Identifiable {
       return self
     }
 
+    @discardableResult func setPdfData(filename: String) -> Builder {
+      if let url = Bundle.main.url(forResource: filename, withExtension: "pdf"),
+         let pdfData = try? Data(contentsOf: url)
+      {
+        self.pdfData = pdfData
+      }
+      return self
+    }
+
     func build() throws -> Chapter {
       guard
         let index = self.index,
@@ -89,7 +101,7 @@ struct Chapter: Identifiable {
       
       let symbol = "\(index + 1)"
       
-      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, flashcards: flashcards, courseName: courseName)
+      return Chapter(symbol: symbol, name: name, description: self.description, markdown: markdown, flashcards: flashcards, courseName: courseName, pdfData: pdfData)
     }
   }
 }

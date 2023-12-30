@@ -37,6 +37,10 @@ struct ChapterPage: View {
     ZStack {
       ScrollView {
         VStack(spacing: 24) {
+          if let pdf = chapter.pdfData {
+            PDFKitRepresentedView(pdf, singlePage: false)
+              .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 1.414)
+          }
           HStack {
             Markdown(chapter.markdown)
               .markdownTheme(.docC)
