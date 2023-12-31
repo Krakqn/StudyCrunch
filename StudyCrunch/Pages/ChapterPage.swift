@@ -37,6 +37,10 @@ struct ChapterPage: View {
     ZStack {
       ScrollView {
         VStack(spacing: 24) {
+          if let pdf = chapter.pdfData {
+            PDFKitRepresentedView(pdf, singlePage: false)
+              .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 1.414)
+          }
           HStack {
             Markdown(chapter.markdown)
               .markdownTheme(.docC)
@@ -109,7 +113,7 @@ struct ChapterPage: View {
     }
     .navigationTitle(chapter.name)
     .sheet(isPresented: $viewModel.isShowingMailView) {
-      MailView(isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+      MailView(message: "initial message", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
     }
     .sheet(isPresented: $viewModel.isShowingMessageView) {
       MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)

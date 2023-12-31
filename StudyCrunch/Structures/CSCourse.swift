@@ -16,7 +16,8 @@ struct CSCourse {
           .setName(name: "Variables")
           .setDescription(description: "Super useful")
           .setFlashcards(jsonFileName: "computer-science")
-          .setMarkdown(markdownFilename: "sample"),
+          .setMarkdown(markdownFilename: "sample")
+          .setPdfData(filename: "sample"),
         Chapter.Builder()
           .setName(name: "Loops")
           .setMarkdown(markdownFilename: "sample"),
