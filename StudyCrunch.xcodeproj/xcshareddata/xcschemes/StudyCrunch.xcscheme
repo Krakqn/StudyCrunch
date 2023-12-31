@@ -73,6 +73,13 @@
             ReferencedContainer = "container:StudyCrunch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "CG_PDF_VERBOSE"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../StudyCrunch/Product.storekit">
       </StoreKitConfigurationFileReference>
