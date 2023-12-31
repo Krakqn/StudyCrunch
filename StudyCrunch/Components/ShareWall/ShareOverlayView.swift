@@ -42,8 +42,5 @@ struct ShareOverlayView: View, Equatable {
     .multilineTextAlignment(.center)
     .ignoresSafeArea(.all)
     .allowsHitTesting(false)
-    .onAppear {
-      print("AccountSwitcherOverlayView appear")
-    }
   }
 }

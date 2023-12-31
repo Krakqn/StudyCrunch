@@ -26,7 +26,6 @@ struct ShareWallTrigger<Content: View>: View {
         if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
         viewModel.shareModalOpen = true
       }, onPressEnded: {
-        print("onPressEnded transmitter.showing: ", transmitter.showing)
         if transmitter.showing {
           transmitter.showing = false
           return

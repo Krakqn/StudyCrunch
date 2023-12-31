@@ -80,7 +80,6 @@ struct ShareMenu: View {
   
   func yourFunction() {
     // Add your code here
-    print("Button tapped")
     // Call any other functions or perform actions you need
   }
 }

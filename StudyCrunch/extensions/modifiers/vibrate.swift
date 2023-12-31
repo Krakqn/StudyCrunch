@@ -7,11 +7,11 @@
 
 import SwiftUI
 import CoreHaptics
-
+import OSLog
 
 
 struct VibrateModifier<T: Equatable>: ViewModifier {
-  
+
   var vibration: Vibration
   var value: T
   var disabled: Bool
@@ -57,6 +57,9 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
   }
   
   class HapticHolder: ObservableObject {
+
+    private let logger = Logger(subsystem: "StudyCrunch", category: "HapticHolder")
+
     private var engine: CHHapticEngine? = nil
     private var continuousHapticTimer: Timer? = nil
     private var engineNeedsStart = true
@@ -73,7 +76,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       do {
         try continuousPlayer.start(atTime: CHHapticTimeImmediate)
       } catch let error {
-        print("Error starting the continuous haptic player: \(error)")
+        logger.error("Error starting the continuous haptic player: \(error)")
       }
       
     }
@@ -84,7 +87,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       do {
         try continuousPlayer.stop(atTime: CHHapticTimeImmediate)
       } catch let error {
-        print("Error stopping the continuous haptic player: \(error)")
+        self.logger.error("Error stopping the continuous haptic player: \(error)")
       }
       
     }
@@ -102,7 +105,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       do {
         try continuousPlayer.sendParameters([intensityParameter, sharpnessParameter], atTime: 0)
       } catch let error {
-        print("Dynamic Parameter Error: \(error)")
+        self.logger.error("Dynamic Parameter Error: \(error)")
       }
       
       setupTimer()
@@ -129,7 +132,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
         let player = try engine.makePlayer(with: pattern)
         try player.start(atTime: CHHapticTimeImmediate)
       } catch let error {
-        print("Error creating a haptic transient pattern: \(error)")
+        logger.error("Error creating a haptic transient pattern: \(error)")
       }
     }
     
@@ -138,7 +141,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       
       engine.stop(completionHandler: { error in
         if let error = error {
-          print("Haptic Engine Shutdown Error: \(error)")
+          self.logger.error("Haptic Engine Shutdown Error: \(error)")
           return
         }
         self.engineNeedsStart = true
@@ -150,7 +153,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       
       engine.start(completionHandler: { error in
         if let error = error {
-          print("Haptic Engine Startup Error: \(error)")
+          self.logger.error("Haptic Engine Startup Error: \(error)")
           return
         }
         self.engineNeedsStart = false
@@ -169,35 +172,35 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
       
       // The stopped handler alerts you of engine stoppage.
       engine.stoppedHandler = { reason in
-        print("Stop Handler: The engine stopped for reason: \(reason.rawValue)")
+        self.logger.info("Stop Handler: The engine stopped for reason: \(reason.rawValue)")
         switch reason {
         case .audioSessionInterrupt:
-          print("Audio session interrupt")
+          self.logger.info("Audio session interrupt")
         case .applicationSuspended:
-          print("Application suspended")
+          self.logger.info("Application suspended")
         case .idleTimeout:
-          print("Idle timeout")
+          self.logger.info("Idle timeout")
         case .systemError:
-          print("System error")
+          self.logger.info("System error")
         case .notifyWhenFinished:
-          print("Playback finished")
+          self.logger.info("Playback finished")
         case .gameControllerDisconnect:
-          print("Controller disconnected.")
+          self.logger.info("Controller disconnected.")
         case .engineDestroyed:
-          print("Engine destroyed.")
+          self.logger.info("Engine destroyed.")
         @unknown default:
-          print("Unknown error")
+          self.logger.info("Unknown error")
         }
       }
       
       engine.resetHandler = {
-        print("Reset Handler: Restarting the engine.")
+        self.logger.info("Reset Handler: Restarting the engine.")
         do {
           try engine.start()
           self.engineNeedsStart = false
           self.createContinuousHapticPlayer()
         } catch {
-          print("Failed to start the engine")
+          self.logger.error("Failed to start the engine")
         }
       }
       
@@ -215,7 +218,7 @@ struct VibrateModifier<T: Equatable>: ViewModifier {
         let pattern = try CHHapticPattern(events: [continuousEvent], parameters: [])
         continuousPlayer = try engine.makeAdvancedPlayer(with: pattern)
       } catch let error {
-        print("Pattern Player Creation Error: \(error)")
+        self.logger.error("Pattern Player Creation Error: \(error)")
       }
     }
     

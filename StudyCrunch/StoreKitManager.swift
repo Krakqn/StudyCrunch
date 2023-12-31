@@ -54,7 +54,7 @@ class StoreKitManager: ObservableObject {
           await transaction.finish()
         } catch {
           //storekit has a transaction that fails verification, don't delvier content to the user
-          print("Transaction failed verification")
+          self.logger.error("Transaction failed verification")
         }
       }
     }
@@ -67,7 +67,7 @@ class StoreKitManager: ObservableObject {
       storeProducts = try await Product.products(for: productDict.values)
       // iterate the "type" if there are multiple product types.
     } catch {
-      print("Failed - error retrieving products \(error)")
+      self.logger.error("Failed - error retrieving products \(error)")
     }
   }
 
@@ -120,7 +120,7 @@ class StoreKitManager: ObservableObject {
         Global.unlockEverything()
       } catch {
         //storekit has a transaction that fails verification, don't delvier content to the user
-        print ("Transaction failed verification")
+        logger.error("Transaction failed verification")
       }
       //finally assign the purchased products
       self.purchasedCourses.removeAll()
