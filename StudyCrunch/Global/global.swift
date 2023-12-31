@@ -7,6 +7,8 @@
 
 import Foundation
 import OSLog
+import UIKit
+import SwiftUI
 
 struct Global {
   private static var premiumChapters = [String]()
@@ -46,5 +48,13 @@ struct Global {
     for chapterName in premiumChapters {
       UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
     }
+  }
+
+  static func getColorScheme() -> ColorScheme {
+    if let scheme = UIApplication.shared.windows.first?.windowScene?.traitCollection.userInterfaceStyle,
+       scheme == .light {
+      return .light
+    }
+    return .dark
   }
 }

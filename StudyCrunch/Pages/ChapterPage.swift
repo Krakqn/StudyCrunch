@@ -40,12 +40,14 @@ struct ChapterPage: View {
           if let pdf = chapter.pdfData {
             PDFKitRepresentedView(pdf, singlePage: false)
               .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 1.414)
+          } else {
+            HStack {
+              Markdown(chapter.markdown)
+                .markdownTheme(.docC)
+              Spacer()
+            }
           }
-          HStack {
-            Markdown(chapter.markdown)
-              .markdownTheme(.docC)
-            Spacer()
-          }
+
           if flashcards.count > 0 {
             ZStack {
               ForEach(Array(flashcards.suffix(4).enumerated()), id: \.element) { i, flashcard in

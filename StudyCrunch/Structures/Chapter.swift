@@ -81,6 +81,8 @@ struct Chapter: Identifiable {
     }
 
     @discardableResult func setPdfData(filename: String) -> Builder {
+      var filename = filename
+      if Global.getColorScheme() == .dark { filename += "Dark" }
       if let url = Bundle.main.url(forResource: filename, withExtension: "pdf"),
          let pdfData = try? Data(contentsOf: url)
       {
