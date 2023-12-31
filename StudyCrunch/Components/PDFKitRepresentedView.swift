@@ -24,6 +24,7 @@ struct PDFKitRepresentedView: UIViewRepresentable {
         let pdfView = PDFView()
         pdfView.document = PDFDocument(data: data)
         pdfView.autoScales = true
+        pdfView.minScaleFactor = 0.5
         if singlePage {
             pdfView.displayMode = .singlePage
         }
