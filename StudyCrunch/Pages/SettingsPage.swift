@@ -7,9 +7,13 @@
 
 import Foundation
 import SwiftUI
+import Pow
 
 struct SettingsPage: View {
   @State var isFAQPanelPresented = false
+  @State var isPressedFAQ: Bool = false
+  @State var isPressedFeedback: Bool = false
+  @State var isPressedDiscord: Bool = false
   @StateObject var storeKit = StoreKitManager()
 
   @Environment(\.openURL) var openURL
@@ -23,6 +27,12 @@ struct SettingsPage: View {
           MenuOption(symbol: "❓", name: "FAQ", description: "Frequently Asked Questions")
             .padding(.horizontal)
         }
+        ._onButtonGesture {
+          isPressedFAQ = $0
+      } perform: {
+
+      }
+      .conditionalEffect(.pushDown, condition: isPressedFAQ)
 
         Button {
           openURL(feedbackUrl)
@@ -30,6 +40,12 @@ struct SettingsPage: View {
           MenuOption(symbol: "💭", name: "Feedback", description: "Feedback or Request Subjects")
             .padding(.horizontal)
         }
+        ._onButtonGesture {
+          isPressedFeedback = $0
+      } perform: {
+
+      }
+      .conditionalEffect(.pushDown, condition: isPressedFeedback)
 
         Button {
           openURL(appUrl)
@@ -49,7 +65,12 @@ struct SettingsPage: View {
           .padding(.horizontal)
         }
         .buttonStyle(.plain)
+        ._onButtonGesture {
+          isPressedDiscord = $0
+      } perform: {
 
+      }
+      .conditionalEffect(.pushDown, condition: isPressedDiscord)
         Spacer()
       }
       .navigationTitle("About")
