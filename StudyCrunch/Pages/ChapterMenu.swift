@@ -11,6 +11,7 @@ import SwiftUI
 struct ChapterMenu: View {
     var section: Section
     @State private var isPressed: [UUID: Bool] = [:]
+    @State private var stateChanged: Int = 0
 
     var body: some View {
         NavigationStack {
@@ -38,9 +39,14 @@ struct ChapterMenu: View {
                         isPressed[chapter.id] = false
                     }
                 }
+                Text("\(stateChanged)")
+                  .foregroundStyle(.clear)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Chapters")
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("LockStateChanged"))) { notification in
+          stateChanged += 1
         }
     }
 }
