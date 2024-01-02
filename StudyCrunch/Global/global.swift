@@ -41,6 +41,7 @@ struct Global {
       let key = section.courseName + chapter.symbol
       unlockChapter(key)
     }
+    NotificationCenter.default.post(name: Notification.Name("LockStateChanged"), object: nil)
   }
 
   static func unlockEverything() {
@@ -48,6 +49,7 @@ struct Global {
     for chapterName in premiumChapters {
       UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
     }
+    NotificationCenter.default.post(name: Notification.Name("LockStateChanged"), object: nil)
   }
 
   static func getColorScheme() -> ColorScheme {
