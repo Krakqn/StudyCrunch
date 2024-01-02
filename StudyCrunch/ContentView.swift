@@ -39,7 +39,7 @@ struct ContentView: View {
       .tag(0)
       SettingsPage()
         .tabItem {
-          Label("Settings", systemImage: "gearshape")
+          Label("About", systemImage: "info.circle.fill")
         }
         .tag(1)
     }

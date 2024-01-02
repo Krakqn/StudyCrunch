@@ -52,7 +52,7 @@ struct SettingsPage: View {
 
         Spacer()
       }
-      .navigationTitle("Settings")
+      .navigationTitle("About")
     }
     .sheet(isPresented: $isFAQPanelPresented) {
       NavigationView {
