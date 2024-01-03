@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4300E6AD2AF72ECE00922E62 /* ShareMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300E6AC2AF72ECE00922E62 /* ShareMenu.swift */; };
 		430ACB312AE6EDDC007017AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 430ACB302AE6EDDC007017AC /* Defaults */; };
+		430C346C2B44DD09002A25BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 430C346B2B44DD09002A25BF /* AlertToast */; };
 		4336A0992B34FD66001B27BE /* FAQPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336A0982B34FD66001B27BE /* FAQPanel.swift */; };
 		4341B0DA2AE6523D00C5CC11 /* StudyCrunchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0D92AE6523D00C5CC11 /* StudyCrunchApp.swift */; };
 		4341B0DC2AE6523D00C5CC11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4341B0DB2AE6523D00C5CC11 /* ContentView.swift */; };
@@ -180,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFAF1DC92B3315EE00310703 /* Pow in Frameworks */,
+				430C346C2B44DD09002A25BF /* AlertToast in Frameworks */,
 				430ACB312AE6EDDC007017AC /* Defaults in Frameworks */,
 				5882C2952AF24CE70085D577 /* MarkdownUI in Frameworks */,
 			);
@@ -461,6 +463,7 @@
 				430ACB302AE6EDDC007017AC /* Defaults */,
 				5882C2942AF24CE70085D577 /* MarkdownUI */,
 				BFAF1DC82B3315EE00310703 /* Pow */,
+				430C346B2B44DD09002A25BF /* AlertToast */,
 			);
 			productName = StudyCrunch;
 			productReference = 4341B0D62AE6523D00C5CC11 /* StudyCrunch.app */;
@@ -538,6 +541,7 @@
 				430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */,
 				5882C2932AF24CE70085D577 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				BFAF1DC72B3315EE00310703 /* XCRemoteSwiftPackageReference "Pow" */,
+				430C346A2B44DD09002A25BF /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 4341B0D72AE6523D00C5CC11 /* Products */;
 			projectDirPath = "";
@@ -982,6 +986,14 @@
 				kind = branch;
 			};
 		};
+		430C346A2B44DD09002A25BF /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
 		5882C2932AF24CE70085D577 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
@@ -1005,6 +1017,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 430ACB2F2AE6EDDC007017AC /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		430C346B2B44DD09002A25BF /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 430C346A2B44DD09002A25BF /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		5882C2942AF24CE70085D577 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
