@@ -164,6 +164,7 @@ struct ChapterPage: View {
     }
     .onChange(of: storeKit.purchasedCourses) { oldValue, newValue in
       if !self.chapter.restricted {
+        viewModel.showPaymentSuccess.toggle()
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
           self.t = 0.0
         }
