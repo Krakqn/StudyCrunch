@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import MarkdownUI
 import MessageUI
-import AlertToast
 
 struct ChapterPage: View {
 
@@ -20,7 +19,6 @@ struct ChapterPage: View {
   @State private var flashcards: [Flashcard] = []
   @State private var resultMail: MFMailComposeResult = .failed
   @State private var resultMessage: MessageComposeResult = .failed
-  @State private var showToast = false
 
   @EnvironmentObject var viewModel: ViewModel
   @EnvironmentObject var storeKit: StoreKitManager
@@ -120,7 +118,7 @@ struct ChapterPage: View {
           MailView(message: "initial message", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
             .onDisappear {
               if self.resultMail != .sent {
-                showToast.toggle()
+                viewModel.showToast.toggle()
               }
             }
         }
@@ -128,7 +126,7 @@ struct ChapterPage: View {
       MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
         .onDisappear {
           if self.resultMessage != .sent {
-            showToast.toggle()
+            viewModel.showToast.toggle()
           }
         }
     }
@@ -170,9 +168,6 @@ struct ChapterPage: View {
           self.t = 0.0
         }
       }
-    }
-    .toast(isPresenting: $showToast) {
-          AlertToast(displayMode: .hud, type: .error(Color.red), title: "Action Failed", subTitle: "Please try again")
     }
   }
 }
