@@ -26,7 +26,7 @@ struct Global {
   static func lockChapters(_ premiumChapters: [String], in courseName: String) { //lock chapters on first launch
     if !UserDefaults.standard.bool(forKey: "\(courseName)HasBeenLaunchedBefore") {
       logger.debug("lockChapters: \(premiumChapters)")
-      self.premiumChapters = premiumChapters
+      self.premiumChapters.append(contentsOf: premiumChapters)
       for chapterName in premiumChapters {
         UserDefaults.standard.setValue(true, forKey: "\(chapterName)Locked")
       }
@@ -45,7 +45,7 @@ struct Global {
   }
 
   static func unlockEverything() {
-    logger.debug("unlockEverything")
+    logger.debug("unlockEverything: \(premiumChapters)")
     for chapterName in premiumChapters {
       UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
     }
