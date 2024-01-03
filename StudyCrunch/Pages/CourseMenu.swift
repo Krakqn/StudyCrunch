@@ -53,7 +53,7 @@ struct CourseMenu: View {
     if searchText.isEmpty {
       return courses
     } else {
-      return courses.filter { $0.name.contains(searchText) }
+      return courses.filter { $0.name.range(of: searchText, options: .caseInsensitive) != nil }
     }
   }
 }
