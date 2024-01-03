@@ -108,7 +108,14 @@ struct ChapterPage: View {
               .padding(.bottom, 60)
           }
 
-          ShareWall()
+          if chapter.restricted {
+            ShareWall()
+              .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                  let _ = MFMessageComposeViewController()
+                }
+              }
+          }
         }
         .opacity(self.t)
       }
