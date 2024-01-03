@@ -9,22 +9,20 @@ import Foundation
 import SwiftUI
 import MarkdownUI
 import MessageUI
-import AlertToast
 
 struct ChapterPage: View {
-  
+
   let chapter: Chapter
   let section: Section
-  
+
   @State private var t: CGFloat = 0.0
   @State private var flashcards: [Flashcard] = []
   @State private var resultMail: MFMailComposeResult = .failed
   @State private var resultMessage: MessageComposeResult = .failed
-  @State private var showToast = false
-  
+
   @EnvironmentObject var viewModel: ViewModel
   @EnvironmentObject var storeKit: StoreKitManager
-  
+
   func removeTopFlashcard() {
     var newFlashcards = flashcards
     if newFlashcards.count > 0 {
@@ -34,7 +32,7 @@ struct ChapterPage: View {
       flashcards = newFlashcards
     }
   }
-  
+
   var body: some View {
     ZStack {
       ScrollView {
@@ -49,7 +47,7 @@ struct ChapterPage: View {
               Spacer()
             }
           }
-          
+
           if flashcards.count > 0 {
             ZStack {
               ForEach(Array(flashcards.suffix(4).enumerated()), id: \.element) { i, flashcard in
@@ -76,15 +74,15 @@ struct ChapterPage: View {
               .font(.system(size: 32))
             Text(chapter.restricted ? "Choose a method below to unlock it" : "")
               .frame(height: 32)
-            
+
             Spacer()
-            
+
             Text("Donate once to unlock everything")
               .opacity(75)
               .font(.system(size: 20))
               .padding(.horizontal, 20)
               .multilineTextAlignment(.center)
-            
+
             Button {
               Task {
                 guard let product = storeKit.storeProducts.first else { return }
@@ -95,21 +93,21 @@ struct ChapterPage: View {
                 .font(.system(size: 20).bold())
                 .foregroundColor(Color("ForegroundColor"))
             }
-            
+
             Spacer()
-            
+
             Text("Hold share to unlock the section")
               .opacity(75)
               .font(.system(size: 20))
               .padding(.horizontal, 20)
               .multilineTextAlignment(.center)
-            
+
             Label("Share", systemImage: "square.and.arrow.up")
               .font(.system(size: 20).bold())
               .foregroundColor(Color("ForegroundColor"))
               .padding(.bottom, 60)
           }
-          
+
           ShareWall()
         }
         .opacity(self.t)
@@ -120,7 +118,7 @@ struct ChapterPage: View {
       MailView(message: "initial message", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
         .onDisappear {
           if self.resultMail != .sent {
-            showToast.toggle()
+            viewModel.showToast.toggle()
           }
         }
     }
@@ -128,7 +126,7 @@ struct ChapterPage: View {
       MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
         .onDisappear {
           if self.resultMessage != .sent {
-            showToast.toggle()
+            viewModel.showToast.toggle()
           }
         }
     }
@@ -170,9 +168,6 @@ struct ChapterPage: View {
           self.t = 0.0
         }
       }
-    }
-    .toast(isPresenting: $showToast) {
-      AlertToast(displayMode: .hud, type: .error(Color.red), title: "Action Failed", subTitle: "Please try again")
     }
   }
 }

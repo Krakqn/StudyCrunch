@@ -7,16 +7,19 @@
 
 import SwiftUI
 import Defaults
+import AlertToast
 
 struct ContentView: View {
-  
+
   @Default(.showOnboarding) private var showOnboarding
-  
+
+  @EnvironmentObject private var viewModel: ViewModel
+
   @State private var selection = 0
   @State private var resetNavigationID = UUID()
-  
+
   var body: some View {
-    
+
     let selectable = Binding(        // << proxy binding to catch tab tap
       get: { self.selection },
       set: { self.selection = $0
@@ -24,7 +27,7 @@ struct ContentView: View {
         // in root state, same as is on change tab and back
         self.resetNavigationID = UUID()
       })
-    
+
     TabView(selection: selectable) {
       NavigationView {
         CourseMenu(courses: [
@@ -37,6 +40,10 @@ struct ContentView: View {
         Label("Courses", systemImage: "book.closed")
       }
       .tag(0)
+      .toast(isPresenting: $viewModel.showToast) {
+        AlertToast(displayMode: .hud, type: .error(Color.red), title: "Action Failed", subTitle: "Please try again")
+      }
+
       SettingsPage()
         .tabItem {
           Label("About", systemImage: "info.circle.fill")
