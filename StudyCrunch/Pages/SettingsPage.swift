@@ -15,9 +15,9 @@ struct SettingsPage: View {
   @State var isPressedFeedback: Bool = false
   @State var isPressedDiscord: Bool = false
   @StateObject var storeKit = StoreKitManager()
-
+  
   @Environment(\.openURL) var openURL
-
+  
   var body: some View {
     NavigationView {
       VStack {
@@ -29,11 +29,11 @@ struct SettingsPage: View {
         }
         ._onButtonGesture {
           isPressedFAQ = $0
-      } perform: {
-
-      }
-      .conditionalEffect(.pushDown, condition: isPressedFAQ)
-
+        } perform: {
+          
+        }
+        .conditionalEffect(.pushDown, condition: isPressedFAQ)
+        
         Button {
           openURL(feedbackUrl)
         } label: {
@@ -42,11 +42,11 @@ struct SettingsPage: View {
         }
         ._onButtonGesture {
           isPressedFeedback = $0
-      } perform: {
-
-      }
-      .conditionalEffect(.pushDown, condition: isPressedFeedback)
-
+        } perform: {
+          
+        }
+        .conditionalEffect(.pushDown, condition: isPressedFeedback)
+        
         Button {
           openURL(appUrl)
         } label: {
@@ -67,10 +67,10 @@ struct SettingsPage: View {
         .buttonStyle(.plain)
         ._onButtonGesture {
           isPressedDiscord = $0
-      } perform: {
-
-      }
-      .conditionalEffect(.pushDown, condition: isPressedDiscord)
+        } perform: {
+          
+        }
+        .conditionalEffect(.pushDown, condition: isPressedDiscord)
         Spacer()
       }
       .navigationTitle("About")
@@ -79,7 +79,7 @@ struct SettingsPage: View {
       NavigationView {
         FAQPanel(open: $isFAQPanelPresented)
           .navigationBarTitle("Frequently Asked Questions", displayMode: .inline)
-
+        
       }
     }
   }

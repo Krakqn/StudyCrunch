@@ -21,8 +21,8 @@ struct CourseMenu: View {
       ScrollView {
         ForEach(searchResults) { course in
           let coursePressedState = Binding(
-              get: { isPressed[course.id, default: false] },
-              set: { isPressed[course.id] = $0 }
+            get: { isPressed[course.id, default: false] },
+            set: { isPressed[course.id] = $0 }
           )
           NavigationLink {
             SectionMenu(course: course)
@@ -31,13 +31,13 @@ struct CourseMenu: View {
               .padding(.horizontal)
           }
           ._onButtonGesture {
-              coursePressedState.wrappedValue = $0
+            coursePressedState.wrappedValue = $0
           } perform: {
-
+            
           }
           .conditionalEffect(.pushDown, condition: coursePressedState.wrappedValue)
           .onAppear {
-              isPressed[course.id] = false
+            isPressed[course.id] = false
           }
         }
         Button("Show onboarding") {
