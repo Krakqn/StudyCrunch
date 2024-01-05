@@ -11,25 +11,27 @@ import UIKit
 import SwiftUI
 
 struct Global {
-  private static var premiumChapters = [String]()
   private static let logger = Logger(subsystem: "StudyCrunch", category: "Global")
 
-  static func chapterLocked(_ chapterName: String) -> Bool {
-    let locked = UserDefaults.standard.bool(forKey: "\(chapterName)Locked")
-    return locked
+  private static let lockedChaptersKey = "lockedChaptersKey"
+
+  static func isChapterLocked(_ chapterName: String) -> Bool {
+    guard let lockedChapters = UserDefaults.standard.object(forKey: lockedChaptersKey) as? [String] else { return false }
+    return lockedChapters.contains(chapterName)
   }
 
   static func unlockChapter(_ chapterName: String) {
-    return UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
+    guard var lockedChapters = UserDefaults.standard.object(forKey: lockedChaptersKey) as? [String] else { return }
+    lockedChapters.removeAll(where: { $0 == chapterName })
+    UserDefaults.standard.setValue(lockedChapters, forKey: lockedChaptersKey)
   }
 
   static func lockChapters(_ premiumChapters: [String], in courseName: String) { //lock chapters on first launch
     if !UserDefaults.standard.bool(forKey: "\(courseName)HasBeenLaunchedBefore") {
       logger.debug("lockChapters: \(premiumChapters)")
-      self.premiumChapters.append(contentsOf: premiumChapters)
-      for chapterName in premiumChapters {
-        UserDefaults.standard.setValue(true, forKey: "\(chapterName)Locked")
-      }
+      var lockedChapters = UserDefaults.standard.object(forKey: lockedChaptersKey) as? [String] ?? []
+      lockedChapters.append(contentsOf: premiumChapters)
+      UserDefaults.standard.setValue(lockedChapters, forKey: lockedChaptersKey)
 
       UserDefaults.standard.setValue(true, forKey: "\(courseName)HasBeenLaunchedBefore")
     }
@@ -45,10 +47,10 @@ struct Global {
   }
 
   static func unlockEverything() {
-    logger.debug("unlockEverything: \(premiumChapters)")
-    for chapterName in premiumChapters {
-      UserDefaults.standard.setValue(false, forKey: "\(chapterName)Locked")
-    }
+    guard let lockedChapters = UserDefaults.standard.object(forKey: lockedChaptersKey) as? [String] else { return }
+    logger.debug("unlockEverything: \(lockedChapters)")
+    UserDefaults.standard.setValue([String](), forKey: lockedChaptersKey)
+
     NotificationCenter.default.post(name: Notification.Name("LockStateChanged"), object: nil)
   }
 

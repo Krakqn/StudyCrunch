@@ -18,7 +18,7 @@ struct Chapter: Identifiable {
 
   var restricted: Bool {
     let key = courseName + symbol
-    return Global.chapterLocked(key)
+    return Global.isChapterLocked(key)
   }
   var flashcards: [Flashcard] = []
   
