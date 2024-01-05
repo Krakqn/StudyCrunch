@@ -7,10 +7,13 @@
 
 import SwiftUI
 import Defaults
+import AlertToast
 
 struct ContentView: View {
 
   @Default(.showOnboarding) private var showOnboarding
+
+  @EnvironmentObject private var viewModel: ViewModel
 
   @State private var selection = 0
   @State private var resetNavigationID = UUID()
@@ -37,9 +40,27 @@ struct ContentView: View {
         Label("Courses", systemImage: "book.closed")
       }
       .tag(0)
+      .toast(isPresenting: $viewModel.showToast) {
+        AlertToast(displayMode: .hud, type: .error(Color.red), title: "Action Failed", subTitle: "Please try again")
+      }
+      .toast(isPresenting: $viewModel.showPaymentSuccess) {
+          AlertToast(
+            displayMode: .banner(.slide),
+            type: .complete(Color.white),
+              title: "Donation Successful!",
+              subTitle: "Thank you for your gratitude.",
+              style: .style(
+                  backgroundColor: Color.green,
+                  titleColor: Color.white,
+                  subTitleColor: Color.white,
+                  titleFont: Font.system(size: 18, weight: .bold),
+                  subTitleFont: Font.system(size: 16)
+              )
+          )
+      }
       SettingsPage()
         .tabItem {
-          Label("Settings", systemImage: "gearshape")
+          Label("About", systemImage: "info.circle.fill")
         }
         .tag(1)
     }

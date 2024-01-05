@@ -11,4 +11,6 @@ class ViewModel: ObservableObject {
   @Published var isShowingMailView: Bool = false
   @Published var isShowingMessageView: Bool = false
   @Published var shareModalOpen: Bool = false
+  @Published var showToast: Bool = false
+  @Published var showPaymentSuccess: Bool = false
 }

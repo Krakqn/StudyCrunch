@@ -32,7 +32,7 @@ struct ChapterPage: View {
       flashcards = newFlashcards
     }
   }
-    
+
   var body: some View {
     ZStack {
       ScrollView {
@@ -68,6 +68,7 @@ struct ChapterPage: View {
           VStack(spacing: 10) {
             Image(systemName: chapter.restricted ? "lock.fill" : "lock.open.fill")
               .font(.system(size: 64))
+              .contentTransition(.symbolEffect(.replace))
               .padding(.top, 100)
             Text(chapter.restricted ? "Chapter locked!" : "Section unlocked!")
               .font(.system(size: 32))
@@ -115,9 +116,19 @@ struct ChapterPage: View {
     .navigationTitle(chapter.name)
     .sheet(isPresented: $viewModel.isShowingMailView) {
       MailView(message: "initial message", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+        .onDisappear {
+          if self.resultMail != .sent {
+            viewModel.showToast.toggle()
+          }
+        }
     }
     .sheet(isPresented: $viewModel.isShowingMessageView) {
       MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+        .onDisappear {
+          if self.resultMessage != .sent {
+            viewModel.showToast.toggle()
+          }
+        }
     }
     .onAppear {
       if self.chapter.restricted {
@@ -156,6 +167,7 @@ struct ChapterPage: View {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
           self.t = 0.0
         }
+        viewModel.showPaymentSuccess.toggle()
       }
     }
   }
