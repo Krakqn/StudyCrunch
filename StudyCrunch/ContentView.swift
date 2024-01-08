@@ -58,6 +58,9 @@ struct ContentView: View {
               )
           )
       }
+      .toast(isPresenting: $viewModel.newRound) {
+        AlertToast(displayMode: .hud, type: .error(Color.red), title: "New round", subTitle: "text")
+      }
       SettingsPage()
         .tabItem {
           Label("About", systemImage: "info.circle.fill")
