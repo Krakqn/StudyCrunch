@@ -31,9 +31,7 @@ struct ChapterPage: View {
     if newFlashcards.count > 0 {
       numberOfCardDisplayed += 1
       if numberOfCardDisplayed > 0 && numberOfCardDisplayed % flashcards.count == 0 {
-        viewModel.newRound = true
-      } else {
-        viewModel.newRound = false
+        viewModel.newRound.toggle()
       }
       newFlashcards.append(newFlashcards.removeFirst())
     }
