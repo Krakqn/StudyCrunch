@@ -59,7 +59,7 @@ struct ContentView: View {
           )
       }
       .toast(isPresenting: $viewModel.newRound) {
-        AlertToast(displayMode: .hud, type: .error(Color.red), title: "New round", subTitle: "text")
+        AlertToast(displayMode: .hud, type: .systemImage("checkmark.seal.fill", Color.green), title: "End Reached!", subTitle: "Flashcards now looping.")
       }
       SettingsPage()
         .tabItem {
