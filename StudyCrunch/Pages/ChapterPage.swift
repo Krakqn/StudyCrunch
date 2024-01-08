@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import MarkdownUI
 import MessageUI
+import AlertToast
 
 struct ChapterPage: View {
 
@@ -23,9 +24,17 @@ struct ChapterPage: View {
   @EnvironmentObject var viewModel: ViewModel
   @EnvironmentObject var storeKit: StoreKitManager
 
+  @State var numberOfCardDisplayed = 0
+
   func removeTopFlashcard() {
     var newFlashcards = flashcards
     if newFlashcards.count > 0 {
+      numberOfCardDisplayed += 1
+      if numberOfCardDisplayed > 0 && numberOfCardDisplayed % flashcards.count == 0 {
+        viewModel.newRound = true
+      } else {
+        viewModel.newRound = false
+      }
       newFlashcards.append(newFlashcards.removeFirst())
     }
     withAnimation(.bouncy) {

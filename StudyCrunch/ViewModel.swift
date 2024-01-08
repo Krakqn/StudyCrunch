@@ -13,4 +13,5 @@ class ViewModel: ObservableObject {
   @Published var shareModalOpen: Bool = false
   @Published var showToast: Bool = false
   @Published var showPaymentSuccess: Bool = false
+  @Published var newRound: Bool = false
 }
