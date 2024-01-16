@@ -16,7 +16,6 @@ struct ChapterPage: View {
   let chapter: Chapter
   let section: Section
 
-  @State private var t: CGFloat = 0.0
   @State private var flashcards: [Flashcard] = []
   @State private var resultMail: MFMailComposeResult = .failed
   @State private var resultMessage: MessageComposeResult = .failed
@@ -24,7 +23,9 @@ struct ChapterPage: View {
   @EnvironmentObject var viewModel: ViewModel
   @EnvironmentObject var storeKit: StoreKitManager
 
-  @State var numberOfCardDisplayed = 0
+  @State private var numberOfCardDisplayed = 0
+  @State private var flashcardOverlayOpacity: CGFloat = 0.0
+  @State private var shareOverlayOpacity: CGFloat = 0.0
 
   func removeTopFlashcard() {
     var newFlashcards = flashcards
@@ -62,6 +63,29 @@ struct ChapterPage: View {
               ForEach(Array(flashcards.suffix(4).enumerated()), id: \.element) { i, flashcard in
                 FlashcardView(flashcard: flashcard, index: i, takeItselfOut: removeTopFlashcard)
               }
+              if !viewModel.isFlashcardFront {
+                VStack {
+                  HStack {
+                    Spacer()
+                    Button {
+                      // open large flashcard
+                      viewModel.isShowingFullscreenOverlay.toggle()
+                      print(flashcards)
+                      guard let flashcard = flashcards.last else { return }
+                      print(viewModel.isShowingFullscreenOverlay, flashcard.front, flashcard.back)
+                      if viewModel.isShowingFullscreenOverlay {
+                        viewModel.flashcardOverlayContent = flashcard.back
+                      } else {
+                        viewModel.flashcardOverlayContent = ""
+                      }
+                    } label: {
+                      Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")
+                        .tint(.white)
+                    }
+                  }
+                  Spacer()
+                }
+              }
             }
             .padding(.bottom, 50)
           }
@@ -71,7 +95,7 @@ struct ChapterPage: View {
         flashcards = chapter.flashcards
       }
       .padding()
-      .blur(radius: self.t * 12.0)
+      .blur(radius: viewModel.blurOpacity * 12.0)
       .overlay {
         ZStack {
           VStack(spacing: 10) {
@@ -119,7 +143,40 @@ struct ChapterPage: View {
 
           ShareWall()
         }
-        .opacity(self.t)
+        .opacity(shareOverlayOpacity)
+
+        // large flashcard overlay
+        ZStack(alignment: .topTrailing) {
+          ScrollView {
+            VStack {
+              Text(viewModel.flashcardOverlayContent)
+                .font(Font.system(size: 24, weight: .semibold, design: .serif))
+                .padding()
+            }
+          }
+          .padding(.vertical)
+
+          Button {
+            closeLargeFlashcard()
+          } label: {
+            Image(systemName: "xmark")
+              .tint(.white)
+              .padding()
+          }
+        }
+        .background(.card)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding([.top, .bottom], 100)
+        .padding(.horizontal)
+        .opacity(flashcardOverlayOpacity)
+        .onChange(of: viewModel.flashcardOverlayContent) {
+          if !viewModel.flashcardOverlayContent.isEmpty {
+            withAnimation {
+              viewModel.blurOpacity = 1.0
+              flashcardOverlayOpacity = 1.0
+            }
+          }
+        }
       }
     }
     .navigationTitle(chapter.name)
@@ -142,14 +199,19 @@ struct ChapterPage: View {
     .onAppear {
       if self.chapter.restricted {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
-          self.t = 1.0
+          viewModel.blurOpacity = 1.0
+          shareOverlayOpacity = 1.0
         }
       }
+    }
+    .onDisappear {
+      viewModel.blurOpacity = 0.0
     }
     .onChange(of: viewModel.shareModalOpen, {
       if !self.chapter.restricted {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
-          self.t = 0.0
+          viewModel.blurOpacity = 0.0
+          shareOverlayOpacity = 0.0
         }
       }
     })
@@ -174,11 +236,25 @@ struct ChapterPage: View {
     .onChange(of: storeKit.purchasedCourses) { oldValue, newValue in
       if !self.chapter.restricted {
         withAnimation(.easeIn(duration: 0.3).delay(0.5)) {
-          self.t = 0.0
+          viewModel.blurOpacity = 0.0
+          shareOverlayOpacity = 0.0
         }
         viewModel.showPaymentSuccess.toggle()
       }
     }
+
+  }
+
+  private func closeLargeFlashcard() {
+    withAnimation(.easeInOut(duration: 0.3)) {
+      viewModel.blurOpacity = 0.0
+      flashcardOverlayOpacity = 0.0
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+      viewModel.isShowingFullscreenOverlay = false
+      viewModel.flashcardOverlayContent = ""
+    }
+
   }
 }
 
