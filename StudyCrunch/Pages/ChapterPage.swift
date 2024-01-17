@@ -41,6 +41,7 @@ struct ChapterPage: View {
     withAnimation(.bouncy) {
       flashcards = newFlashcards
     }
+    viewModel.isFlashcardFront = true
   }
 
   var body: some View {
@@ -63,29 +64,26 @@ struct ChapterPage: View {
               ForEach(Array(flashcards.suffix(4).enumerated()), id: \.element) { i, flashcard in
                 FlashcardView(flashcard: flashcard, index: i, takeItselfOut: removeTopFlashcard)
               }
-              if !viewModel.isFlashcardFront {
-                VStack {
-                  HStack {
-                    Spacer()
-                    Button {
-                      // open large flashcard
-                      viewModel.isShowingFullscreenOverlay.toggle()
-                      print(flashcards)
-                      guard let flashcard = flashcards.last else { return }
-                      print(viewModel.isShowingFullscreenOverlay, flashcard.front, flashcard.back)
-                      if viewModel.isShowingFullscreenOverlay {
-                        viewModel.flashcardOverlayContent = flashcard.back
-                      } else {
-                        viewModel.flashcardOverlayContent = ""
-                      }
-                    } label: {
-                      Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")
-                        .tint(.white)
-                    }
-                  }
+              VStack {
+                HStack {
                   Spacer()
+                  Button {
+                    // open large flashcard
+                    viewModel.isShowingFullscreenOverlay.toggle()
+                    guard let flashcard = flashcards.suffix(4).first else { return }
+                    if viewModel.isShowingFullscreenOverlay {
+                      viewModel.flashcardOverlayContent = flashcard.back
+                    } else {
+                      viewModel.flashcardOverlayContent = ""
+                    }
+                  } label: {
+                    Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")
+                      .tint(.white)
+                  }
                 }
+                Spacer()
               }
+              .opacity(viewModel.isFlashcardFront ? 0 : 1)
             }
             .padding(.bottom, 50)
           }
@@ -206,6 +204,7 @@ struct ChapterPage: View {
     }
     .onDisappear {
       viewModel.blurOpacity = 0.0
+      viewModel.isFlashcardFront = true
     }
     .onChange(of: viewModel.shareModalOpen, {
       if !self.chapter.restricted {
