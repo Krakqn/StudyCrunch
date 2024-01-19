@@ -13,7 +13,9 @@ struct CardFlipper<Content: View>: View {
   @State private var showFront = false
   @State private var showBack = true
   @State private var isFlipped = false
-  
+
+  @EnvironmentObject var viewModel: ViewModel
+
   let width : CGFloat = 200
   let height : CGFloat = 250
   let animation : Animation = .snappy
@@ -32,6 +34,7 @@ struct CardFlipper<Content: View>: View {
         withAnimation(.easeOut.speed(1.5)) {
           frontDegree = 0
         }
+        viewModel.isFlashcardFront = false
       }
     } else {
       withAnimation(.easeIn.speed(1.5)) {
@@ -42,6 +45,7 @@ struct CardFlipper<Content: View>: View {
         withAnimation(.easeOut.speed(1.5)) {
           backDegree = 0
         }
+        viewModel.isFlashcardFront = true
       }
     }
   }

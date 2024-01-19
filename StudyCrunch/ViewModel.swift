@@ -14,4 +14,8 @@ class ViewModel: ObservableObject {
   @Published var showToast: Bool = false
   @Published var showPaymentSuccess: Bool = false
   @Published var newRound: Bool = false
+  @Published var blurOpacity: CGFloat = 0.0
+  @Published var isFlashcardFront: Bool = true
+  @Published var isShowingFullscreenOverlay = false
+  @Published var flashcardOverlayContent: String = ""
 }
