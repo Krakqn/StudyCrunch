@@ -27,6 +27,8 @@ struct ChapterPage: View {
   @State private var flashcardOverlayOpacity: CGFloat = 0.0
   @State private var shareOverlayOpacity: CGFloat = 0.0
 
+  @State private var isFlipped = false
+
   func removeTopFlashcard() {
     var newFlashcards = flashcards
     if newFlashcards.count > 0 {
@@ -70,9 +72,11 @@ struct ChapterPage: View {
                     viewModel.isShowingFullscreenOverlay.toggle()
                     guard let flashcard = flashcards.suffix(4).first else { return }
                     if viewModel.isShowingFullscreenOverlay {
-                      viewModel.flashcardOverlayContent = flashcard.back
+                      viewModel.flashcardOverlayBackContent = flashcard.back
+                      viewModel.flashcardOverlayFrontContent = flashcard.front
                     } else {
-                      viewModel.flashcardOverlayContent = ""
+                      viewModel.flashcardOverlayBackContent = ""
+                      viewModel.flashcardOverlayFrontContent = ""
                     }
                   } label: {
                     Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")
@@ -142,15 +146,36 @@ struct ChapterPage: View {
         .opacity(shareOverlayOpacity)
 
         // large flashcard overlay
-        ZStack(alignment: .topTrailing) {
-          ScrollView {
-            VStack {
-              Text(viewModel.flashcardOverlayContent)
-                .font(Font.system(size: 24, weight: .semibold, design: .serif))
-                .padding()
+        ZStack(alignment: isFlipped ? .topLeading : .topTrailing) {
+          if isFlipped {
+            ScrollView {
+              VStack {
+                Text(viewModel.flashcardOverlayBackContent)
+                  .font(Font.system(size: 24, weight: .semibold, design: .serif))
+                  .frame(maxWidth: .infinity)
+                  .padding()
+              }
             }
+            .padding(.vertical)
+            .rotation3DEffect(
+              .degrees(isFlipped ? 180 : 0),
+              axis: (x: 0.0, y: 1.0, z: 0.0)
+            )
+          } else {
+            ScrollView {
+              VStack {
+                Text(viewModel.flashcardOverlayFrontContent)
+                  .font(Font.system(size: 32, weight: .bold, design: .serif))
+                  .frame(maxWidth: .infinity)
+                  .padding()
+              }
+            }
+            .padding(.vertical)
+            .rotation3DEffect(
+              .degrees(isFlipped ? 180 : 0),
+              axis: (x: 0.0, y: 1.0, z: 0.0)
+            )
           }
-          .padding(.vertical)
 
           Button {
             closeLargeFlashcard()
@@ -164,9 +189,18 @@ struct ChapterPage: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding([.top, .bottom], 100)
         .padding(.horizontal)
+        .rotation3DEffect(
+          .degrees(isFlipped ? 180 : 0),
+          axis: (x: 0.0, y: 1.0, z: 0.0)
+        )
+        .onTapGesture(perform: {
+          withAnimation {
+            isFlipped.toggle()
+          }
+        })
         .opacity(flashcardOverlayOpacity)
-        .onChange(of: viewModel.flashcardOverlayContent) {
-          if !viewModel.flashcardOverlayContent.isEmpty {
+        .onChange(of: viewModel.flashcardOverlayBackContent) {
+          if !viewModel.flashcardOverlayBackContent.isEmpty {
             withAnimation {
               viewModel.blurOpacity = 1.0
               flashcardOverlayOpacity = 1.0
@@ -249,7 +283,8 @@ struct ChapterPage: View {
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
       viewModel.isShowingFullscreenOverlay = false
-      viewModel.flashcardOverlayContent = ""
+      viewModel.flashcardOverlayBackContent = ""
+      viewModel.flashcardOverlayFrontContent = ""
     }
 
   }

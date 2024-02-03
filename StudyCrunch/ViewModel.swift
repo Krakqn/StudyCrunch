@@ -17,5 +17,6 @@ class ViewModel: ObservableObject {
   @Published var blurOpacity: CGFloat = 0.0
   @Published var isFlashcardFront: Bool = true
   @Published var isShowingFullscreenOverlay = false
-  @Published var flashcardOverlayContent: String = ""
+  @Published var flashcardOverlayBackContent: String = ""
+  @Published var flashcardOverlayFrontContent: String = ""
 }
