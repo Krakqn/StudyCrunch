@@ -81,6 +81,7 @@ struct ChapterPage: View {
                   } label: {
                     Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")
                       .tint(.white)
+                      .padding(.trailing, 20)
                   }
                 }
                 Spacer()
@@ -152,6 +153,7 @@ struct ChapterPage: View {
               VStack {
                 Text(viewModel.flashcardOverlayBackContent)
                   .font(Font.system(size: 24, weight: .semibold, design: .serif))
+                  //.multilineTextAlignment(.center) does nothing
                   .frame(maxWidth: .infinity)
                   .padding()
               }
@@ -166,6 +168,7 @@ struct ChapterPage: View {
               VStack {
                 Text(viewModel.flashcardOverlayFrontContent)
                   .font(Font.system(size: 32, weight: .bold, design: .serif))
+                  //.multilineTextAlignment(.center) does nothing
                   .frame(maxWidth: .infinity)
                   .padding()
               }
