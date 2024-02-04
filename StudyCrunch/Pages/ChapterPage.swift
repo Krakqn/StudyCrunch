@@ -191,7 +191,7 @@ struct ChapterPage: View {
         .background(.card)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding([.top, .bottom], 100)
-        .padding(.horizontal)
+        .padding(.horizontal, 24)
         .rotation3DEffect(
           .degrees(isFlipped ? 180 : 0),
           axis: (x: 0.0, y: 1.0, z: 0.0)
