@@ -153,7 +153,7 @@ struct ChapterPage: View {
               VStack {
                 Text(viewModel.flashcardOverlayBackContent)
                   .font(Font.system(size: 24, weight: .semibold, design: .serif))
-                  //.multilineTextAlignment(.center) does nothing
+                  .multilineTextAlignment(.center)
                   .frame(maxWidth: .infinity)
                   .padding()
               }
@@ -168,7 +168,7 @@ struct ChapterPage: View {
               VStack {
                 Text(viewModel.flashcardOverlayFrontContent)
                   .font(Font.system(size: 32, weight: .bold, design: .serif))
-                  //.multilineTextAlignment(.center) does nothing
+                  .multilineTextAlignment(.center)
                   .frame(maxWidth: .infinity)
                   .padding()
               }
