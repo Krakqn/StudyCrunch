@@ -215,7 +215,7 @@ struct ChapterPage: View {
     }
     .navigationTitle(chapter.name)
     .sheet(isPresented: $viewModel.isShowingMailView) {
-      MailView(message: "initial message", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
+      MailView(message: "\(chapter.courseName) Notes:\n\n[insert link here]", isShowing: $viewModel.isShowingMailView, result: self.$resultMail)
         .onDisappear {
           if self.resultMail != .sent {
             viewModel.showToast.toggle()
@@ -223,7 +223,7 @@ struct ChapterPage: View {
         }
     }
     .sheet(isPresented: $viewModel.isShowingMessageView) {
-      MessageView(message: "initial message", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
+      MessageView(message: "\(chapter.courseName) Notes:\n\n[insert link here]", isShowing: $viewModel.isShowingMessageView, result: self.$resultMessage)
         .onDisappear {
           if self.resultMessage != .sent {
             viewModel.showToast.toggle()
