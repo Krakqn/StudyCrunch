@@ -53,8 +53,8 @@ struct SettingsPage: View {
           HStack() {
             Image(.discordIcon).resizable().scaledToFit().frame(width: 40)
             VStack(alignment: .leading, spacing: 2) {
-              Text("Join our discord!").fontSize(18, .semibold)
-              Text("This is your invite to a community of trailblazers and problem solvers!").fontSize(16).opacity(0.75)
+              Text("Join our Discord!").fontSize(18, .semibold)
+              Text("Join a community of students working to make cramming effortless!").fontSize(16).opacity(0.75)
             }
             .padding(.leading, 5)
             Spacer(minLength: 0)
