@@ -106,27 +106,28 @@ struct ChapterPage: View {
               .padding(.top, 100)
             Text(chapter.restricted ? "Chapter locked!" : "Section unlocked!")
               .font(.system(size: 32))
-            Text(chapter.restricted ? "Choose a method below to unlock it" : "")
+            Text(chapter.restricted ? "Follow the instructions below to unlock it" : "")
+            //Text(chapter.restricted ? "Choose a method below to unlock it" : "")
               .frame(height: 32)
 
-            Spacer()
-
-            Text("Donate once to unlock everything")
-              .opacity(75)
-              .font(.system(size: 20))
-              .padding(.horizontal, 20)
-              .multilineTextAlignment(.center)
-
-            Button {
-              Task {
-                guard let product = storeKit.storeProducts.first else { return }
-                try await storeKit.purchase(product)
-              }
-            } label: {
-              Label("Donate", systemImage: "arrow.up.heart")
-                .font(.system(size: 20).bold())
-                .foregroundColor(Color("ForegroundColor"))
-            }
+//            Spacer()
+//
+//            Text("Donate once to unlock everything")
+//              .opacity(75)
+//              .font(.system(size: 20))
+//              .padding(.horizontal, 20)
+//              .multilineTextAlignment(.center)
+//
+//            Button {
+//              Task {
+//                guard let product = storeKit.storeProducts.first else { return }
+//                try await storeKit.purchase(product)
+//              }
+//            } label: {
+//              Label("Donate", systemImage: "arrow.up.heart")
+//                .font(.system(size: 20).bold())
+//                .foregroundColor(Color("ForegroundColor"))
+//            }
 
             Spacer()
 
