@@ -37,11 +37,11 @@ struct OnboardingWelcome: View {
           .scaledToFit()
           .frame(width: 125, height: 125)
           .mask(RoundedRectangle(cornerRadius: 32, style: .continuous))
-      }, title: "Welcome!", description: "This app is designed to revolutionize studying, cramming, and all other popular student activities. [INTRO WIP]. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", bodyContent: {
+      }, title: "Welcome!", description: "This app is designed to revolutionize cramming. Experience the incredible efficiency of studying with curated notes at your fingertips.", bodyContent: {
         VStack {
           OnboardingWelcomeFeature(icon: "hare.fill", title: "Study quick", description: "Optimized notes for your convenience. Curated by professionals.")
-          OnboardingWelcomeFeature(icon: "bolt.badge.clock.fill", title: "Learn quicker", description: "Extremely breif notes without any BS. Help save people.")
-          OnboardingWelcomeFeature(icon: "heart.fill", title: "Benefit humanity", description: "All profits will go towards charity. Help save people.").accentColor(.red)
+          OnboardingWelcomeFeature(icon: "bolt.badge.clock.fill", title: "Learn quicker", description: "No time wasted. Find exactly what you need in mere seconds.")
+          OnboardingWelcomeFeature(icon: "wifi.slash", title: "Completely offline", description: "Zero lag. No internet connection is required to access notes.")
         }
       }, buttonLabel: "Okay! Tell me more!", nextStep: nextStep)
     }
