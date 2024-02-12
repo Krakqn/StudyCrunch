@@ -16,6 +16,8 @@ struct ChapterPage: View {
   let chapter: Chapter
   let section: Section
 
+  let largeFlashcardHeight: CGFloat = 500
+
   @State private var flashcards: [Flashcard] = []
   @State private var resultMail: MFMailComposeResult = .failed
   @State private var resultMessage: MessageComposeResult = .failed
@@ -152,12 +154,17 @@ struct ChapterPage: View {
           if isFlipped {
             ScrollView {
               VStack {
+                Spacer()
+
                 Text(viewModel.flashcardOverlayBackContent)
                   .font(Font.system(size: 24, weight: .semibold, design: .serif))
                   .multilineTextAlignment(.center)
                   .frame(maxWidth: .infinity)
                   .padding()
+
+                Spacer()
               }
+              .frame(minHeight: largeFlashcardHeight - 40)
             }
             .padding(.vertical)
             .rotation3DEffect(
@@ -167,12 +174,17 @@ struct ChapterPage: View {
           } else {
             ScrollView {
               VStack {
+                Spacer()
+
                 Text(viewModel.flashcardOverlayFrontContent)
                   .font(Font.system(size: 32, weight: .bold, design: .serif))
                   .multilineTextAlignment(.center)
                   .frame(maxWidth: .infinity)
                   .padding()
+
+                Spacer()
               }
+              .frame(minHeight: largeFlashcardHeight - 40)
             }
             .padding(.vertical)
             .rotation3DEffect(
@@ -191,7 +203,7 @@ struct ChapterPage: View {
         }
         .background(.card)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .padding([.top, .bottom], 100)
+        .frame(height: largeFlashcardHeight)
         .padding(.horizontal, 24)
         .rotation3DEffect(
           .degrees(isFlipped ? 180 : 0),

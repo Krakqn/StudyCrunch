@@ -15,23 +15,32 @@ struct ShareWallTrigger<Content: View>: View {
   @State private var medium = UIImpactFeedbackGenerator(style: .medium)
   @State private var dragging = false
   @State private var takeScreenshot = false
+  @State private var isLongPressDisabled = false
 
   var content: () -> Content
   
   var body: some View {
     content()
-      .overlay(RadialMenuTriggerButton(fingerPos: $transmitter.positionInfo, snapshot: $transmitter.screenshot, onPressStarted: {
-        medium.prepare()
-        medium.impactOccurred()
-        if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
-        viewModel.shareModalOpen = true
-      }, onPressEnded: {
-        if transmitter.showing {
-          transmitter.showing = false
-          return
-        }
-        transmitter.reset()
-      }))
+      .overlay(
+        RadialMenuTriggerButton(fingerPos: $transmitter.positionInfo, snapshot: $transmitter.screenshot, onPressStarted: {
+          if isLongPressDisabled { return }
+          medium.prepare()
+          medium.impactOccurred()
+          print("transmitter.showing: \(transmitter.showing), transmitter.positionInfo: \(transmitter.positionInfo), viewModel.shareModalOpen: \(viewModel.shareModalOpen)")
+          if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
+          viewModel.shareModalOpen = true
+        }, onPressEnded: {
+          isLongPressDisabled = true
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            isLongPressDisabled = false
+          }
+          if transmitter.showing {
+            transmitter.showing = false
+            return
+          }
+          transmitter.reset()
+        })
+      )
   }
 }
 
