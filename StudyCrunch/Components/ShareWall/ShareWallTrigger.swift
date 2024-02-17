@@ -23,10 +23,8 @@ struct ShareWallTrigger<Content: View>: View {
     content()
       .overlay(
         RadialMenuTriggerButton(fingerPos: $transmitter.positionInfo, snapshot: $transmitter.screenshot, onPressStarted: {
-          if isLongPressDisabled { return }
           medium.prepare()
           medium.impactOccurred()
-          print("transmitter.showing: \(transmitter.showing), transmitter.positionInfo: \(transmitter.positionInfo), viewModel.shareModalOpen: \(viewModel.shareModalOpen)")
           if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
           viewModel.shareModalOpen = true
         }, onPressEnded: {
@@ -40,6 +38,7 @@ struct ShareWallTrigger<Content: View>: View {
           }
           transmitter.reset()
         })
+        .allowsHitTesting(!isLongPressDisabled)
       )
   }
 }
@@ -67,7 +66,7 @@ struct RadialMenuTriggerButton: UIViewRepresentable {
   private func addTapAndPressRecognizer(to view: UIButton, with context: Context) {
     let tapRecognizer = UITapGestureRecognizer()
     let pressRecognizer = UILongPressGestureRecognizer()
-    pressRecognizer.minimumPressDuration = 0.1
+    pressRecognizer.minimumPressDuration = 0.3
     
     pressRecognizer.delegate = context.coordinator
     pressRecognizer.addTarget(context.coordinator, action: #selector(Coordinator.handleLongPress))
