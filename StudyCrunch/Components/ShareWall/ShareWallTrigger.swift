@@ -29,7 +29,7 @@ struct ShareWallTrigger<Content: View>: View {
           viewModel.shareModalOpen = true
         }, onPressEnded: {
           isLongPressDisabled = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             isLongPressDisabled = false
           }
           if transmitter.showing {
@@ -66,7 +66,7 @@ struct RadialMenuTriggerButton: UIViewRepresentable {
   private func addTapAndPressRecognizer(to view: UIButton, with context: Context) {
     let tapRecognizer = UITapGestureRecognizer()
     let pressRecognizer = UILongPressGestureRecognizer()
-    pressRecognizer.minimumPressDuration = 0.3
+    pressRecognizer.minimumPressDuration = 0.1
     
     pressRecognizer.delegate = context.coordinator
     pressRecognizer.addTarget(context.coordinator, action: #selector(Coordinator.handleLongPress))
