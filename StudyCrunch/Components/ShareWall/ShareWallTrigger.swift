@@ -23,15 +23,13 @@ struct ShareWallTrigger<Content: View>: View {
     content()
       .overlay(
         RadialMenuTriggerButton(fingerPos: $transmitter.positionInfo, snapshot: $transmitter.screenshot, onPressStarted: {
-          if isLongPressDisabled { return }
           medium.prepare()
           medium.impactOccurred()
-          print("transmitter.showing: \(transmitter.showing), transmitter.positionInfo: \(transmitter.positionInfo), viewModel.shareModalOpen: \(viewModel.shareModalOpen)")
           if !transmitter.showing && transmitter.positionInfo != nil { transmitter.showing = true }
           viewModel.shareModalOpen = true
         }, onPressEnded: {
           isLongPressDisabled = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             isLongPressDisabled = false
           }
           if transmitter.showing {
@@ -40,6 +38,7 @@ struct ShareWallTrigger<Content: View>: View {
           }
           transmitter.reset()
         })
+        .allowsHitTesting(!isLongPressDisabled)
       )
   }
 }
