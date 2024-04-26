@@ -65,6 +65,7 @@
 		BFAF1DD92B33FB0900310703 /* particle.mov in Resources */ = {isa = PBXBuildFile; fileRef = BFAF1DD82B33FB0900310703 /* particle.mov */; };
 		BFD989642B40962F0084A8A6 /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD989632B40962F0084A8A6 /* PDFKitRepresentedView.swift */; };
 		BFD989672B40AA440084A8A6 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BFD989662B40AA440084A8A6 /* sample.pdf */; };
+		BFFE17552BDB4D74008A39B6 /* apw1.md in Resources */ = {isa = PBXBuildFile; fileRef = 434B24202BDA2EBC00197905 /* apw1.md */; };
 		E768441E2B1FF3180096114D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441D2B1FF3180096114D /* MessageView.swift */; };
 		E76844202B1FF35E0096114D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768441F2B1FF35E0096114D /* MailView.swift */; };
 		EC1AB2D32B0FF75800247971 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2D22B0FF75800247971 /* Flashcard.swift */; };
@@ -583,6 +584,7 @@
 				BFAF1DD92B33FB0900310703 /* particle.mov in Resources */,
 				BF0E799B2B387FB6009B3174 /* PropertyList.plist in Resources */,
 				BF642A1D2B412ED60097D939 /* sampleDark.pdf in Resources */,
+				BFFE17552BDB4D74008A39B6 /* apw1.md in Resources */,
 				EC1AB2E42B100CEE00247971 /* computer-science.json in Resources */,
 				434B24252BDA304500197905 /* apw_f1.json in Resources */,
 				4341B0E12AE6523D00C5CC11 /* Preview Assets.xcassets in Resources */,
