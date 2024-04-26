@@ -15,8 +15,8 @@ struct CSCourse {
         Chapter.Builder()
           .setName(name: "Variables")
           .setDescription(description: "Super useful")
-          .setFlashcards(jsonFileName: "computer-science")
-          .setMarkdown(markdownFilename: "sample")
+          .setFlashcards(jsonFileName: "apw_f1")
+          .setMarkdown(markdownFilename: "apw1")
           .setPdfData(filename: "sample"),
         Chapter.Builder()
           .setName(name: "Loops")
